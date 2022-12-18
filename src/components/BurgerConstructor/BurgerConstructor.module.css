@@ -1,0 +1,62 @@
+.section {
+  max-width: 1240px;
+  display: flex;
+  flex-direction: column;
+  grid-column-gap: 40px;
+  grid-row-gap: 0px;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+
+.components {
+  width: 600px;
+  border: 1px solid gold;
+}
+.order {
+  width: 600px;
+  margin-left: 40px;
+  border: 1px solid green;
+}
+
+.selectorcontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.componentsandorder {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid red;
+}
+
+.componentsselector {
+  width: 200px;
+  height: 56px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Mono";
+}
+
+.first {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  color: #f2f2f3;
+  border: 1px solid yellow;
+}
+
+@font-face {
+  font-family: "Mono";
+  src: local("Mono"), url(../../fonts/JetBrainsMono-Regular.ttf) format("woff");
+}

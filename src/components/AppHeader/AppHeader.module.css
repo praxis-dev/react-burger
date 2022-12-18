@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Mono";
+  src: local("Mono"), url(../../fonts/JetBrainsMono-Regular.ttf) format("woff");
+}
+
 .header {
   align-items: center;
   border: 1px solid red;
@@ -24,6 +29,12 @@
 
 .header__text {
   margin-left: 8px;
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #f2f2f3;
 }
 
 .leftblock {
