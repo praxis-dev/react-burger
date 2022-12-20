@@ -87,4 +87,26 @@
 .componentsList {
   overflow: scroll;
   height: 400px;
+  overflow-x: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2f2f37;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8585ad;
+  border: 3px solid #8585ad;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2f2f37;
 }

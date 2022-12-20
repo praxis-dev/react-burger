@@ -72,3 +72,16 @@
   align-items: center;
   margin-left: 24px;
 }
+
+.textBlock {
+  font-family: "Mono";
+  border: 1px solid red;
+}
+
+.price {
+  font-family: "Iceland";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 24px;
+}

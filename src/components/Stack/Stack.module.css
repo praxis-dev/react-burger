@@ -1,0 +1,31 @@
+.stack {
+  margin-bottom: 40px;
+}
+
+.buttonAndTotalContainer {
+  border: 1px solid purple;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.totalAndIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  margin-right: 41.5px;
+  height: 64px;
+}
+
+.largeCurrencyIcon {
+  margin-left: 9.5px;
+}
+
+.total {
+  font-family: "Iceland";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 36px;
+}
