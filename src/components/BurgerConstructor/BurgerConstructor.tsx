@@ -1,6 +1,7 @@
 import css from "./BurgerConstructor.module.css";
 
 import Component from "../Component/Component";
+import Stack from "../Stack/Stack";
 
 function BurgerConstructor() {
   const apiGet = () => {
@@ -47,7 +48,9 @@ function BurgerConstructor() {
               </div>
             </div>
           </div>
-          <div className={css.order}>testestes</div>
+          <div className={css.order}>
+            <Stack />
+          </div>
         </div>
       </div>
     </>

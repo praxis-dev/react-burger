@@ -1,6 +1,6 @@
-import {} from "@ya.praktikum/react-developer-burger-ui-components";
-
 import css from "./Stack.module.css";
+
+import imageThumbnail from "../../images/sauce-03.png";
 
 import StackComponent from "../StackComponent/StackComponent";
 
@@ -10,9 +10,9 @@ function Stack() {
       {" "}
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         <StackComponent
-          text="Краторная булка N-200i (верх)"
+          text="Соус традиционный галактический"
           price={50}
-          //   thumbnail={}
+          thumbnail={imageThumbnail}
         />
       </div>
     </>
