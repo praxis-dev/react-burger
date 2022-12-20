@@ -2,15 +2,13 @@
   max-width: 1240px;
   display: flex;
   flex-direction: column;
-  grid-column-gap: 40px;
-  grid-row-gap: 0px;
   margin: 0 auto;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .components {
   width: 600px;
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
 }
 .order {
   width: 600px;
@@ -18,18 +16,19 @@
   border: 1px solid green;
 }
 
-.selectorcontainer {
+.selectorContainer {
   display: flex;
   flex-direction: row;
+  margin-bottom: 40px;
 }
 
-.componentsandorder {
+.componentsAndOrder {
   display: flex;
   flex-direction: row;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
-.componentsselector {
+.componentsSelector {
   width: 200px;
   height: 56px;
   box-sizing: border-box;
@@ -39,6 +38,9 @@
   font-family: "Mono";
 }
 
+.componentsSelectorSelected {
+  border-bottom: 2px solid #4c4cff;
+}
 .first {
   grid-column-start: 1;
   grid-column-end: 3;
@@ -53,10 +55,36 @@
   font-size: 36px;
   line-height: 40px;
   color: #f2f2f3;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
 }
 
 @font-face {
   font-family: "Mono";
   src: local("Mono"), url(../../fonts/JetBrainsMono-Regular.ttf) format("woff");
+}
+
+.componentsHeader {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 24px;
+  border: 1px solid red;
+}
+
+.componentsListContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-flow: row;
+  column-gap: 56px;
+  row-gap: 32px;
+  text-align: center;
+  border: 1px solid gold;
+  padding: 0 32px;
+}
+
+.componentsList {
+  overflow: scroll;
+  height: 400px;
 }

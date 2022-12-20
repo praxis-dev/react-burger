@@ -1,6 +1,6 @@
-import {} from "@ya.praktikum/react-developer-burger-ui-components";
-
 import css from "./BurgerConstructor.module.css";
+
+import Component from "../Component/Component";
 
 function BurgerConstructor() {
   const apiGet = () => {
@@ -24,12 +24,27 @@ function BurgerConstructor() {
           {" "}
           <h1 className={css.header}>Соберите бургер</h1>
         </div>
-        <div className={css.componentsandorder}>
+        <div className={css.componentsAndOrder}>
           <div className={css.components}>
-            <div className={css.selectorcontainer}>
-              <div className={css.componentsselector}>Булки</div>
-              <div className={css.componentsselector}>Соусы</div>
-              <div className={css.componentsselector}>Начинки</div>
+            <div className={css.selectorContainer}>
+              <div
+                className={
+                  css.componentsSelector + " " + css.componentsSelectorSelected
+                }
+              >
+                Булки
+              </div>
+              <div className={css.componentsSelector}>Соусы</div>
+              <div className={css.componentsSelector}>Начинки</div>
+            </div>
+            <div className={css.componentsList}>
+              <div className={css.componentsHeader}>Булки</div>
+              <div className={css.componentsListContainer}>
+                <Component />
+                <Component />
+                <Component />
+                <Component />
+              </div>
             </div>
           </div>
           <div className={css.order}>testestes</div>

@@ -18,7 +18,7 @@
   max-width: 1920px;
 }
 
-.header__item {
+.headerItem {
   box-sizing: border-box;
   height: 56px;
   display: flex;
@@ -27,7 +27,7 @@
   padding: 20px 17px;
 }
 
-.header__text {
+.headerText {
   margin-left: 8px;
   font-family: "Mono";
   font-style: normal;
@@ -37,7 +37,7 @@
   color: #f2f2f3;
 }
 
-.leftblock {
+.leftBlock {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -45,13 +45,13 @@
   border: 1px solid green;
 }
 
-.leftcolumn {
+.leftColumn {
   display: flex;
   align-items: left;
   grid-area: 1 / 1 / 2 / 2;
   border: 1px solid red;
 }
-.centercolumn {
+.centerColumn {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -60,7 +60,7 @@
   grid-area: 1 / 2 / 2 / 3;
   border: 1px solid red;
 }
-.rightcolumn {
+.rightColumn {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
