@@ -1,4 +1,17 @@
-.blockContent {
+.topBlock {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 32px 16px 24px;
+  background: #1c1c21;
+  border-radius: 40px;
+  width: 536px;
+  align-items: center;
+  background: #1c1c21;
+  border-radius: 88px 88px 40px 40px;
+  border: 1px solid green;
+}
+
+.middleBlock {
   display: flex;
   flex-direction: row;
   padding: 16px 32px 16px 24px;
@@ -9,7 +22,20 @@
   border: 1px solid red;
 }
 
-.middleBlock {
+.bottomBlock {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 32px 16px 24px;
+  background: #1c1c21;
+  border-radius: 40px;
+  width: 536px;
+  align-items: center;
+  background: #1c1c21;
+  border-radius: 40px 40px 88px 88px;
+  border: 1px solid blue;
+}
+
+.block {
   display: flex;
   flex-direction: row;
   width: 568px;
