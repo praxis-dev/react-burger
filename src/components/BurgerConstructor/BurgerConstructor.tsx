@@ -1,9 +1,9 @@
 import css from "./BurgerConstructor.module.css";
-
 import Component from "../Component/Component";
 import Stack from "../Stack/Stack";
+import { data } from "../../utils/data";
 
-function BurgerConstructor() {
+function BurgerConstructor(props: any) {
   const apiGet = () => {
     fetch("https://norma.nomoreparties.space/api/ingredients").then(
       (response) => response.json().then((json) => console.log(json))
@@ -16,6 +16,12 @@ function BurgerConstructor() {
       console.log("click");
       apiGet();
     };
+  };
+
+  const renderComponents = (props: any) => {
+    return props.map((element: any) => {
+      return <Component {...element} />;
+    });
   };
 
   return (
@@ -41,10 +47,7 @@ function BurgerConstructor() {
             <div className={css.componentsList}>
               <div className={css.componentsHeader}>Булки</div>
               <div className={css.componentsListContainer}>
-                <Component />
-                <Component />
-                <Component />
-                <Component />
+                {renderComponents(data)}
               </div>
             </div>
           </div>

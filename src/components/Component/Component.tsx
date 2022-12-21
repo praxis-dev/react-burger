@@ -2,24 +2,37 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 
 import css from "./Component.module.css";
 
-import imageComponent from "../../images/bun-02.png";
+function Component(props: any) {
+  const {
+    _id,
+    name,
+    type,
+    proteins,
+    fat,
+    carbohydrates,
+    calories,
+    price,
+    image,
+    image_mobile,
+    image_large,
+    __v,
+  } = props;
 
-function Component() {
   return (
     <>
       <div className={css.component}>
         <div className={css.portionsCounter}>2</div>
         <img
           alt="Иконка компонента"
-          src={imageComponent}
+          src={image}
           className={css.componentImage}
         ></img>
         <div className={css.priceAndIcon}>
           {" "}
-          <div className={css.componentPrice}>100</div>
+          <div className={css.componentPrice}>{price}</div>
           <CurrencyIcon type="primary" />
         </div>
-        <p className={css.componentName}>Краторная булка N-200i</p>
+        <p className={css.componentName}>{name}</p>
       </div>
     </>
   );
