@@ -3,12 +3,32 @@
   src: local("Mono"), url(../../fonts/JetBrainsMono-Regular.ttf) format("woff");
 }
 
+.portionsCounter {
+  font-family: "Iceland";
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4c4cff;
+  border-radius: 16px;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: -16px;
+  top: 0px;
+}
+
 .component {
   width: 240px;
   border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  margin-bottom: 40px;
 }
 
 .priceAndIcon {
@@ -21,6 +41,12 @@
 
 .componentPrice {
   margin-right: 9px;
+  font-family: Iceland;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 
 .componentName {

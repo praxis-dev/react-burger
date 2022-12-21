@@ -8,7 +8,12 @@ function Component() {
   return (
     <>
       <div className={css.component}>
-        <img alt="" src={imageComponent} className={css.componentImage}></img>
+        <div className={css.portionsCounter}>2</div>
+        <img
+          alt="Иконка компонента"
+          src={imageComponent}
+          className={css.componentImage}
+        ></img>
         <div className={css.priceAndIcon}>
           {" "}
           <div className={css.componentPrice}>100</div>

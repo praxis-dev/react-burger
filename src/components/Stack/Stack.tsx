@@ -10,7 +10,7 @@ function Stack() {
       {" "}
       <div
         className={css.stack}
-        style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+        style={{ display: "flex", flexDirection: "column" }}
       >
         <StackComponent
           type="top"
@@ -19,11 +19,38 @@ function Stack() {
           price={50}
           thumbnail={imageThumbnail}
         />
-        <StackComponent
-          text="Соус традиционный галактический"
-          price={50}
-          thumbnail={imageThumbnail}
-        />
+        <div className={css.stackScreen}>
+          <StackComponent
+            text="Соус традиционный галактический"
+            price={50}
+            thumbnail={imageThumbnail}
+          />
+          <StackComponent
+            text="Соус традиционный галактический"
+            price={50}
+            thumbnail={imageThumbnail}
+          />
+          <StackComponent
+            text="Соус традиционный галактический"
+            price={50}
+            thumbnail={imageThumbnail}
+          />
+          <StackComponent
+            text="Соус традиционный галактический"
+            price={50}
+            thumbnail={imageThumbnail}
+          />
+          <StackComponent
+            text="Соус традиционный галактический"
+            price={50}
+            thumbnail={imageThumbnail}
+          />
+          <StackComponent
+            text="Соус традиционный галактический"
+            price={50}
+            thumbnail={imageThumbnail}
+          />
+        </div>
         <StackComponent
           type="bottom"
           isLocked={true}

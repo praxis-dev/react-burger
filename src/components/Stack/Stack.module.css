@@ -6,7 +6,7 @@
   border: 1px solid purple;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .totalAndIcon {
@@ -28,4 +28,11 @@
   font-weight: 400;
   font-size: 48px;
   line-height: 36px;
+}
+
+.stackScreen {
+  height: 480px;
+  overflow: scroll;
+  height: 400px;
+  overflow-x: hidden;
 }
