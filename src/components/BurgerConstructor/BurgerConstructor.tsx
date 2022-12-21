@@ -3,7 +3,7 @@ import Component from "../Component/Component";
 import Stack from "../Stack/Stack";
 import { data } from "../../utils/data";
 
-function BurgerConstructor(props: any) {
+function BurgerConstructor() {
   const apiGet = () => {
     fetch("https://norma.nomoreparties.space/api/ingredients").then(
       (response) => response.json().then((json) => console.log(json))
@@ -19,9 +19,31 @@ function BurgerConstructor(props: any) {
   };
 
   const renderComponents = (props: any) => {
-    return props.map((element: any) => {
-      return <Component {...element} />;
-    });
+    let buns = props.filter((element: any) => element.type === "bun");
+    let sauces = props.filter((element: any) => element.type === "sauce");
+    let mains = props.filter((element: any) => element.type === "main");
+    return (
+      <>
+        <div className={css.componentsHeader}>Булки</div>
+        <div className={css.componentsListContainer}>
+          {buns.map((element: any) => (
+            <Component key={element.someUniqueIdentifier} {...element} />
+          ))}{" "}
+        </div>
+        <div className={css.componentsHeader}>Соусы</div>
+        <div className={css.componentsListContainer}>
+          {sauces.map((element: any) => (
+            <Component key={element.someUniqueIdentifier} {...element} />
+          ))}
+        </div>
+        <div className={css.componentsHeader}>Начинки</div>
+        <div className={css.componentsListContainer}>
+          {mains.map((element: any) => (
+            <Component key={element.someUniqueIdentifier} {...element} />
+          ))}
+        </div>
+      </>
+    );
   };
 
   return (
@@ -44,12 +66,7 @@ function BurgerConstructor(props: any) {
               <div className={css.componentsSelector}>Соусы</div>
               <div className={css.componentsSelector}>Начинки</div>
             </div>
-            <div className={css.componentsList}>
-              <div className={css.componentsHeader}>Булки</div>
-              <div className={css.componentsListContainer}>
-                {renderComponents(data)}
-              </div>
-            </div>
+            <div className={css.componentsList}>{renderComponents(data)}</div>
           </div>
           <div className={css.order}>
             <Stack />
