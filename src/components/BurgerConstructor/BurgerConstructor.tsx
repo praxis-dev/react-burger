@@ -2,21 +2,31 @@ import css from "./BurgerConstructor.module.css";
 import Component from "../Component/Component";
 import Stack from "../Stack/Stack";
 import { data } from "../../utils/data";
+import { useIsVisible } from "../../utils/useIsVisible";
+import { useRef, useEffect } from "react";
 
 function BurgerConstructor() {
-  const apiGet = () => {
-    fetch("https://norma.nomoreparties.space/api/ingredients").then(
-      (response) => response.json().then((json) => console.log(json))
-    );
-  };
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
 
-  const clickHandler = () => {
-    return (event: React.MouseEvent) => {
-      event.preventDefault();
-      console.log("click");
-      apiGet();
-    };
-  };
+  const ref1IsVisible = useIsVisible(ref1);
+  const ref2IsVisible = useIsVisible(ref2);
+  const ref3IsVisible = useIsVisible(ref3);
+
+  function switcher() {
+    if (ref1IsVisible) {
+      console.log("ref1IsVisible is visible");
+    } else if (ref2IsVisible) {
+      console.log("ref2IsVisible is visible");
+    } else if (ref3IsVisible) {
+      console.log("ref3IsVisible is visible");
+    }
+  }
+
+  useEffect(() => {
+    switcher();
+  });
 
   const renderComponents = (props: any) => {
     let buns = props.filter((element: any) => element.type === "bun");
@@ -24,19 +34,25 @@ function BurgerConstructor() {
     let mains = props.filter((element: any) => element.type === "main");
     return (
       <>
-        <div className={css.componentsHeader}>Булки</div>
+        <div ref={ref1} className={css.componentsHeader}>
+          Булки
+        </div>
         <div className={css.componentsListContainer}>
           {buns.map((element: any) => (
             <Component key={element.someUniqueIdentifier} {...element} />
           ))}{" "}
         </div>
-        <div className={css.componentsHeader}>Соусы</div>
+        <div ref={ref2} className={css.componentsHeader}>
+          Соусы
+        </div>
         <div className={css.componentsListContainer}>
           {sauces.map((element: any) => (
             <Component key={element.someUniqueIdentifier} {...element} />
           ))}
         </div>
-        <div className={css.componentsHeader}>Начинки</div>
+        <div ref={ref3} className={css.componentsHeader}>
+          Начинки
+        </div>
         <div className={css.componentsListContainer}>
           {mains.map((element: any) => (
             <Component key={element.someUniqueIdentifier} {...element} />
@@ -48,7 +64,7 @@ function BurgerConstructor() {
 
   return (
     <>
-      <div className={css.section}>
+      <section className={css.section}>
         <div className={css.first}>
           {" "}
           <h1 className={css.header}>Соберите бургер</h1>
@@ -72,7 +88,7 @@ function BurgerConstructor() {
             <Stack />
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

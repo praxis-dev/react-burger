@@ -86,7 +86,7 @@
 
 .componentsList {
   overflow: scroll;
-  height: 400px;
+  height: 500px;
   overflow-x: hidden;
 }
 
