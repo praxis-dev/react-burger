@@ -3,7 +3,6 @@
 }
 
 .buttonAndTotalContainer {
-  border: 1px solid purple;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
