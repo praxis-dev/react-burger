@@ -6,13 +6,23 @@ import { useIsVisible } from "../../utils/useIsVisible";
 import { useRef, useEffect } from "react";
 
 function BurgerConstructor() {
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
-  const ref3 = useRef(null);
+  const ref1 = useRef<null | HTMLDivElement>(null);
+  const ref2 = useRef<null | HTMLDivElement>(null);
+  const ref3 = useRef<null | HTMLDivElement>(null);
 
   const ref1IsVisible = useIsVisible(ref1);
   const ref2IsVisible = useIsVisible(ref2);
   const ref3IsVisible = useIsVisible(ref3);
+
+  const handleRef1Click = () => {
+    ref1.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleRef2Click = () => {
+    ref2.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleRef3Click = () => {
+    ref3.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   function switcher() {
     if (ref1IsVisible) {
@@ -34,10 +44,8 @@ function BurgerConstructor() {
     let mains = props.filter((element: any) => element.type === "main");
     return (
       <>
-        <div ref={ref1} className={css.componentsHeader}>
-          Булки
-        </div>
-        <div className={css.componentsListContainer}>
+        <div className={css.componentsHeader}>Булки</div>
+        <div ref={ref1} className={css.componentsListContainer}>
           {buns.map((element: any) => (
             <Component key={element.someUniqueIdentifier} {...element} />
           ))}{" "}
@@ -45,15 +53,13 @@ function BurgerConstructor() {
         <div ref={ref2} className={css.componentsHeader}>
           Соусы
         </div>
-        <div className={css.componentsListContainer}>
+        <div ref={ref2} className={css.componentsListContainer}>
           {sauces.map((element: any) => (
             <Component key={element.someUniqueIdentifier} {...element} />
           ))}
         </div>
-        <div ref={ref3} className={css.componentsHeader}>
-          Начинки
-        </div>
-        <div className={css.componentsListContainer}>
+        <div className={css.componentsHeader}>Начинки</div>
+        <div ref={ref3} className={css.componentsListContainer}>
           {mains.map((element: any) => (
             <Component key={element.someUniqueIdentifier} {...element} />
           ))}
@@ -73,14 +79,41 @@ function BurgerConstructor() {
           <div className={css.components}>
             <div className={css.selectorContainer}>
               <div
+                onClick={handleRef1Click}
                 className={
-                  css.componentsSelector + " " + css.componentsSelectorSelected
+                  ref1IsVisible
+                    ? css.componentsSelector +
+                      " " +
+                      css.componentsSelectorSelected
+                    : css.componentsSelector
                 }
               >
                 Булки
               </div>
-              <div className={css.componentsSelector}>Соусы</div>
-              <div className={css.componentsSelector}>Начинки</div>
+              <div
+                onClick={handleRef2Click}
+                className={
+                  ref2IsVisible
+                    ? css.componentsSelector +
+                      " " +
+                      css.componentsSelectorSelected
+                    : css.componentsSelector
+                }
+              >
+                Соусы
+              </div>
+              <div
+                onClick={handleRef3Click}
+                className={
+                  ref3IsVisible
+                    ? css.componentsSelector +
+                      " " +
+                      css.componentsSelectorSelected
+                    : css.componentsSelector
+                }
+              >
+                Начинки
+              </div>
             </div>
             <div className={css.componentsList}>{renderComponents(data)}</div>
           </div>
