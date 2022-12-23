@@ -1,5 +1,6 @@
 import Component from "../Component/Component";
 import css from "./Ingredients.module.css";
+import { useMemo } from "react";
 
 type props = {
   iRefs: any;
@@ -22,14 +23,19 @@ export type element = {
 
 export const Ingredients = (props: props) => {
   const { ref1, ref2, ref3 } = props.iRefs.refs;
-  const buns = props.iRefs.data.filter(
-    (element: any) => element.type === "bun"
+  const buns = useMemo(
+    () => props.iRefs.data.filter((element: element) => element.type === "bun"),
+    [props.iRefs.data]
   );
-  const sauces = props.iRefs.data.filter(
-    (element: element) => element.type === "sauce"
+  const sauces = useMemo(
+    () =>
+      props.iRefs.data.filter((element: element) => element.type === "sauce"),
+    [props.iRefs.data]
   );
-  const mains = props.iRefs.data.filter(
-    (element: element) => element.type === "main"
+  const mains = useMemo(
+    () =>
+      props.iRefs.data.filter((element: element) => element.type === "main"),
+    [props.iRefs.data]
   );
   return (
     <>
