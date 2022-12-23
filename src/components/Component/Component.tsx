@@ -2,7 +2,11 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 
 import css from "./Component.module.css";
 
-function Component(props: any) {
+import { element } from "../Ingredients/Ingredients";
+
+type props = element;
+
+function Component(props: props) {
   const {
     _id,
     name,
