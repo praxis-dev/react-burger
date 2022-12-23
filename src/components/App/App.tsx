@@ -1,10 +1,10 @@
 import React from "react";
 
 import "./App.css";
-import AppHeader from "./components/AppHeader/AppHeader";
-import BurgerConstructor from "./components/BurgerConstructor/BurgerConstructor";
+import AppHeader from "../AppHeader/AppHeader";
+import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 
-function App() {
+export function App() {
   return (
     <div className="App">
       <AppHeader />

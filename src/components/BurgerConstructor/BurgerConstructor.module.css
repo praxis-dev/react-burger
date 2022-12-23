@@ -60,25 +60,6 @@
   src: local("Mono"), url(../../fonts/JetBrainsMono-Regular.ttf) format("woff");
 }
 
-.componentsHeader {
-  font-family: "Mono";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 30px;
-  margin-bottom: 24px;
-}
-
-.componentsListContainer {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-auto-flow: row;
-  column-gap: 56px;
-  row-gap: 32px;
-  text-align: center;
-  padding: 0 32px;
-}
-
 .componentsList {
   overflow: scroll;
   height: 500px;
@@ -104,4 +85,23 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #2f2f37;
+}
+
+.componentsHeader {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 24px;
+}
+
+.componentsListContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-flow: row;
+  column-gap: 56px;
+  row-gap: 32px;
+  text-align: center;
+  padding: 0 32px;
 }

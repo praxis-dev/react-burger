@@ -3,7 +3,7 @@ import Component from "../Component/Component";
 import Stack from "../Stack/Stack";
 import { data } from "../../utils/data";
 import { useIsVisible } from "../../utils/useIsVisible";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 
 function BurgerConstructor() {
   const ref1 = useRef<null | HTMLDivElement>(null);
@@ -23,20 +23,6 @@ function BurgerConstructor() {
   const handleRef3Click = () => {
     ref3.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  function switcher() {
-    if (ref1IsVisible) {
-      console.log("ref1IsVisible is visible");
-    } else if (ref2IsVisible) {
-      console.log("ref2IsVisible is visible");
-    } else if (ref3IsVisible) {
-      console.log("ref3IsVisible is visible");
-    }
-  }
-
-  useEffect(() => {
-    switcher();
-  });
 
   const renderComponents = (props: any) => {
     let buns = props.filter((element: any) => element.type === "bun");

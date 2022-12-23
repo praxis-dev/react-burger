@@ -13,11 +13,15 @@ function AppHeader() {
         <div className={css.leftBlock}>
           <div className={css.headerItem}>
             <BurgerIcon type="primary" />
-            <p className={css.headerText}>Конструктор</p>
+            <a href="#" className={css.headerText}>
+              Конструктор
+            </a>
           </div>
           <div className={css.headerItem}>
             <ListIcon type="primary" />
-            <div className={css.headerText}>Лента заказов</div>
+            <a href="#" className={css.headerText}>
+              Лента заказов
+            </a>
           </div>
         </div>
       </div>
@@ -27,7 +31,9 @@ function AppHeader() {
       <div className={css.rightColumn}>
         <div className={css.headerItem}>
           <ProfileIcon type="primary" />
-          <p className={css.headerText}>Личный кабинет</p>
+          <a href="#" className={css.headerText}>
+            Личный кабинет
+          </a>
         </div>
       </div>
     </header>
