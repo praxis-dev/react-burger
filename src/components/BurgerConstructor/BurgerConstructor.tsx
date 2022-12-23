@@ -1,58 +1,32 @@
 import css from "./BurgerConstructor.module.css";
-import Component from "../Component/Component";
 import Stack from "../Stack/Stack";
 import { data } from "../../utils/data";
 import { useIsVisible } from "../../utils/useIsVisible";
 import { useRef } from "react";
+import { Ingredients } from "../Ingredients/Ingredients";
 
 function BurgerConstructor() {
-  const ref1 = useRef<null | HTMLDivElement>(null);
-  const ref2 = useRef<null | HTMLDivElement>(null);
-  const ref3 = useRef<null | HTMLDivElement>(null);
+  const refs = {
+    ref1: useRef<null | HTMLDivElement>(null),
+    ref2: useRef<null | HTMLDivElement>(null),
+    ref3: useRef<null | HTMLDivElement>(null),
+  };
 
-  const ref1IsVisible = useIsVisible(ref1);
-  const ref2IsVisible = useIsVisible(ref2);
-  const ref3IsVisible = useIsVisible(ref3);
+  const ref1IsVisible = useIsVisible(refs.ref1);
+  const ref2IsVisible = useIsVisible(refs.ref2);
+  const ref3IsVisible = useIsVisible(refs.ref3);
 
   const handleRef1Click = () => {
-    ref1.current?.scrollIntoView({ behavior: "smooth" });
+    refs.ref1.current?.scrollIntoView({ behavior: "smooth" });
   };
   const handleRef2Click = () => {
-    ref2.current?.scrollIntoView({ behavior: "smooth" });
+    refs.ref2.current?.scrollIntoView({ behavior: "smooth" });
   };
   const handleRef3Click = () => {
-    ref3.current?.scrollIntoView({ behavior: "smooth" });
+    refs.ref3.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const renderComponents = (props: any) => {
-    let buns = props.filter((element: any) => element.type === "bun");
-    let sauces = props.filter((element: any) => element.type === "sauce");
-    let mains = props.filter((element: any) => element.type === "main");
-    return (
-      <>
-        <div className={css.componentsHeader}>Булки</div>
-        <div ref={ref1} className={css.componentsListContainer}>
-          {buns.map((element: any) => (
-            <Component key={element.someUniqueIdentifier} {...element} />
-          ))}{" "}
-        </div>
-        <div ref={ref2} className={css.componentsHeader}>
-          Соусы
-        </div>
-        <div ref={ref2} className={css.componentsListContainer}>
-          {sauces.map((element: any) => (
-            <Component key={element.someUniqueIdentifier} {...element} />
-          ))}
-        </div>
-        <div className={css.componentsHeader}>Начинки</div>
-        <div ref={ref3} className={css.componentsListContainer}>
-          {mains.map((element: any) => (
-            <Component key={element.someUniqueIdentifier} {...element} />
-          ))}
-        </div>
-      </>
-    );
-  };
+  const iRefs = { data: data, refs: refs };
 
   return (
     <>
@@ -101,7 +75,9 @@ function BurgerConstructor() {
                 Начинки
               </div>
             </div>
-            <div className={css.componentsList}>{renderComponents(data)}</div>
+            <div className={css.componentsList}>
+              <Ingredients iRefs={iRefs} />
+            </div>
           </div>
           <div className={css.order}>
             <Stack />
