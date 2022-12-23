@@ -22,11 +22,13 @@ export type element = {
 
 export const Ingredients = (props: props) => {
   const { ref1, ref2, ref3 } = props.iRefs.refs;
-  let buns = props.iRefs.data.filter((element: any) => element.type === "bun");
-  let sauces = props.iRefs.data.filter(
+  const buns = props.iRefs.data.filter(
+    (element: any) => element.type === "bun"
+  );
+  const sauces = props.iRefs.data.filter(
     (element: element) => element.type === "sauce"
   );
-  let mains = props.iRefs.data.filter(
+  const mains = props.iRefs.data.filter(
     (element: element) => element.type === "main"
   );
   return (
