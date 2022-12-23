@@ -7,10 +7,7 @@ import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 function Stack() {
   return (
     <>
-      <div
-        className={css.stack}
-        style={{ display: "flex", flexDirection: "column" }}
-      >
+      <div className={css.stack}>
         <StackComponent
           type="top"
           isLocked={true}
