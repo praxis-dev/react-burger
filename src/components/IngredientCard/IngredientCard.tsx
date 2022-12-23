@@ -1,12 +1,12 @@
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
-import css from "./Component.module.css";
+import css from "./IngredientCard.module.css";
 
 import { element } from "../Ingredients/Ingredients";
 
 type props = element;
 
-function Component(props: props) {
+function IngredientCard(props: props) {
   const {
     _id,
     name,
@@ -42,4 +42,4 @@ function Component(props: props) {
   );
 }
 
-export default Component;
+export default IngredientCard;

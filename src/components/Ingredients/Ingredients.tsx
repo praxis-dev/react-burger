@@ -1,4 +1,4 @@
-import Component from "../Component/Component";
+import IngredientCard from "../IngredientCard/IngredientCard";
 import css from "./Ingredients.module.css";
 import { useMemo } from "react";
 
@@ -42,7 +42,7 @@ export const Ingredients = (props: props) => {
       <div className={css.componentsHeader}>Булки</div>
       <div ref={ref1} className={css.componentsListContainer}>
         {buns.map((element: element) => (
-          <Component key={element._id} {...element} />
+          <IngredientCard key={element._id} {...element} />
         ))}{" "}
       </div>
       <div ref={ref2} className={css.componentsHeader}>
@@ -50,13 +50,13 @@ export const Ingredients = (props: props) => {
       </div>
       <div ref={ref2} className={css.componentsListContainer}>
         {sauces.map((element: element) => (
-          <Component key={element._id} {...element} />
+          <IngredientCard key={element._id} {...element} />
         ))}
       </div>
       <div className={css.componentsHeader}>Начинки</div>
       <div ref={ref3} className={css.componentsListContainer}>
         {mains.map((element: element) => (
-          <Component key={element._id} {...element} />
+          <IngredientCard key={element._id} {...element} />
         ))}
       </div>
     </>
