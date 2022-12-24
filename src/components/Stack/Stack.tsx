@@ -6,6 +6,14 @@ import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { data } from "../../utils/data";
 
 function Stack() {
+  function getPrice() {
+    let totalPrice = 0;
+    data.forEach((element: any) => {
+      totalPrice += element.price;
+    });
+    return totalPrice + 40;
+  }
+
   return (
     <>
       <div className={css.stack}>
@@ -32,7 +40,7 @@ function Stack() {
       </div>
       <div className={css.buttonAndTotalContainer}>
         <div className={css.totalAndIcon}>
-          <p className={css.total}>7777</p>
+          <p className={css.total}>{getPrice()}</p>
           <img
             className={css.largeCurrencyIcon}
             src={largeCurrencyIcon}
