@@ -1,6 +1,6 @@
 import css from "./Stack.module.css";
 import fixedImage from "../../images/bun-02.png";
-import StackComponent from "../StackComponent/StackComponent";
+import StackedIngredient from "../StackedIngredient/StackedIngredient";
 import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { data } from "../../utils/data";
@@ -17,7 +17,7 @@ function Stack() {
   return (
     <>
       <div className={css.stack}>
-        <StackComponent
+        <StackedIngredient
           position="top"
           isLocked={true}
           name="Краторная булка N-200i (верх)"
@@ -27,10 +27,10 @@ function Stack() {
 
         <div className={css.stackScreen}>
           {data.map((element: any) => (
-            <StackComponent {...element} />
+            <StackedIngredient key={element._id} {...element} />
           ))}
         </div>
-        <StackComponent
+        <StackedIngredient
           position="bottom"
           isLocked={true}
           name="Краторная булка N-200i (низ)"
@@ -48,7 +48,6 @@ function Stack() {
           />
         </div>
         <Button htmlType="button" type="primary" size="medium">
-          {" "}
           Оформить заказ{" "}
         </Button>
       </div>

@@ -5,9 +5,9 @@ import {
   LockIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
-import css from "./StackComponent.module.css";
+import css from "./StackedIngredient.module.css";
 
-const handlePosition = (type: any) => {
+const handlePosition = (type: string) => {
   if (type === "top") {
     return css.topBlock;
   } else if (type === "bottom") {
@@ -17,7 +17,15 @@ const handlePosition = (type: any) => {
   }
 };
 
-const StackComponent = (props: any) => {
+type StackedIngredientProps = {
+  position: string;
+  isLocked: boolean;
+  name: string;
+  price: number;
+  image: string;
+};
+
+const StackedIngredient = (props: StackedIngredientProps) => {
   const { position, isLocked, name, price, image } = props;
   return (
     <>
@@ -47,4 +55,4 @@ const StackComponent = (props: any) => {
   );
 };
 
-export default StackComponent;
+export default StackedIngredient;
