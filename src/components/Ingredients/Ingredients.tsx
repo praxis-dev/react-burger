@@ -22,6 +22,7 @@ export type element = {
 };
 
 export const Ingredients = (props: props) => {
+  console.log(props["iRefs"].data);
   const [data, setData] = useState([] as any[]);
 
   const fetchData = () => {
@@ -37,6 +38,7 @@ export const Ingredients = (props: props) => {
   useEffect(() => {
     fetchData();
   }, []);
+  console.log(data);
 
   const { ref1, ref2, ref3 } = props.iRefs.refs;
   const buns = useMemo(

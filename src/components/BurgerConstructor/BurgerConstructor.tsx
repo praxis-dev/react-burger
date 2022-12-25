@@ -4,7 +4,7 @@ import { useIsVisible } from "../../utils/useIsVisible";
 import { useRef } from "react";
 import { Ingredients } from "../Ingredients/Ingredients";
 
-function BurgerConstructor() {
+function BurgerConstructor(data: any) {
   const refs = {
     ref1: useRef<null | HTMLDivElement>(null),
     ref2: useRef<null | HTMLDivElement>(null),
@@ -25,7 +25,7 @@ function BurgerConstructor() {
     refs.ref3.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const iRefs = { refs: refs };
+  const iRefs = { data: data, refs: refs };
 
   return (
     <>
