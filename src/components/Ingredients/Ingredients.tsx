@@ -1,6 +1,6 @@
 import IngredientCard from "../IngredientCard/IngredientCard";
 import css from "./Ingredients.module.css";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 
 type props = {
   iRefs: any;
@@ -22,20 +22,34 @@ export type element = {
 };
 
 export const Ingredients = (props: props) => {
+  const [data, setData] = useState([] as any[]);
+
+  const fetchData = () => {
+    fetch("https://norma.nomoreparties.space/api/ingredients")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setData(data.data);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const { ref1, ref2, ref3 } = props.iRefs.refs;
   const buns = useMemo(
-    () => props.iRefs.data.filter((element: element) => element.type === "bun"),
-    [props.iRefs.data]
+    () => data.filter((element: element) => element.type === "bun"),
+    [data]
   );
   const sauces = useMemo(
-    () =>
-      props.iRefs.data.filter((element: element) => element.type === "sauce"),
-    [props.iRefs.data]
+    () => data.filter((element: element) => element.type === "sauce"),
+    [data]
   );
   const mains = useMemo(
-    () =>
-      props.iRefs.data.filter((element: element) => element.type === "main"),
-    [props.iRefs.data]
+    () => data.filter((element: element) => element.type === "main"),
+    [data]
   );
   return (
     <>

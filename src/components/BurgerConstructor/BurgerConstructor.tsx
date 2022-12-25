@@ -1,6 +1,5 @@
 import css from "./BurgerConstructor.module.css";
 import Stack from "../Stack/Stack";
-import { data } from "../../utils/data";
 import { useIsVisible } from "../../utils/useIsVisible";
 import { useRef } from "react";
 import { Ingredients } from "../Ingredients/Ingredients";
@@ -26,7 +25,7 @@ function BurgerConstructor() {
     refs.ref3.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const iRefs = { data: data, refs: refs };
+  const iRefs = { refs: refs };
 
   return (
     <>
