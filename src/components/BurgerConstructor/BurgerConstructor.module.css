@@ -1,0 +1,107 @@
+.section {
+  max-width: 1240px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.components {
+  width: 600px;
+}
+.order {
+  width: 600px;
+  margin-left: 40px;
+}
+
+.selectorContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
+
+.componentsAndOrder {
+  display: flex;
+  flex-direction: row;
+}
+
+.componentsSelector {
+  width: 200px;
+  height: 56px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Mono";
+  cursor: pointer;
+}
+
+.componentsSelectorSelected {
+  border-bottom: 2px solid #4c4cff;
+}
+.first {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  color: #f2f2f3;
+  /* border: 1px solid yellow; */
+}
+
+@font-face {
+  font-family: "Mono";
+  src: local("Mono"), url(../../fonts/JetBrainsMono-Regular.ttf) format("woff");
+}
+
+.componentsList {
+  overflow: scroll;
+  height: 500px;
+  overflow-x: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2f2f37;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8585ad;
+  border: 3px solid #8585ad;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2f2f37;
+}
+
+.componentsHeader {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 24px;
+}
+
+.componentsListContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-flow: row;
+  column-gap: 56px;
+  row-gap: 32px;
+  text-align: center;
+  padding: 0 32px;
+}

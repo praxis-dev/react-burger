@@ -1,0 +1,87 @@
+.topBlock {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  padding: 16px 32px 16px 24px;
+  background: #1c1c21;
+  border-radius: 40px;
+  max-width: 536px;
+  align-items: center;
+  background: #1c1c21;
+  border-radius: 88px 88px 40px 40px;
+}
+
+.middleBlock {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 32px 16px 24px;
+  background: #1c1c21;
+  border-radius: 40px;
+  width: 536px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottomBlock {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 32px 16px 24px;
+  background: #1c1c21;
+  border-radius: 40px;
+  max-width: 536px;
+  align-items: center;
+  background: #1c1c21;
+  border-radius: 40px 40px 88px 88px;
+}
+.block {
+  display: flex;
+  flex-direction: row;
+  max-width: 568px;
+  height: 80px;
+  margin-bottom: 16px;
+}
+
+.dragIcon {
+  display: flex;
+  align-items: center;
+  margin-left: 21.5px;
+  margin-right: 13.5px;
+}
+
+.priceAndIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.price {
+  margin-right: 9px;
+}
+
+.deleteIcon {
+  margin-left: 24px;
+}
+
+.iconBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.textBlock {
+  font-family: "Mono";
+}
+
+.price {
+  font-family: "Iceland";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 24px;
+}
+
+.image {
+  width: 80px;
+  height: 40px;
+}

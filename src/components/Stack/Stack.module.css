@@ -1,0 +1,39 @@
+.stack {
+  margin-bottom: 40px;
+  display: "flex";
+  flex-direction: "column";
+}
+
+.buttonAndTotalContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.totalAndIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  margin-right: 41.5px;
+  height: 64px;
+}
+
+.largeCurrencyIcon {
+  margin-left: 9.5px;
+}
+
+.total {
+  font-family: "Iceland";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 36px;
+}
+
+.stackScreen {
+  height: 480px;
+  overflow: scroll;
+  height: 400px;
+  overflow-x: hidden;
+}

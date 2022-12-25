@@ -1,0 +1,4 @@
+@font-face {
+  font-family: "Mono";
+  src: local("Mono"), url(../../fonts/JetBrainsMono-Regular.ttf) format("woff");
+}

@@ -1,0 +1,18 @@
+.componentsHeader {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 24px;
+}
+
+.componentsListContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-flow: row;
+  column-gap: 56px;
+  row-gap: 32px;
+  text-align: center;
+  padding: 0 32px;
+}
