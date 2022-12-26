@@ -22,22 +22,19 @@ type element = {
 };
 
 export const Ingredients = (props: props) => {
-  const data = Array.from(Object.values(props["iRefs"].data));
-
-  // console.log(data);
-  // console.log(props);
+  const data: element[] = Array.from(Object.values(props["iRefs"].data));
 
   const { ref1, ref2, ref3 } = props.iRefs.refs;
   const buns = useMemo(
-    () => data.filter((element: any) => element.type === "bun"),
+    () => data.filter((element: element) => element.type === "bun"),
     [data]
   );
   const sauces = useMemo(
-    () => data.filter((element: any) => element.type === "sauce"),
+    () => data.filter((element: element) => element.type === "sauce"),
     [data]
   );
   const mains = useMemo(
-    () => data.filter((element: any) => element.type === "main"),
+    () => data.filter((element: element) => element.type === "main"),
     [data]
   );
   return (
