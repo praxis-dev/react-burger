@@ -3,9 +3,10 @@ import fixedImage from "../../images/bun-02.png";
 import StackedIngredient from "../StackedIngredient/StackedIngredient";
 import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
-import { data } from "../../utils/data";
 
-function Stack() {
+function Stack(props: any) {
+  const data = Array.from(Object.values(props));
+
   function getPrice() {
     let totalPrice = 0;
     data.forEach((element: any) => {

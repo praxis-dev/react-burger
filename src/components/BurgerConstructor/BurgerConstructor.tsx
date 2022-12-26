@@ -79,7 +79,7 @@ function BurgerConstructor(data: any) {
             </div>
           </div>
           <div className={css.order}>
-            <Stack />
+            <Stack {...data} />
           </div>
         </div>
       </section>

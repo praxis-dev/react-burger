@@ -1,63 +1,50 @@
 import IngredientCard from "../IngredientCard/IngredientCard";
 import css from "./Ingredients.module.css";
-import { useMemo, useEffect, useState } from "react";
+import { useMemo } from "react";
 
 type props = {
   iRefs: any;
 };
 
-export type element = {
-  _id: string;
-  name: string;
-  type: string;
-  proteins: number;
-  fat: number;
-  carbohydrates: number;
+type element = {
   calories: number;
-  price: number;
+  carbohydrates: number;
+  fat: number;
   image: string;
-  image_mobile: string;
   image_large: string;
+  image_mobile: string;
+  name: string;
+  price: number;
+  proteins: number;
+  type: string;
   __v: number;
+  _id: string;
 };
 
 export const Ingredients = (props: props) => {
-  console.log(props["iRefs"].data);
-  const [data, setData] = useState([] as any[]);
+  const data = Array.from(Object.values(props["iRefs"].data));
 
-  const fetchData = () => {
-    fetch("https://norma.nomoreparties.space/api/ingredients")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setData(data.data);
-      });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-  console.log(data);
+  // console.log(data);
+  // console.log(props);
 
   const { ref1, ref2, ref3 } = props.iRefs.refs;
   const buns = useMemo(
-    () => data.filter((element: element) => element.type === "bun"),
+    () => data.filter((element: any) => element.type === "bun"),
     [data]
   );
   const sauces = useMemo(
-    () => data.filter((element: element) => element.type === "sauce"),
+    () => data.filter((element: any) => element.type === "sauce"),
     [data]
   );
   const mains = useMemo(
-    () => data.filter((element: element) => element.type === "main"),
+    () => data.filter((element: any) => element.type === "main"),
     [data]
   );
   return (
     <>
       <div className={css.componentsHeader}>Булки</div>
       <div ref={ref1} className={css.componentsListContainer}>
-        {buns.map((element: element) => (
+        {buns.map((element: any) => (
           <IngredientCard key={element._id} {...element} />
         ))}{" "}
       </div>
@@ -65,13 +52,13 @@ export const Ingredients = (props: props) => {
         Соусы
       </div>
       <div ref={ref2} className={css.componentsListContainer}>
-        {sauces.map((element: element) => (
+        {sauces.map((element: any) => (
           <IngredientCard key={element._id} {...element} />
         ))}
       </div>
       <div className={css.componentsHeader}>Начинки</div>
       <div ref={ref3} className={css.componentsListContainer}>
-        {mains.map((element: element) => (
+        {mains.map((element: any) => (
           <IngredientCard key={element._id} {...element} />
         ))}
       </div>
