@@ -37,6 +37,7 @@ export const Ingredients = (props: props) => {
     () => data.filter((element: element) => element.type === "main"),
     [data]
   );
+
   return (
     <>
       <div className={css.componentsHeader}>Булки</div>

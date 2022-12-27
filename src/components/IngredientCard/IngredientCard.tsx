@@ -35,9 +35,13 @@ function IngredientCard(props: props) {
     __v,
   } = props;
 
+  function clickHandler(e: any) {
+    console.log("clickHandler");
+  }
+
   return (
     <>
-      <div className={css.component}>
+      <div onClick={clickHandler} className={css.component}>
         <div className={css.portionsCounter}>2</div>
         <img
           alt="Иконка компонента"
