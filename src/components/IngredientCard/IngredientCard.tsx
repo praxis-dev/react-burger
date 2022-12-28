@@ -1,8 +1,8 @@
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 // import { Popup } from "../Popup/Popup";
 import { useState } from "react";
-
 import css from "./IngredientCard.module.css";
+import ComponentDetails from "../ComponentDetails/ComponentDetails";
 
 type props = element;
 
@@ -65,25 +65,7 @@ function IngredientCard(props: props) {
         </div>
         <p className={css.componentName}>{name}</p>
       </div>
-      {modal && (
-        <div className={css.modal}>
-          <div onClick={toggleModal} className={css.overlay}></div>
-          <div className={css.modalContent}>
-            <h2 className={css.orderIdentifier}>7777</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-              perferendis suscipit officia recusandae, eveniet quaerat assumenda
-              id fugit, dignissimos maxime non natus placeat illo iusto!
-              Sapiente dolorum id maiores dolores? Illum pariatur possimus
-              quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt
-              placeat tempora vitae enim incidunt porro fuga ea.
-            </p>
-            <button className={css.closeModal} onClick={toggleModal}>
-              CLOSE
-            </button>
-          </div>
-        </div>
-      )}
+      <ComponentDetails modal={modal} toggleModal={toggleModal} />
     </>
   );
 }
