@@ -1,12 +1,13 @@
-import React from "react";
 import css from "./ComponentDetails.module.css";
 import done from "../../images/done.svg";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import ReactDOM from "react-dom";
 
 function ComponentDetails(props: any) {
   const { modal, toggleModal } = props;
+
   if (!modal) return null;
-  return (
+  return ReactDOM.createPortal(
     <div className={css.modal}>
       <div onClick={toggleModal} className={css.overlay}></div>
       <div className={css.modalContent}>
@@ -21,7 +22,8 @@ function ComponentDetails(props: any) {
           <CloseIcon type="primary" />
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("portal") as Element
   );
 }
 

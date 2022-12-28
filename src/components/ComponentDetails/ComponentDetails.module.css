@@ -38,8 +38,9 @@ body.active-modal {
   height: 718px;
   width: 720px;
   border-radius: 40px;
-  border: 1px solid red;
   padding: 120px 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .closeModal {
@@ -74,10 +75,14 @@ body.active-modal {
   font-size: 24px;
   line-height: 30px;
   margin-bottom: 60px;
+  text-align: center;
 }
 
 .doneIcon {
-  margin-bottom: 60px;
+  display: block;
+  margin: 0 auto 60px;
+  width: 120px;
+  height: 120px;
 }
 
 .orderText {

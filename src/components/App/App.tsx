@@ -19,6 +19,7 @@ export function App() {
     <div className="App">
       <AppHeader />
       <BurgerConstructor {...data} />
+      <div id="portal"></div>
     </div>
   );
 }
