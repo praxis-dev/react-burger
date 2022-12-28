@@ -2,7 +2,7 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 // import { Popup } from "../Popup/Popup";
 import { useState } from "react";
 import css from "./IngredientCard.module.css";
-import ComponentDetails from "../ComponentDetails/ComponentDetails";
+import ComponentDetails from "../OrderDetails/OrderDetails";
 
 type props = element;
 
@@ -37,21 +37,9 @@ function IngredientCard(props: props) {
     __v,
   } = props;
 
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
-
   return (
     <>
-      <div onClick={toggleModal} className={css.component}>
+      <div className={css.component}>
         <div className={css.portionsCounter}>2</div>
         <img
           alt="Иконка компонента"
@@ -65,7 +53,6 @@ function IngredientCard(props: props) {
         </div>
         <p className={css.componentName}>{name}</p>
       </div>
-      <ComponentDetails modal={modal} toggleModal={toggleModal} />
     </>
   );
 }

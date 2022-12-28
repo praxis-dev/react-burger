@@ -3,6 +3,8 @@ import fixedImage from "../../images/bun-02.png";
 import StackedIngredient from "../StackedIngredient/StackedIngredient";
 import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
+import OrderDetails from "../OrderDetails/OrderDetails";
+import { useState } from "react";
 
 function Stack(props: any) {
   const data = Array.from(Object.values(props));
@@ -14,6 +16,12 @@ function Stack(props: any) {
     });
     return totalPrice + 40;
   }
+
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   return (
     <>
@@ -48,10 +56,16 @@ function Stack(props: any) {
             alt="Иконка галактической валюты крупная"
           />
         </div>
-        <Button htmlType="button" type="primary" size="medium">
+        <Button
+          onClick={toggleModal}
+          htmlType="button"
+          type="primary"
+          size="medium"
+        >
           Оформить заказ{" "}
         </Button>
       </div>
+      <OrderDetails modal={modal} toggleModal={toggleModal} />
     </>
   );
 }
