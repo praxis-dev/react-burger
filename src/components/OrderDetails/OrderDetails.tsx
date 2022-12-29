@@ -1,15 +1,11 @@
 import css from "./OrderDetails.module.css";
 import done from "../../images/done.svg";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import ReactDOM from "react-dom";
 
 function OrderDetails(props: any) {
-  const { modal, toggleModal } = props;
-
-  if (!modal) return null;
-  return ReactDOM.createPortal(
+  const { toggleModal } = props;
+  return (
     <>
-      <div onClick={toggleModal} className={css.overlay}></div>
       <div className={css.modalContent}>
         <h2 className={css.orderIdentifier}>7777</h2>
         <p className={css.orderIdentifierText}>идентификатор заказа</p>
@@ -22,8 +18,7 @@ function OrderDetails(props: any) {
           <CloseIcon type="primary" />
         </div>
       </div>
-    </>,
-    document.getElementById("portal") as Element
+    </>
   );
 }
 

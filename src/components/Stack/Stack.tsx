@@ -4,6 +4,7 @@ import StackedIngredient from "../StackedIngredient/StackedIngredient";
 import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
+import Popup from "../Popup/Popup";
 import { useState } from "react";
 
 function Stack(props: any) {
@@ -65,7 +66,11 @@ function Stack(props: any) {
           Оформить заказ{" "}
         </Button>
       </div>
-      <OrderDetails modal={modal} toggleModal={toggleModal} />
+      <Popup
+        modal={modal}
+        toggleModal={toggleModal}
+        OrderDetails={OrderDetails}
+      />
     </>
   );
 }
