@@ -8,7 +8,7 @@ function OrderDetails(props: any) {
 
   if (!modal) return null;
   return ReactDOM.createPortal(
-    <div className={css.modal}>
+    <>
       <div onClick={toggleModal} className={css.overlay}></div>
       <div className={css.modalContent}>
         <h2 className={css.orderIdentifier}>7777</h2>
@@ -22,7 +22,7 @@ function OrderDetails(props: any) {
           <CloseIcon type="primary" />
         </div>
       </div>
-    </div>,
+    </>,
     document.getElementById("portal") as Element
   );
 }

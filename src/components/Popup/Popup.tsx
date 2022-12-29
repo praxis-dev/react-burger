@@ -1,11 +1,16 @@
-import {} from "@ya.praktikum/react-developer-burger-ui-components";
+import css from "./OrderDetails.module.css";
+import ReactDOM from "react-dom";
 
-import css from "./Popup.module.css";
+function Popup(props: any) {
+  const { modal, toggleModal } = props;
 
-export function Popup() {
-  return (
+  if (!modal) return null;
+  return ReactDOM.createPortal(
     <>
-      <div className={css.popup}></div>
-    </>
+      <div onClick={toggleModal} className={css.overlay}></div>
+    </>,
+    document.getElementById("portal") as Element
   );
 }
+
+export default Popup;
