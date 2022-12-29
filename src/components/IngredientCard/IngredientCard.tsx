@@ -1,8 +1,8 @@
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-// import { Popup } from "../Popup/Popup";
+import Popup from "../Popup/Popup";
 import { useState } from "react";
 import css from "./IngredientCard.module.css";
-import ComponentDetails from "../OrderDetails/OrderDetails";
+import IngredientDetails from "../IngredientDetails/IngredientDetails";
 
 type props = element;
 
@@ -22,6 +22,7 @@ type element = {
 };
 
 function IngredientCard(props: props) {
+  console.log(Popup);
   const {
     _id,
     name,
@@ -37,9 +38,16 @@ function IngredientCard(props: props) {
     __v,
   } = props;
 
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    console.log("toggleModal");
+    setModal(!modal);
+  };
+
   return (
     <>
-      <div className={css.component}>
+      <div onClick={toggleModal} className={css.component}>
         <div className={css.portionsCounter}>2</div>
         <img
           alt="Иконка компонента"
@@ -53,6 +61,11 @@ function IngredientCard(props: props) {
         </div>
         <p className={css.componentName}>{name}</p>
       </div>
+      <Popup
+        modal={modal}
+        toggleModal={toggleModal}
+        IngredientDetails={IngredientDetails}
+      />
     </>
   );
 }
