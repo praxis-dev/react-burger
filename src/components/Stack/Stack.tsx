@@ -69,7 +69,7 @@ function Stack(props: any) {
       <Popup
         modal={modal}
         toggleModal={toggleModal}
-        OrderDetails={OrderDetails}
+        ModalContent={OrderDetails}
       />
     </>
   );

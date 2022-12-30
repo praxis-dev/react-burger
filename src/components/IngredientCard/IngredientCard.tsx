@@ -64,7 +64,7 @@ function IngredientCard(props: props) {
       <Popup
         modal={modal}
         toggleModal={toggleModal}
-        IngredientDetails={IngredientDetails}
+        ModalContent={IngredientDetails}
       />
     </>
   );
