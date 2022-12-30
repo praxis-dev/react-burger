@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 function Popup(props: any) {
   const { modal, toggleModal, ModalContent, specificProps } = props;
+
   if (!modal) return null;
   return ReactDOM.createPortal(
     <>

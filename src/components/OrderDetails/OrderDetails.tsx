@@ -1,9 +1,22 @@
 import css from "./OrderDetails.module.css";
 import done from "../../images/done.svg";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { useEffect } from "react";
 
 function OrderDetails(props: any) {
   const { toggleModal } = props;
+
+  useEffect(() => {
+    function handleEscapeKey(event: KeyboardEvent) {
+      if (event.code === "Escape") {
+        toggleModal();
+      }
+    }
+
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
+  });
+
   return (
     <>
       <div className={css.modalContent}>

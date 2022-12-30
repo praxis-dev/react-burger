@@ -1,9 +1,21 @@
 import css from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import test from "../../images/meat-01.png";
+import { useEffect } from "react";
 
 function IngredientDetails(props: any) {
   const { toggleModal, specificProps } = props;
+
+  useEffect(() => {
+    function handleEscapeKey(event: KeyboardEvent) {
+      if (event.code === "Escape") {
+        toggleModal();
+      }
+    }
+
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
+  });
   return (
     <>
       <div className={css.modalContent}>
