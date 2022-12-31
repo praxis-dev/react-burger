@@ -11,7 +11,7 @@ export function App() {
     GetIngredients()
       .then((data: any) => setData(data.data))
       .catch((error: any) => {
-        console.log(error);
+        console.log(error.name, error.message);
       });
   }, []);
 
