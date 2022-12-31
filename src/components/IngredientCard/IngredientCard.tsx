@@ -60,7 +60,7 @@ function IngredientCard(props: props) {
           alt="Иконка компонента"
           src={image}
           className={css.componentImage}
-        ></img>
+        />
         <div className={css.priceAndIcon}>
           {" "}
           <div className={css.componentPrice}>{price}</div>
