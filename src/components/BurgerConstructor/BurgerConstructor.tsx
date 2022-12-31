@@ -4,7 +4,9 @@ import { useIsVisible } from "../../utils/useIsVisible";
 import { useRef } from "react";
 import { Ingredients } from "../Ingredients/Ingredients";
 
-function BurgerConstructor(data: any) {
+type data = {};
+
+function BurgerConstructor(data: data) {
   const refs = {
     ref1: useRef<null | HTMLDivElement>(null),
     ref2: useRef<null | HTMLDivElement>(null),
