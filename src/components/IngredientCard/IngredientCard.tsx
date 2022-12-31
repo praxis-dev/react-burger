@@ -22,7 +22,6 @@ type element = {
 };
 
 function IngredientCard(props: props) {
-  console.log(Popup);
   const {
     _id,
     name,
@@ -41,7 +40,6 @@ function IngredientCard(props: props) {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
-    console.log("toggleModal");
     setModal(!modal);
   };
 
