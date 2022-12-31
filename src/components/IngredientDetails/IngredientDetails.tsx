@@ -1,9 +1,20 @@
 import css from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import test from "../../images/meat-01.png";
 import { useEffect } from "react";
 
-function IngredientDetails(props: any) {
+type props = {
+  toggleModal: () => void;
+  specificProps: {
+    image_large: string;
+    name: string;
+    calories: number;
+    proteins: number;
+    fat: number;
+    carbohydrates: number;
+  };
+};
+
+function IngredientDetails(props: props) {
   const { toggleModal, specificProps } = props;
 
   useEffect(() => {
