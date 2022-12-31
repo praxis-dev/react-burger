@@ -1,17 +1,17 @@
 import "./App.css";
 import AppHeader from "../AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
-import { Api } from "../Api/Api";
+import { GetIngredients } from "../GetIngredients/GetIngredients";
 import { useEffect, useState } from "react";
 
 export function App() {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    Api()
+    GetIngredients()
       .then((data: any) => setData(data.data))
       .catch((error: any) => {
-        // fetch can return rejected Promise, maybe handle it?
+        console.log(error);
       });
   }, []);
 
