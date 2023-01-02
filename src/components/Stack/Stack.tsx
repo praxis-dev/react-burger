@@ -5,7 +5,7 @@ import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Stack(props: any) {
   const data = Array.from(Object.values(props));
@@ -68,6 +68,7 @@ function Stack(props: any) {
       </div>
       <Popup
         modal={modal}
+        setModal={setModal}
         toggleModal={toggleModal}
         ModalContent={OrderDetails}
       />
