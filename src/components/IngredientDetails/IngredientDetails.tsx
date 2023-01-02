@@ -1,6 +1,5 @@
 import css from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useEffect } from "react";
 
 type props = {
   toggleModal: () => void;
@@ -17,16 +16,6 @@ type props = {
 function IngredientDetails(props: props) {
   const { toggleModal, specificProps } = props;
 
-  useEffect(() => {
-    function handleEscapeKey(event: KeyboardEvent) {
-      if (event.code === "Escape") {
-        toggleModal();
-      }
-    }
-
-    document.addEventListener("keydown", handleEscapeKey);
-    return () => document.removeEventListener("keydown", handleEscapeKey);
-  });
   return (
     <>
       <div className={css.modalContent}>

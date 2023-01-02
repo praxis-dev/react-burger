@@ -1,8 +1,20 @@
 import css from "./Popup.module.css";
 import ReactDOM from "react-dom";
+import { useEffect } from "react";
 
 function Popup(props: any) {
   const { modal, toggleModal, ModalContent, specificProps } = props;
+
+  useEffect(() => {
+    function handleEscapeKey(event: KeyboardEvent) {
+      if (event.code === "Escape") {
+        toggleModal();
+      }
+    }
+
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
+  });
 
   if (!modal) return null;
   return ReactDOM.createPortal(

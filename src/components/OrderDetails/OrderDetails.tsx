@@ -6,17 +6,6 @@ import { useEffect } from "react";
 function OrderDetails(props: any) {
   const { toggleModal } = props;
 
-  useEffect(() => {
-    function handleEscapeKey(event: KeyboardEvent) {
-      if (event.code === "Escape") {
-        toggleModal();
-      }
-    }
-
-    document.addEventListener("keydown", handleEscapeKey);
-    return () => document.removeEventListener("keydown", handleEscapeKey);
-  });
-
   return (
     <>
       <div className={css.modalContent}>
