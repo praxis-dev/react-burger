@@ -2,7 +2,15 @@ import css from "./Popup.module.css";
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
 
-function Popup(props: any) {
+type props = {
+  modal: boolean;
+  setModal: (arg: boolean) => void;
+  toggleModal: () => void;
+  ModalContent: any;
+  specificProps: { [key: string]: any };
+};
+
+function Popup(props: props) {
   const { modal, setModal, toggleModal, ModalContent, specificProps } = props;
 
   useEffect(() => {

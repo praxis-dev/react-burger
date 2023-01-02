@@ -71,6 +71,7 @@ function Stack(props: any) {
         setModal={setModal}
         toggleModal={toggleModal}
         ModalContent={OrderDetails}
+        specificProps={{}}
       />
     </>
   );
