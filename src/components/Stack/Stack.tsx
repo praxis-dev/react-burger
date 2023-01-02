@@ -24,17 +24,6 @@ function Stack(props: any) {
     setModal(!modal);
   };
 
-  useEffect(() => {
-    function handleEscapeKey(event: KeyboardEvent) {
-      if (event.code === "Escape") {
-        toggleModal();
-      }
-    }
-
-    document.addEventListener("keydown", handleEscapeKey);
-    return () => document.removeEventListener("keydown", handleEscapeKey);
-  });
-
   return (
     <>
       <div className={css.stack}>
