@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 function Popup(props: any) {
   const { modal, setModal, toggleModal, ModalContent, specificProps } = props;
-  console.log(setModal);
 
   useEffect(() => {
     function handleEscapeKey(event: KeyboardEvent) {

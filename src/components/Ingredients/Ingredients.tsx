@@ -3,7 +3,14 @@ import css from "./Ingredients.module.css";
 import { useMemo } from "react";
 
 type props = {
-  iRefs: any;
+  iRefs: {
+    data: {};
+    refs: {
+      ref1: { current: null | HTMLDivElement };
+      ref2: { current: null | HTMLDivElement };
+      ref3: { current: null | HTMLDivElement };
+    };
+  };
 };
 
 type element = {
@@ -23,6 +30,7 @@ type element = {
 
 export const Ingredients = (props: props) => {
   const data: element[] = Array.from(Object.values(props["iRefs"].data));
+  console.log([props]);
 
   const { ref1, ref2, ref3 } = props.iRefs.refs;
   const buns = useMemo(
