@@ -1,9 +1,10 @@
 import css from "./OrderDetails.module.css";
 import done from "../../images/done.svg";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useEffect } from "react";
 
-function OrderDetails(props: any) {
+type props = { toggleModal: () => void };
+
+function OrderDetails(props: props) {
   const { toggleModal } = props;
 
   return (
