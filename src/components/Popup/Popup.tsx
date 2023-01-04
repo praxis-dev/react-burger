@@ -8,10 +8,13 @@ type props = {
   toggleModal: () => void;
   ModalContent: any;
   specificProps: { [key: string]: any };
+  children: any;
 };
 
 function Popup(props: props) {
   const { modal, setModal, toggleModal, ModalContent, specificProps } = props;
+
+  console.log(props.children);
 
   useEffect(() => {
     function handleEscapeKey(event: KeyboardEvent) {
@@ -28,7 +31,8 @@ function Popup(props: props) {
   return ReactDOM.createPortal(
     <>
       <div onClick={toggleModal} className={css.overlay}></div>
-      {<ModalContent toggleModal={toggleModal} specificProps={specificProps} />}
+      {props.children}
+      {/* {<ModalContent toggleModal={toggleModal} specificProps={specificProps} />} */}
     </>,
     document.getElementById("portal") as Element
   );

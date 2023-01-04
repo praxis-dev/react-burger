@@ -74,7 +74,9 @@ function IngredientCard(props: props) {
         toggleModal={toggleModal}
         ModalContent={IngredientDetails}
         specificProps={specificProps}
-      />
+      >
+        {IngredientDetails}
+      </Popup>
     </>
   );
 }
