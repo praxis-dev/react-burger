@@ -39,15 +39,6 @@ function IngredientCard(props: props) {
 
   const { modal, setModal, toggleModal, render } = IngredientDetails(props);
 
-  const specificProps = {
-    image_large,
-    name,
-    calories,
-    proteins,
-    fat,
-    carbohydrates,
-  };
-
   return (
     <>
       <div onClick={toggleModal} className={css.component}>
@@ -64,13 +55,7 @@ function IngredientCard(props: props) {
         </div>
         <p className={css.componentName}>{name}</p>
       </div>
-      <Popup
-        modal={modal}
-        setModal={setModal}
-        toggleModal={toggleModal}
-        ModalContent={IngredientDetails}
-        specificProps={specificProps}
-      >
+      <Popup modal={modal} setModal={setModal} toggleModal={toggleModal}>
         {render}
       </Popup>
     </>

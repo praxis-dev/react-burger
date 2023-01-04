@@ -60,13 +60,7 @@ function Stack(props: any) {
           Оформить заказ{" "}
         </Button>
       </div>
-      <Popup
-        modal={modal}
-        setModal={setModal}
-        toggleModal={toggleModal}
-        ModalContent={OrderDetails}
-        specificProps={{}}
-      >
+      <Popup modal={modal} setModal={setModal} toggleModal={toggleModal}>
         {render}
       </Popup>
     </>

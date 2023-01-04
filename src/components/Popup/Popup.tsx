@@ -6,9 +6,7 @@ type props = {
   modal: boolean;
   setModal: (arg: boolean) => void;
   toggleModal: () => void;
-  ModalContent: any;
-  specificProps: { [key: string]: any };
-  children: any;
+  children: React.ReactNode;
 };
 
 function Popup(props: props) {
@@ -30,7 +28,6 @@ function Popup(props: props) {
     <>
       <div onClick={toggleModal} className={css.overlay}></div>
       {props.children}
-      {/* {<ModalContent toggleModal={toggleModal} specificProps={specificProps} />} */}
     </>,
     document.getElementById("portal") as Element
   );

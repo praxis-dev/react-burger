@@ -1,7 +1,6 @@
 import css from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useState } from "react";
-import test from "../../images/meat-01.png";
 
 type props = {
   image_large: string;
