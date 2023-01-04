@@ -37,11 +37,7 @@ function IngredientCard(props: props) {
     __v,
   } = props;
 
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
+  const { modal, setModal, toggleModal, render } = IngredientDetails(props);
 
   const specificProps = {
     image_large,
@@ -75,7 +71,7 @@ function IngredientCard(props: props) {
         ModalContent={IngredientDetails}
         specificProps={specificProps}
       >
-        {IngredientDetails}
+        {render}
       </Popup>
     </>
   );

@@ -12,9 +12,7 @@ type props = {
 };
 
 function Popup(props: props) {
-  const { modal, setModal, toggleModal, ModalContent, specificProps } = props;
-
-  console.log(props.children);
+  const { modal, setModal, toggleModal } = props;
 
   useEffect(() => {
     function handleEscapeKey(event: KeyboardEvent) {

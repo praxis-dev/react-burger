@@ -30,7 +30,6 @@ type element = {
 
 export const Ingredients = (props: props) => {
   const data: element[] = Array.from(Object.values(props["iRefs"].data));
-  console.log([props]);
 
   const { ref1, ref2, ref3 } = props.iRefs.refs;
   const buns = useMemo(

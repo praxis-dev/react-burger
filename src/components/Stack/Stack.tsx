@@ -5,10 +5,10 @@ import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
-import { useState } from "react";
 
 function Stack(props: any) {
   const data = Array.from(Object.values(props));
+  const { modal, setModal, toggleModal, render } = OrderDetails();
 
   function getPrice() {
     let totalPrice = 0;
@@ -17,12 +17,6 @@ function Stack(props: any) {
     });
     return totalPrice + 40;
   }
-
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
 
   return (
     <>
@@ -73,7 +67,7 @@ function Stack(props: any) {
         ModalContent={OrderDetails}
         specificProps={{}}
       >
-        {OrderDetails}
+        {render}
       </Popup>
     </>
   );
