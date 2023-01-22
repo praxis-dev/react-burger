@@ -1,11 +1,12 @@
 import css from "./BurgerConstructor.module.css";
 import Stack from "../Stack/Stack";
-import { data } from "../../utils/data";
 import { useIsVisible } from "../../utils/useIsVisible";
 import { useRef } from "react";
 import { Ingredients } from "../Ingredients/Ingredients";
 
-function BurgerConstructor() {
+type data = {};
+
+function BurgerConstructor(data: data) {
   const refs = {
     ref1: useRef<null | HTMLDivElement>(null),
     ref2: useRef<null | HTMLDivElement>(null),
@@ -80,7 +81,7 @@ function BurgerConstructor() {
             </div>
           </div>
           <div className={css.order}>
-            <Stack />
+            <Stack {...data} />
           </div>
         </div>
       </section>
