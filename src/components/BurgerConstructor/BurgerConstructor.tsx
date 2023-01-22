@@ -3,6 +3,7 @@ import Stack from "../Stack/Stack";
 import { useIsVisible } from "../../utils/useIsVisible";
 import { useRef } from "react";
 import { Ingredients } from "../Ingredients/Ingredients";
+import { createContext } from "react";
 
 type data = {};
 
