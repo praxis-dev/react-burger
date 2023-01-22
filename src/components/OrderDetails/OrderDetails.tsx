@@ -8,7 +8,7 @@ import { useContext } from "react";
 function OrderDetails() {
   const [modal, setModal] = useState(false);
   const orderNumber = useContext(OrderDetailsContext);
-  console.log(`ordernumer in Details: ${orderNumber}`);
+  console.log(`ordernumber in Details: ${orderNumber}`);
   const toggleModal = () => {
     setModal(!modal);
   };

@@ -11,7 +11,7 @@ import { useState } from "react";
 
 import { createContext } from "react";
 
-export const OrderDetailsContext = createContext(0);
+export const OrderDetailsContext = createContext(2);
 export const OrderDetailsContextProvider = OrderDetailsContext.Provider;
 
 function Stack() {
@@ -55,8 +55,8 @@ function Stack() {
     ) : null;
   }
 
-  const postOrder = () => {
-    fetch("https://norma.nomoreparties.space/api/orders", {
+  async function postOrder() {
+    const result = await fetch("https://norma.nomoreparties.space/api/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,28 +64,16 @@ function Stack() {
       body: JSON.stringify({
         ingredients: data.map((element: any) => element._id),
       }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .then((res) => {
-        setOrderNumber(res.order.number);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    });
 
-  console.log(`orderNumber: ${orderNumber}`);
+    const res = await result.json();
 
-  const wrapper = (e: any) => {
-    e.preventDefault();
-    postOrder();
+    setOrderNumber(res.order.number);
+
     toggleModal();
-  };
+  }
+
+  console.log(`orderNumber in Stack: ${orderNumber}`);
 
   return (
     <>
@@ -109,7 +97,7 @@ function Stack() {
           />
         </div>
         <Button
-          onClick={wrapper}
+          onClick={postOrder}
           htmlType="button"
           type="primary"
           size="medium"
