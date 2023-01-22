@@ -14,11 +14,10 @@ function Stack() {
   const { modal, setModal, toggleModal, render } = OrderDetails();
 
   function getPrice() {
-    let totalPrice = 0;
-    data.forEach((element: any) => {
-      totalPrice += element.price;
-    });
-    return totalPrice + 40;
+    const reducer = (accumulator: number, currentValue: number) =>
+      accumulator + currentValue;
+    const prices = data.map((element: any) => element.price);
+    return prices.reduce(reducer, 0);
   }
 
   function renderTopBun(data: any) {
