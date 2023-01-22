@@ -7,15 +7,18 @@ import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
 import { useContext } from "react";
 import { IngredientsContext } from "../App/App";
+import { useState } from "react";
+
 import { createContext } from "react";
 
-export const orderDetailsContext = createContext({});
-export const orderDetailsContextProvider = orderDetailsContext.Provider;
+export const OrderDetailsContext = createContext(0);
+export const OrderDetailsContextProvider = OrderDetailsContext.Provider;
 
 function Stack() {
   const input = useContext(IngredientsContext);
   const data = Array.from(Object.values(input));
   const { modal, setModal, toggleModal, render } = OrderDetails();
+  const [orderNumber, setOrderNumber] = useState(0);
 
   function getPrice() {
     const reducer = (accumulator: number, currentValue: number) =>
@@ -69,12 +72,14 @@ function Stack() {
         return Promise.reject(`Ошибка: ${res.status}`);
       })
       .then((res) => {
-        console.log(res);
+        setOrderNumber(res.order.number);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  console.log(`orderNumber: ${orderNumber}`);
 
   const wrapper = (e: any) => {
     e.preventDefault();
@@ -112,9 +117,11 @@ function Stack() {
           Оформить заказ{" "}
         </Button>
       </div>
-      <Popup modal={modal} setModal={setModal} toggleModal={toggleModal}>
-        {render}
-      </Popup>
+      <OrderDetailsContextProvider value={orderNumber}>
+        <Popup modal={modal} setModal={setModal} toggleModal={toggleModal}>
+          {render}
+        </Popup>
+      </OrderDetailsContextProvider>
     </>
   );
 }
