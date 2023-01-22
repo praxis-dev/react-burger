@@ -7,6 +7,10 @@ import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
 import { useContext } from "react";
 import { IngredientsContext } from "../App/App";
+import { createContext } from "react";
+
+export const orderDetailsContext = createContext({});
+export const orderDetailsContextProvider = orderDetailsContext.Provider;
 
 function Stack() {
   const input = useContext(IngredientsContext);
@@ -48,6 +52,36 @@ function Stack() {
     ) : null;
   }
 
+  const postOrder = () => {
+    fetch("https://norma.nomoreparties.space/api/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ingredients: data.map((element: any) => element._id),
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const wrapper = (e: any) => {
+    e.preventDefault();
+    postOrder();
+    toggleModal();
+  };
+
   return (
     <>
       <div className={css.stack}>
@@ -70,7 +104,7 @@ function Stack() {
           />
         </div>
         <Button
-          onClick={toggleModal}
+          onClick={wrapper}
           htmlType="button"
           type="primary"
           size="medium"
