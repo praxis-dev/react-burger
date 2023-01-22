@@ -5,9 +5,12 @@ import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
+import { useContext } from "react";
+import { IngredientsContext } from "../App/App";
 
-function Stack(props: any) {
-  const data = Array.from(Object.values(props));
+function Stack() {
+  const input = useContext(IngredientsContext);
+  const data = Array.from(Object.values(input));
   const { modal, setModal, toggleModal, render } = OrderDetails();
 
   function getPrice() {

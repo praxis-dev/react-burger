@@ -1,6 +1,8 @@
 import IngredientCard from "../IngredientCard/IngredientCard";
 import css from "./Ingredients.module.css";
 import { useMemo } from "react";
+import { IngredientsContext } from "../App/App";
+import { useContext } from "react";
 
 type props = {
   iRefs: {
@@ -29,7 +31,9 @@ type element = {
 };
 
 export const Ingredients = (props: props) => {
-  const data: element[] = Array.from(Object.values(props["iRefs"].data));
+  const input = useContext(IngredientsContext);
+  console.log(input);
+  const data: element[] = Array.from(Object.values(input));
 
   const { ref1, ref2, ref3 } = props.iRefs.refs;
   const buns = useMemo(

@@ -3,6 +3,10 @@ import AppHeader from "../AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { GetIngredients } from "../GetIngredients/GetIngredients";
 import { useEffect, useState } from "react";
+import { createContext } from "react";
+
+export const IngredientsContext = createContext({});
+export const IngredientsContextProvider = IngredientsContext.Provider;
 
 export function App() {
   const [data, setData] = useState({});
@@ -17,8 +21,10 @@ export function App() {
 
   return (
     <div className="App">
-      <AppHeader />
-      <BurgerConstructor {...data} />
+      <IngredientsContextProvider value={data}>
+        <AppHeader />
+        <BurgerConstructor {...data} />
+      </IngredientsContextProvider>
     </div>
   );
 }
