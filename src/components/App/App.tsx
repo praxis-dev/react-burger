@@ -23,7 +23,7 @@ export function App() {
     <div className="App">
       <IngredientsContextProvider value={data}>
         <AppHeader />
-        <BurgerConstructor {...data} />
+        <BurgerConstructor />
       </IngredientsContextProvider>
     </div>
   );

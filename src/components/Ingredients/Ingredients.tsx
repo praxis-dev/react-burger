@@ -32,7 +32,6 @@ type element = {
 
 export const Ingredients = (props: props) => {
   const input = useContext(IngredientsContext);
-  console.log(input);
   const data: element[] = Array.from(Object.values(input));
 
   const { ref1, ref2, ref3 } = props.iRefs.refs;

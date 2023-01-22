@@ -21,29 +21,45 @@ function Stack() {
     return totalPrice + 40;
   }
 
+  function renderTopBun(data: any) {
+    const firstBunItem = data.find((item: any) => item.type === "bun");
+
+    return firstBunItem ? (
+      <StackedIngredient
+        position="top"
+        isLocked={true}
+        name={firstBunItem.name + " (верх)"}
+        price={firstBunItem.price}
+        image={fixedImage}
+      />
+    ) : null;
+  }
+
+  function renderBottomBun(data: any) {
+    const firstBunItem = data.find((item: any) => item.type === "bun");
+
+    return firstBunItem ? (
+      <StackedIngredient
+        position="bottom"
+        isLocked={true}
+        name={firstBunItem.name + " (низ)"}
+        price={firstBunItem.price}
+        image={fixedImage}
+      />
+    ) : null;
+  }
+
   return (
     <>
       <div className={css.stack}>
-        <StackedIngredient
-          position="top"
-          isLocked={true}
-          name="Краторная булка N-200i (верх)"
-          price={20}
-          image={fixedImage}
-        />
+        {renderTopBun(data)}
 
         <div className={css.stackScreen}>
           {data.map((element: any) => (
             <StackedIngredient key={element._id} {...element} />
           ))}
         </div>
-        <StackedIngredient
-          position="bottom"
-          isLocked={true}
-          name="Краторная булка N-200i (низ)"
-          price={20}
-          image={fixedImage}
-        />
+        {renderBottomBun(data)}
       </div>
       <div className={css.buttonAndTotalContainer}>
         <div className={css.totalAndIcon}>
