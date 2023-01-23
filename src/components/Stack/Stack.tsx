@@ -13,7 +13,6 @@ function Stack() {
   const data = Array.from(Object.values(input));
   const { modal, setModal, toggleModal, setOrderNumber, render } =
     OrderDetails();
-  // const [orderNumber, setOrderNumber] = useState(0);
 
   function getPrice() {
     const reducer = (accumulator: number, currentValue: number) =>
@@ -60,6 +59,11 @@ function Stack() {
         ingredients: data.map((element: any) => element._id),
       }),
     });
+
+    if (!result.ok) {
+      const message = `Браток...: ${result.status}`;
+      throw new Error(message);
+    }
 
     const res = await result.json();
 
