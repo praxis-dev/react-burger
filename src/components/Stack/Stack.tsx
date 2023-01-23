@@ -61,7 +61,7 @@ function Stack() {
     });
 
     if (!result.ok) {
-      const message = `Браток...: ${result.status}`;
+      const message = `Ошибка: ${result.status}`;
       throw new Error(message);
     }
 
