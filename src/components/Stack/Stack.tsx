@@ -6,12 +6,7 @@ import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
 import { useContext } from "react";
-import { IngredientsContext } from "../App/App";
-
-import { createContext } from "react";
-
-export const OrderDetailsContext = createContext(2);
-export const OrderDetailsContextProvider = OrderDetailsContext.Provider;
+import { IngredientsContext } from "../../services/context";
 
 function Stack() {
   const input = useContext(IngredientsContext);

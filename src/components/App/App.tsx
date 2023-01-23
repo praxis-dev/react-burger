@@ -3,9 +3,9 @@ import AppHeader from "../AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { GetIngredients } from "../GetIngredients/GetIngredients";
 import { useEffect, useState } from "react";
-import { createContext } from "react";
 
-export const IngredientsContext = createContext({});
+import { IngredientsContext } from "../../services/context";
+
 export const IngredientsContextProvider = IngredientsContext.Provider;
 
 export function App() {

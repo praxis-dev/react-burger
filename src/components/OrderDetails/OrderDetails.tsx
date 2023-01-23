@@ -7,7 +7,6 @@ function OrderDetails() {
   const [modal, setModal] = useState(false);
   const [orderNumber, setOrderNumber] = useState(0);
 
-  console.log(`ordernumber in Details: ${orderNumber}`);
   const toggleModal = () => {
     setModal(!modal);
   };

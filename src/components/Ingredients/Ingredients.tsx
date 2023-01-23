@@ -1,7 +1,7 @@
 import IngredientCard from "../IngredientCard/IngredientCard";
 import css from "./Ingredients.module.css";
 import { useMemo } from "react";
-import { IngredientsContext } from "../App/App";
+import { IngredientsContext } from "../../services/context";
 import { useContext } from "react";
 
 type props = {
