@@ -4,16 +4,19 @@ import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { GetIngredients } from "../GetIngredients/GetIngredients";
 import { useEffect, useState } from "react";
 
-import { IngredientsContext } from "../../services/context";
+import { store } from "./Store";
 
-export const IngredientsContextProvider = IngredientsContext.Provider;
+import { Provider } from "react-redux";
+
+import { ingredientsSlice } from "./ingredientsSlice";
 
 export function App() {
-  const [data, setData] = useState({});
-
   useEffect(() => {
     GetIngredients()
-      .then((data: any) => setData(data.data))
+      .then((data: any) => {
+        store.dispatch(ingredientsSlice.actions.logIngredients(data.data));
+        store.dispatch(ingredientsSlice.actions.setIngredients(data.data));
+      })
       .catch((error: any) => {
         console.log(error.name, error.message);
       });
@@ -21,10 +24,10 @@ export function App() {
 
   return (
     <div className="App">
-      <IngredientsContextProvider value={data}>
+      <Provider store={store}>
         <AppHeader />
         <BurgerConstructor />
-      </IngredientsContextProvider>
+      </Provider>
     </div>
   );
 }

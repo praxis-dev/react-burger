@@ -5,11 +5,10 @@ import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
-import { useContext } from "react";
-import { IngredientsContext } from "../../services/context";
+import { useSelector } from "react-redux";
 
 function Stack() {
-  const input = useContext(IngredientsContext);
+  const input = useSelector((state: any) => state.ingredients.ingredients);
   const data = Array.from(Object.values(input));
   const { modal, setModal, toggleModal, setOrderNumber, render } =
     OrderDetails();

@@ -1,8 +1,7 @@
 import IngredientCard from "../IngredientCard/IngredientCard";
 import css from "./Ingredients.module.css";
 import { useMemo } from "react";
-import { IngredientsContext } from "../../services/context";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 type props = {
   iRefs: {
@@ -31,7 +30,7 @@ type element = {
 };
 
 export const Ingredients = (props: props) => {
-  const input = useContext(IngredientsContext);
+  const input = useSelector((state: any) => state.ingredients.ingredients);
   const data: element[] = Array.from(Object.values(input));
 
   const { ref1, ref2, ref3 } = props.iRefs.refs;
