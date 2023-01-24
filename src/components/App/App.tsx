@@ -4,6 +4,10 @@ import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { GetIngredients } from "../GetIngredients/GetIngredients";
 import { useEffect, useState } from "react";
 
+import { IngredientsContext } from "../../services/context";
+
+export const IngredientsContextProvider = IngredientsContext.Provider;
+
 export function App() {
   const [data, setData] = useState({});
 
@@ -17,8 +21,10 @@ export function App() {
 
   return (
     <div className="App">
-      <AppHeader />
-      <BurgerConstructor {...data} />
+      <IngredientsContextProvider value={data}>
+        <AppHeader />
+        <BurgerConstructor />
+      </IngredientsContextProvider>
     </div>
   );
 }

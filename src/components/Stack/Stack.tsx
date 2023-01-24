@@ -5,42 +5,84 @@ import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
+import { useContext } from "react";
+import { IngredientsContext } from "../../services/context";
 
-function Stack(props: any) {
-  const data = Array.from(Object.values(props));
-  const { modal, setModal, toggleModal, render } = OrderDetails();
+function Stack() {
+  const input = useContext(IngredientsContext);
+  const data = Array.from(Object.values(input));
+  const { modal, setModal, toggleModal, setOrderNumber, render } =
+    OrderDetails();
 
   function getPrice() {
-    let totalPrice = 0;
-    data.forEach((element: any) => {
-      totalPrice += element.price;
+    const reducer = (accumulator: number, currentValue: number) =>
+      accumulator + currentValue;
+    const prices = data.map((element: any) => element.price);
+    return prices.reduce(reducer, 0);
+  }
+
+  function renderTopBun(data: any) {
+    const firstBunItem = data.find((item: any) => item.type === "bun");
+
+    return firstBunItem ? (
+      <StackedIngredient
+        position="top"
+        isLocked={true}
+        name={firstBunItem.name + " (верх)"}
+        price={firstBunItem.price}
+        image={fixedImage}
+      />
+    ) : null;
+  }
+
+  function renderBottomBun(data: any) {
+    const firstBunItem = data.find((item: any) => item.type === "bun");
+
+    return firstBunItem ? (
+      <StackedIngredient
+        position="bottom"
+        isLocked={true}
+        name={firstBunItem.name + " (низ)"}
+        price={firstBunItem.price}
+        image={fixedImage}
+      />
+    ) : null;
+  }
+
+  async function postOrder() {
+    const result = await fetch("https://norma.nomoreparties.space/api/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ingredients: data.map((element: any) => element._id),
+      }),
     });
-    return totalPrice + 40;
+
+    if (!result.ok) {
+      const message = `Ошибка: ${result.status}`;
+      throw new Error(message);
+    }
+
+    const res = await result.json();
+
+    setOrderNumber(res.order.number);
+
+    toggleModal();
   }
 
   return (
     <>
       <div className={css.stack}>
-        <StackedIngredient
-          position="top"
-          isLocked={true}
-          name="Краторная булка N-200i (верх)"
-          price={20}
-          image={fixedImage}
-        />
+        {renderTopBun(data)}
 
         <div className={css.stackScreen}>
           {data.map((element: any) => (
             <StackedIngredient key={element._id} {...element} />
           ))}
         </div>
-        <StackedIngredient
-          position="bottom"
-          isLocked={true}
-          name="Краторная булка N-200i (низ)"
-          price={20}
-          image={fixedImage}
-        />
+        {renderBottomBun(data)}
       </div>
       <div className={css.buttonAndTotalContainer}>
         <div className={css.totalAndIcon}>
@@ -52,7 +94,7 @@ function Stack(props: any) {
           />
         </div>
         <Button
-          onClick={toggleModal}
+          onClick={postOrder}
           htmlType="button"
           type="primary"
           size="medium"
