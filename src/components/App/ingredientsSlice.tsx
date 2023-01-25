@@ -4,6 +4,7 @@ export const ingredientsSlice = createSlice({
   name: "ingredients",
   initialState: {
     ingredients: [],
+    ingredientPopupData: {},
   },
   reducers: {
     setIngredients: (state, action) => {
@@ -12,7 +13,11 @@ export const ingredientsSlice = createSlice({
     logIngredients: (state) => {
       console.log(state.ingredients);
     },
+    ingredientDataForPopup: (state, action) => {
+      state.ingredientPopupData = action.payload;
+    },
   },
 });
 
-export const { setIngredients, logIngredients } = ingredientsSlice.actions;
+export const { setIngredients, logIngredients, ingredientDataForPopup } =
+  ingredientsSlice.actions;

@@ -3,6 +3,8 @@ import Popup from "../Popup/Popup";
 import { useState } from "react";
 import css from "./IngredientCard.module.css";
 import IngredientDetails from "../IngredientDetails/IngredientDetails";
+import { ingredientsSlice } from "../App/ingredientsSlice";
+import { store } from "../App/Store";
 
 type props = element;
 
@@ -37,11 +39,16 @@ function IngredientCard(props: props) {
     __v,
   } = props;
 
-  const { modal, setModal, toggleModal, render } = IngredientDetails(props);
+  const { modal, setModal, toggleModal, render } = IngredientDetails();
+
+  const onClick = () => {
+    store.dispatch(ingredientsSlice.actions.ingredientDataForPopup(props));
+    toggleModal();
+  };
 
   return (
     <>
-      <div onClick={toggleModal} className={css.component}>
+      <div onClick={onClick} className={css.component}>
         <div className={css.portionsCounter}>2</div>
         <img
           alt="Иконка компонента"
