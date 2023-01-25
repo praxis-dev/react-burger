@@ -2,6 +2,8 @@ import css from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { ingredientsSlice } from "../App/ingredientsSlice";
+import { store } from "../App/Store";
 
 function IngredientDetails() {
   const [modal, setModal] = useState(false);
@@ -12,6 +14,11 @@ function IngredientDetails() {
 
   const toggleModal = () => {
     setModal(!modal);
+  };
+
+  const onClick = () => {
+    store.dispatch(ingredientsSlice.actions.ingredientDataForPopup({}));
+    toggleModal();
   };
 
   return {
@@ -40,7 +47,7 @@ function IngredientDetails() {
               {input.carbohydrates}
             </div>
           </div>
-          <div className={css.closeModal} onClick={toggleModal}>
+          <div className={css.closeModal} onClick={onClick}>
             <CloseIcon type="primary" />
           </div>
         </div>
