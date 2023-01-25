@@ -2,13 +2,16 @@ import "./App.css";
 import AppHeader from "../AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { GetIngredients } from "../GetIngredients/GetIngredients";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { store } from "./Store";
 
 import { Provider } from "react-redux";
 
 import { ingredientsSlice } from "./ingredientsSlice";
+
+import { DndProvider } from "react-dnd";
 
 export function App() {
   useEffect(() => {
@@ -23,10 +26,12 @@ export function App() {
 
   return (
     <div className="App">
-      <Provider store={store}>
-        <AppHeader />
-        <BurgerConstructor />
-      </Provider>
+      <DndProvider backend={HTML5Backend}>
+        <Provider store={store}>
+          <AppHeader />
+          <BurgerConstructor />
+        </Provider>
+      </DndProvider>
     </div>
   );
 }
