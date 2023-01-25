@@ -8,8 +8,19 @@ import Popup from "../Popup/Popup";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../App/ingredientsSlice";
 import { store } from "../App/Store";
+import { useDrop } from "react-dnd";
 
 function Stack() {
+  // const [{ droppedIngredients }, dropRef] = useDrop({
+  //   accept: "ingredient",
+  //   drop(item: any) {
+  //     store.dispatch(ingredientsSlice.actions.addIngredient(item));
+  //   },
+  //   collect: (monitor) => ({
+  //     droppedIngredients: monitor.getItem(),
+  //   }),
+  // });
+
   const input = useSelector((state: any) => state.ingredients.ingredients);
   const data = Array.from(Object.values(input));
   const { modal, setModal, toggleModal, render } = OrderDetails();
