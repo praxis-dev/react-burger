@@ -14,7 +14,6 @@ export function App() {
   useEffect(() => {
     GetIngredients()
       .then((data: any) => {
-        store.dispatch(ingredientsSlice.actions.logIngredients(data.data));
         store.dispatch(ingredientsSlice.actions.setIngredients(data.data));
       })
       .catch((error: any) => {

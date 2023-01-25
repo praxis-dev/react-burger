@@ -2,10 +2,13 @@ import css from "./OrderDetails.module.css";
 import done from "../../images/done.svg";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function OrderDetails() {
   const [modal, setModal] = useState(false);
-  const [orderNumber, setOrderNumber] = useState(0);
+  const orderNumber = useSelector(
+    (state: any) => state.ingredients.orderNumber
+  );
 
   const toggleModal = () => {
     setModal(!modal);
@@ -15,7 +18,6 @@ function OrderDetails() {
     modal,
     setModal,
     toggleModal,
-    setOrderNumber,
     render: (
       <div className={css.modalContent}>
         <h2 className={css.orderIdentifier}>{orderNumber}</h2>

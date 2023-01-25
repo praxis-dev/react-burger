@@ -6,12 +6,13 @@ import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
 import { useSelector } from "react-redux";
+import { ingredientsSlice } from "../App/ingredientsSlice";
+import { store } from "../App/Store";
 
 function Stack() {
   const input = useSelector((state: any) => state.ingredients.ingredients);
   const data = Array.from(Object.values(input));
-  const { modal, setModal, toggleModal, setOrderNumber, render } =
-    OrderDetails();
+  const { modal, setModal, toggleModal, render } = OrderDetails();
 
   function getPrice() {
     const reducer = (accumulator: number, currentValue: number) =>
@@ -66,7 +67,8 @@ function Stack() {
 
     const res = await result.json();
 
-    setOrderNumber(res.order.number);
+    // setOrderNumber(res.order.number);
+    store.dispatch(ingredientsSlice.actions.saveOrderNumber(res.order.number));
 
     toggleModal();
   }

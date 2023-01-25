@@ -5,5 +5,6 @@ export const store = configureStore({
   reducer: {
     ingredients: ingredientsSlice.reducer,
     ingredientPopupData: ingredientsSlice.reducer,
+    orderNumber: ingredientsSlice.reducer,
   },
 });
