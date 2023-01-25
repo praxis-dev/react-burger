@@ -5,6 +5,7 @@ import css from "./IngredientCard.module.css";
 import IngredientDetails from "../IngredientDetails/IngredientDetails";
 import { ingredientsSlice } from "../App/ingredientsSlice";
 import { store } from "../App/Store";
+import { useDrag } from "react-dnd";
 
 type props = element;
 
@@ -24,6 +25,14 @@ type element = {
 };
 
 function IngredientCard(props: props) {
+  const [{ isDragging }, dragRef] = useDrag({
+    type: "ingredient",
+    item: props,
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
   const {
     _id,
     name,
@@ -48,7 +57,12 @@ function IngredientCard(props: props) {
 
   return (
     <>
-      <div onClick={onClick} className={css.component}>
+      <div
+        onClick={onClick}
+        className={css.component}
+        ref={dragRef}
+        style={{ border: isDragging ? "2px solid red" : "2px solid green" }}
+      >
         <div className={css.portionsCounter}>2</div>
         <img
           alt="Иконка компонента"
