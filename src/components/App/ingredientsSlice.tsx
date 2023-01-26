@@ -26,6 +26,12 @@ export const ingredientsSlice = createSlice({
     addIngredientToStack: (state, action) => {
       state.ingredientsInStack.push(action.payload);
     },
+    removeIngredientFromStack: (state, action) => {
+      const index = state.ingredientsInStack.findIndex(
+        (item: any) => item.name === action.payload
+      );
+      state.ingredientsInStack.splice(index, 1);
+    },
   },
 });
 

@@ -5,6 +5,10 @@ import {
   LockIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
+import { store } from "../App/Store";
+
+import { ingredientsSlice } from "../App/ingredientsSlice";
+
 import css from "./StackedIngredient.module.css";
 
 const handlePosition = (type: string) => {
@@ -27,6 +31,12 @@ type StackedIngredientProps = {
 
 const StackedIngredient = (props: StackedIngredientProps) => {
   const { position, isLocked, name, price, image } = props;
+
+  const deleteIngredient = () => {
+    console.log("deleteIngredient");
+    store.dispatch(ingredientsSlice.actions.removeIngredientFromStack(name));
+  };
+
   return (
     <>
       <div className={css.block}>
@@ -41,7 +51,7 @@ const StackedIngredient = (props: StackedIngredientProps) => {
           <div className={css.priceAndIcon}>
             <p className={css.price}>{price}</p>
             <CurrencyIcon type="primary" />
-            <div className={css.deleteIcon}>
+            <div className={css.deleteIcon} onClick={deleteIngredient}>
               {isLocked ? (
                 <LockIcon type="primary" />
               ) : (
