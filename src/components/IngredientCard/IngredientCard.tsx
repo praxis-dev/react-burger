@@ -6,6 +6,7 @@ import IngredientDetails from "../IngredientDetails/IngredientDetails";
 import { ingredientsSlice } from "../App/ingredientsSlice";
 import { store } from "../App/Store";
 import { useDrag } from "react-dnd";
+import { ingredientsInStack } from "../App/ingredientsSlice";
 
 type props = element;
 
@@ -55,6 +56,17 @@ function IngredientCard(props: props) {
     toggleModal();
   };
 
+  const countPortionsInStack = () => {
+    let count = 0;
+    const ingredientsInStack = store.getState().ingredients.ingredientsInStack;
+    ingredientsInStack.forEach((item: any) => {
+      if (item.name === name) {
+        count++;
+      }
+    });
+    return count;
+  };
+
   return (
     <>
       <div
@@ -63,7 +75,14 @@ function IngredientCard(props: props) {
         ref={dragRef}
         style={{ border: isDragging ? "2px solid red" : "2px solid green" }}
       >
-        <div className={css.portionsCounter}>2</div>
+        {/* <div className={css.portionsCounter}>
+          {countPortionsInStack() > 0 && countPortionsInStack()}
+        </div> */}
+        {countPortionsInStack() > 0 && (
+          <div className={css.portionsCounter}>
+            {countPortionsInStack() > 0 && countPortionsInStack()}
+          </div>
+        )}
         <img
           alt="Иконка компонента"
           src={image}

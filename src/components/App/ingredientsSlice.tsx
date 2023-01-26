@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-type ingredientsInStack = any[];
+export type ingredientsInStack = any[];
 
 export const ingredientsSlice = createSlice({
   name: "ingredients",
