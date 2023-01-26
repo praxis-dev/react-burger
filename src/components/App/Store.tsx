@@ -6,5 +6,6 @@ export const store = configureStore({
     ingredients: ingredientsSlice.reducer,
     ingredientPopupData: ingredientsSlice.reducer,
     orderNumber: ingredientsSlice.reducer,
+    ingredientsInStack: ingredientsSlice.reducer,
   },
 });

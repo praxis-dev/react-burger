@@ -24,8 +24,10 @@ function Stack() {
 
   // const input = useSelector((state: any) => state.ingredients.ingredients);
   // const data = Array.from(Object.values(input));
+  const data = useSelector(
+    (state: any) => state.ingredients.ingredientsInStack
+  );
 
-  const [data, setData] = useState([]);
   const { modal, setModal, toggleModal, render } = OrderDetails();
 
   const [{ isOver }, dropRef] = useDrop({
@@ -39,7 +41,7 @@ function Stack() {
   });
 
   const addIngredientToStack = (item: any) => {
-    console.log(item);
+    store.dispatch(ingredientsSlice.actions.addIngredientToStack(item));
   };
 
   function getPrice() {
