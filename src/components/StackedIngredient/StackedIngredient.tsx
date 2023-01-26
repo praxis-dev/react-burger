@@ -8,7 +8,6 @@ import {
 import { store } from "../App/Store";
 
 import { ingredientsSlice } from "../App/ingredientsSlice";
-import IngredientCard from "../IngredientCard/IngredientCard";
 
 import css from "./StackedIngredient.module.css";
 

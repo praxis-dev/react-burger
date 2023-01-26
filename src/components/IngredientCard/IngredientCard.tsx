@@ -72,8 +72,6 @@ function IngredientCard(props: props) {
   };
 
   const returnCounterDiv = (count: any) => {
-    console.log("returned");
-
     if (count > 0) {
       return <div className={css.portionsCounter}>{count}</div>;
     } else if (count === 0) {

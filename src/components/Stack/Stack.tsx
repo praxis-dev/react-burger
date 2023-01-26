@@ -1,5 +1,4 @@
 import css from "./Stack.module.css";
-import fixedImage from "../../images/bun-02.png";
 import StackedIngredient from "../StackedIngredient/StackedIngredient";
 import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -8,22 +7,9 @@ import Popup from "../Popup/Popup";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../App/ingredientsSlice";
 import { store } from "../App/Store";
-import { useState } from "react";
 import { useDrop } from "react-dnd";
 
 function Stack() {
-  // const [{ droppedIngredients }, dropRef] = useDrop({
-  //   accept: "ingredient",
-  //   drop(item: any) {
-  //     store.dispatch(ingredientsSlice.actions.addIngredient(item));
-  //   },
-  //   collect: (monitor) => ({
-  //     droppedIngredients: monitor.getItem(),
-  //   }),
-  // });
-
-  // const input = useSelector((state: any) => state.ingredients.ingredients);
-  // const data = Array.from(Object.values(input));
   const data = useSelector(
     (state: any) => state.ingredients.ingredientsInStack
   );
@@ -60,7 +46,7 @@ function Stack() {
         isLocked={true}
         name={firstBunItem.name + " (верх)"}
         price={firstBunItem.price}
-        image={fixedImage}
+        image={firstBunItem.image}
       />
     ) : null;
   }
@@ -74,7 +60,7 @@ function Stack() {
         isLocked={true}
         name={firstBunItem.name + " (низ)"}
         price={firstBunItem.price}
-        image={fixedImage}
+        image={firstBunItem.image}
       />
     ) : null;
   }
@@ -97,22 +83,36 @@ function Stack() {
 
     const res = await result.json();
 
-    // setOrderNumber(res.order.number);
     store.dispatch(ingredientsSlice.actions.saveOrderNumber(res.order.number));
 
     toggleModal();
   }
+
+  const renderElement = (data: any) => {
+    return data.map((element: any, index: number) => {
+      if (element.type === "bun") {
+        return null;
+      } else {
+        return (
+          <StackedIngredient
+            position="middle"
+            isLocked={false}
+            name={element.name}
+            price={element.price}
+            image={element.image}
+            key={index}
+          />
+        );
+      }
+    });
+  };
 
   return (
     <>
       <div className={css.stack} ref={dropRef}>
         {renderTopBun(data)}
 
-        <div className={css.stackScreen}>
-          {data.map((element: any) => (
-            <StackedIngredient key={element._id} {...element} />
-          ))}
-        </div>
+        <div className={css.stackScreen}>{renderElement(data)}</div>
         {renderBottomBun(data)}
       </div>
       <div className={css.buttonAndTotalContainer}>
