@@ -8,6 +8,7 @@ import Popup from "../Popup/Popup";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../App/ingredientsSlice";
 import { store } from "../App/Store";
+import { useState } from "react";
 import { useDrop } from "react-dnd";
 
 function Stack() {
@@ -21,9 +22,25 @@ function Stack() {
   //   }),
   // });
 
-  const input = useSelector((state: any) => state.ingredients.ingredients);
-  const data = Array.from(Object.values(input));
+  // const input = useSelector((state: any) => state.ingredients.ingredients);
+  // const data = Array.from(Object.values(input));
+
+  const [data, setData] = useState([]);
   const { modal, setModal, toggleModal, render } = OrderDetails();
+
+  const [{ isOver }, dropRef] = useDrop({
+    accept: "ingredient",
+    drop(item: any) {
+      addIngredientToStack(item);
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  });
+
+  const addIngredientToStack = (item: any) => {
+    console.log(item);
+  };
 
   function getPrice() {
     const reducer = (accumulator: number, currentValue: number) =>
@@ -86,7 +103,7 @@ function Stack() {
 
   return (
     <>
-      <div className={css.stack}>
+      <div className={css.stack} ref={dropRef}>
         {renderTopBun(data)}
 
         <div className={css.stackScreen}>
