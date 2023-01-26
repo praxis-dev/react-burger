@@ -8,6 +8,7 @@ import {
 import { store } from "../App/Store";
 
 import { ingredientsSlice } from "../App/ingredientsSlice";
+import IngredientCard from "../IngredientCard/IngredientCard";
 
 import css from "./StackedIngredient.module.css";
 
@@ -33,7 +34,6 @@ const StackedIngredient = (props: StackedIngredientProps) => {
   const { position, isLocked, name, price, image } = props;
 
   const deleteIngredient = () => {
-    console.log("deleteIngredient");
     store.dispatch(ingredientsSlice.actions.removeIngredientFromStack(name));
   };
 

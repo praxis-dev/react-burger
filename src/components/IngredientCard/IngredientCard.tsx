@@ -1,13 +1,12 @@
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Popup from "../Popup/Popup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import css from "./IngredientCard.module.css";
 import IngredientDetails from "../IngredientDetails/IngredientDetails";
 import { ingredientsSlice } from "../App/ingredientsSlice";
 import { store } from "../App/Store";
 import { useDrag } from "react-dnd";
-import { ingredientsInStack } from "../App/ingredientsSlice";
-
+import { useSelector } from "react-redux";
 type props = element;
 
 type element = {
@@ -56,15 +55,30 @@ function IngredientCard(props: props) {
     toggleModal();
   };
 
+  const ingredientsInStack = useSelector(
+    (state: any) => state.ingredients.ingredientsInStack
+  );
+
   const countPortionsInStack = () => {
     let count = 0;
-    const ingredientsInStack = store.getState().ingredients.ingredientsInStack;
+
     ingredientsInStack.forEach((item: any) => {
       if (item.name === name) {
         count++;
       }
     });
-    return count;
+
+    return returnCounterDiv(count);
+  };
+
+  const returnCounterDiv = (count: any) => {
+    console.log("returned");
+
+    if (count > 0) {
+      return <div className={css.portionsCounter}>{count}</div>;
+    } else if (count === 0) {
+      return <></>;
+    }
   };
 
   return (
@@ -75,25 +89,20 @@ function IngredientCard(props: props) {
         ref={dragRef}
         style={{ border: isDragging ? "2px solid red" : "2px solid green" }}
       >
-        {/* <div className={css.portionsCounter}>
-          {countPortionsInStack() > 0 && countPortionsInStack()}
-        </div> */}
-        {countPortionsInStack() > 0 && (
-          <div className={css.portionsCounter}>
-            {countPortionsInStack() > 0 && countPortionsInStack()}
+        <>
+          {countPortionsInStack()}
+          <img
+            alt="Иконка компонента"
+            src={image}
+            className={css.componentImage}
+          />
+          <div className={css.priceAndIcon}>
+            {" "}
+            <div className={css.componentPrice}>{price}</div>
+            <CurrencyIcon type="primary" />
           </div>
-        )}
-        <img
-          alt="Иконка компонента"
-          src={image}
-          className={css.componentImage}
-        />
-        <div className={css.priceAndIcon}>
-          {" "}
-          <div className={css.componentPrice}>{price}</div>
-          <CurrencyIcon type="primary" />
-        </div>
-        <p className={css.componentName}>{name}</p>
+          <p className={css.componentName}>{name}</p>
+        </>
       </div>
       <Popup modal={modal} setModal={setModal} toggleModal={toggleModal}>
         {render}
