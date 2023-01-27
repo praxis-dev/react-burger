@@ -11,6 +11,8 @@ import { ingredientsSlice } from "../App/ingredientsSlice";
 
 import css from "./StackedIngredient.module.css";
 
+import { useDrag } from "react-dnd";
+
 const handlePosition = (type: string) => {
   if (type === "top") {
     return css.topBlock;
@@ -36,9 +38,17 @@ const StackedIngredient = (props: StackedIngredientProps) => {
     store.dispatch(ingredientsSlice.actions.removeIngredientFromStack(name));
   };
 
+  const [{ isDragging }, dragRef] = useDrag({
+    type: "ingredient",
+    item: { name, image, price },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
   return (
     <>
-      <div className={css.block}>
+      <div className={css.block} ref={dragRef}>
         <div className={css.dragIcon}>
           <DragIcon type="primary" />
         </div>
