@@ -40,7 +40,7 @@ const StackedIngredient = (props: StackedIngredientProps) => {
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredient",
-    item: { name, image, price },
+    item: { name, image, price, isStacked: true },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),

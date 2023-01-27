@@ -27,6 +27,7 @@ type element = {
   type: string;
   __v: number;
   _id: string;
+  isStacked: boolean;
 };
 
 export const Ingredients = (props: props) => {

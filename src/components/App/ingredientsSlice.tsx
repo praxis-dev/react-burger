@@ -32,6 +32,19 @@ export const ingredientsSlice = createSlice({
       );
       state.ingredientsInStack.splice(index, 1);
     },
+    markElementAsStacked: (state, action) => {
+      const index = state.ingredientsInStack.findIndex(
+        (item: any) => item.name === action.payload
+      );
+      state.ingredientsInStack[index].isStacked = true;
+    },
+    rearrangeIngredientsWithDragAndDrop: (state, action) => {
+      const index = state.ingredientsInStack.findIndex(
+        (item: any) => item.name === action.payload.name
+      );
+      state.ingredientsInStack.splice(index, 1);
+      state.ingredientsInStack.push(action.payload);
+    },
   },
 });
 

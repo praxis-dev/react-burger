@@ -19,7 +19,13 @@ function Stack() {
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredient",
     drop(item: any) {
-      addIngredientToStack(item);
+      if (item.isStacked) {
+        console.log("rearrange");
+        rearrangeIngredientsWithDragAndDrop(item);
+      } else {
+        console.log(item);
+        addIngredientToStack(item);
+      }
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -27,7 +33,15 @@ function Stack() {
   });
 
   const addIngredientToStack = (item: any) => {
-    store.dispatch(ingredientsSlice.actions.addIngredientToStack(item));
+    const deployedItem = { ...item, isStacked: true };
+    store.dispatch(ingredientsSlice.actions.addIngredientToStack(deployedItem));
+  };
+
+  const rearrangeIngredientsWithDragAndDrop = (item: any) => {
+    const deployedItem = { ...item, isStacked: true };
+    store.dispatch(
+      ingredientsSlice.actions.rearrangeIngredientsWithDragAndDrop(deployedItem)
+    );
   };
 
   function getPrice() {
