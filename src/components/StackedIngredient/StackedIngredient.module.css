@@ -39,6 +39,7 @@
   max-width: 568px;
   height: 80px;
   margin-bottom: 16px;
+  cursor: pointer;
 }
 
 .dragIcon {
