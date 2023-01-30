@@ -15,7 +15,7 @@ import { useDrag, useDrop } from "react-dnd";
 
 import { useSelector } from "react-redux";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 const handlePosition = (type: string) => {
   if (type === "top") {
@@ -50,7 +50,7 @@ const StackedIngredient = (props: StackedIngredientProps) => {
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredient",
-    item: { name, image, price, isStacked: true, index },
+    item: { isLocked, name, image, price, isStacked: true, index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -70,13 +70,16 @@ const StackedIngredient = (props: StackedIngredientProps) => {
     },
   });
 
-  const ref = useRef(null);
-
-  const dragDropRef = dragRef(dropRef(ref));
+  const combinedRef = useRef<HTMLDivElement>(null);
+  dragRef(combinedRef);
+  dropRef(combinedRef);
 
   return (
     <>
-      <div className={css.block} ref={dragDropRef}>
+      <div
+        className={css.block + " " + (isDragging ? css.dragging : "")}
+        ref={combinedRef}
+      >
         <div className={css.dragIcon}>
           <DragIcon type="primary" />
         </div>

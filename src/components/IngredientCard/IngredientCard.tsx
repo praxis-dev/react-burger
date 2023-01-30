@@ -81,12 +81,7 @@ function IngredientCard(props: props) {
 
   return (
     <>
-      <div
-        onClick={onClick}
-        className={css.component}
-        ref={dragRef}
-        style={{ border: isDragging ? "2px solid red" : "2px solid green" }}
-      >
+      <div onClick={onClick} className={css.component} ref={dragRef}>
         <>
           {countPortionsInStack()}
           <img
