@@ -21,7 +21,6 @@ function Stack() {
     drop(item: any) {
       if (item.isStacked) {
         console.log("rearrange");
-        rearrangeIngredientsWithDragAndDrop(item);
       } else {
         console.log(item);
         addIngredientToStack(item);
@@ -35,13 +34,6 @@ function Stack() {
   const addIngredientToStack = (item: any) => {
     const deployedItem = { ...item, isStacked: true };
     store.dispatch(ingredientsSlice.actions.addIngredientToStack(deployedItem));
-  };
-
-  const rearrangeIngredientsWithDragAndDrop = (item: any) => {
-    const deployedItem = { ...item, isStacked: true };
-    store.dispatch(
-      ingredientsSlice.actions.rearrangeIngredientsWithDragAndDrop(deployedItem)
-    );
   };
 
   function getPrice() {
