@@ -11,7 +11,11 @@ import { ingredientsSlice } from "../App/ingredientsSlice";
 
 import css from "./StackedIngredient.module.css";
 
-import { useDrag } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
+
+import { useSelector } from "react-redux";
+
+import { useRef } from "react";
 
 const handlePosition = (type: string) => {
   if (type === "top") {
@@ -38,17 +42,41 @@ const StackedIngredient = (props: StackedIngredientProps) => {
     store.dispatch(ingredientsSlice.actions.removeIngredientFromStack(name));
   };
 
+  const index = useSelector((state: any) => {
+    const data = state.ingredients.ingredientsInStack;
+    const index = data.findIndex((item: any) => item.name === name);
+    return index;
+  });
+
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredient",
-    item: { name, image, price, isStacked: true },
+    item: { name, image, price, isStacked: true, index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
 
+  const [, dropRef] = useDrop({
+    accept: "ingredient",
+    drop(item: any) {
+      if (item.isStacked) {
+        store.dispatch(
+          ingredientsSlice.actions.rearrangeIngredientsInStack({
+            dragIndex: item.index,
+            hoverIndex: index,
+          })
+        );
+      }
+    },
+  });
+
+  const ref = useRef(null);
+
+  const dragDropRef = dragRef(dropRef(ref));
+
   return (
     <>
-      <div className={css.block} ref={dragRef}>
+      <div className={css.block} ref={dragDropRef}>
         <div className={css.dragIcon}>
           <DragIcon type="primary" />
         </div>

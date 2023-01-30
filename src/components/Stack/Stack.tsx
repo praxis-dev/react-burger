@@ -19,10 +19,7 @@ function Stack() {
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredient",
     drop(item: any) {
-      if (item.isStacked) {
-        console.log("rearrange");
-      } else {
-        console.log(item);
+      if (!item.isStacked) {
         addIngredientToStack(item);
       }
     },

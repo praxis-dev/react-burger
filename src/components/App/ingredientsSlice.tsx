@@ -38,6 +38,12 @@ export const ingredientsSlice = createSlice({
       );
       state.ingredientsInStack[index].isStacked = true;
     },
+    rearrangeIngredientsInStack: (state, action) => {
+      const { dragIndex, hoverIndex } = action.payload;
+      const dragCard = state.ingredientsInStack[dragIndex];
+      state.ingredientsInStack.splice(dragIndex, 1);
+      state.ingredientsInStack.splice(hoverIndex, 0, dragCard);
+    },
   },
 });
 
