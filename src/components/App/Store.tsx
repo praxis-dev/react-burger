@@ -4,8 +4,5 @@ import { ingredientsSlice } from "./ingredientsSlice";
 export const store = configureStore({
   reducer: {
     ingredients: ingredientsSlice.reducer,
-    ingredientPopupData: ingredientsSlice.reducer,
-    orderNumber: ingredientsSlice.reducer,
-    ingredientsInStack: ingredientsSlice.reducer,
   },
 });
