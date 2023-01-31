@@ -48,8 +48,6 @@ const StackedIngredient = (props: StackedIngredientProps) => {
     return index;
   });
 
-  //if element is locked, it can't be dragged
-
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredient",
     item: { isLocked, name, image, price, isStacked: true, index },

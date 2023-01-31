@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../App/ingredientsSlice";
 import { store } from "../App/Store";
 import { useDrop } from "react-dnd";
+import { arrayBuffer } from "stream/consumers";
+import { useEffect } from "react";
 
 function Stack() {
   const data = useSelector(
@@ -40,7 +42,22 @@ function Stack() {
     return prices.reduce(reducer, 0);
   }
 
+  useEffect(() => {
+    const bunCounter = data.filter((item: any) => item.type === "bun").length;
+
+    if (bunCounter > 1) {
+      console.log("bun found");
+      const firstBunItem = data.find((item: any) => item.type === "bun");
+
+      store.dispatch(
+        ingredientsSlice.actions.removeIngredientFromStack(firstBunItem.name)
+      );
+    }
+  }, [data]);
+
   function renderTopBun(data: any) {
+    //find out how many buns are in the stack
+
     const firstBunItem = data.find((item: any) => item.type === "bun");
 
     return firstBunItem ? (
