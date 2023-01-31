@@ -5,11 +5,11 @@ import { GetIngredients } from "../GetIngredients/GetIngredients";
 import { useEffect } from "react";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import { store } from "./Store";
+import { store } from "../../services/store/Store";
 
 import { Provider } from "react-redux";
 
-import { ingredientsSlice } from "./ingredientsSlice";
+import { ingredientsSlice } from "../../services/Slice/ingredientsSlice";
 
 import { DndProvider } from "react-dnd";
 

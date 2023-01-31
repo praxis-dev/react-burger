@@ -5,9 +5,9 @@ import {
   LockIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
-import { store } from "../App/Store";
+import { store } from "../../services/store/Store";
 
-import { ingredientsSlice } from "../App/ingredientsSlice";
+import { ingredientsSlice } from "../../services/Slice/ingredientsSlice";
 
 import css from "./StackedIngredient.module.css";
 

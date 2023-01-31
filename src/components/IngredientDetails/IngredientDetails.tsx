@@ -2,8 +2,8 @@ import css from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { ingredientsSlice } from "../App/ingredientsSlice";
-import { store } from "../App/Store";
+import { ingredientsSlice } from "../../services/Slice/ingredientsSlice";
+import { store } from "../../services/store/Store";
 
 function IngredientDetails() {
   const [modal, setModal] = useState(false);
