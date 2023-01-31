@@ -51,6 +51,10 @@
   margin-right: 13.5px;
 }
 
+.dragIconHidden {
+  visibility: hidden;
+}
+
 .priceAndIcon {
   display: flex;
   flex-direction: row;

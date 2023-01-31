@@ -74,13 +74,21 @@ const StackedIngredient = (props: StackedIngredientProps) => {
   dragRef(combinedRef);
   dropRef(combinedRef);
 
+  const dragOrNotToDrag = (position: string) => {
+    if (position === "top" || position === "bottom") {
+      return css.dragIcon + " " + css.dragIconHidden;
+    } else {
+      return css.dragIcon;
+    }
+  };
+
   return (
     <>
       <div
         className={css.block + " " + (isDragging ? css.dragging : "")}
         ref={isLocked ? null : combinedRef}
       >
-        <div className={css.dragIcon}>
+        <div className={dragOrNotToDrag(position)}>
           <DragIcon type="primary" />
         </div>
         <div className={handlePosition(position)}>
