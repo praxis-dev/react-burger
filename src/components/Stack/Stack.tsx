@@ -8,8 +8,9 @@ import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 import { useDrop } from "react-dnd";
-import { arrayBuffer } from "stream/consumers";
 import { useEffect } from "react";
+import { postOrderThunk } from "../../services/middleware/postOrder";
+import { AnyAction } from "redux";
 
 function Stack() {
   const data = useSelector(
@@ -86,29 +87,7 @@ function Stack() {
   }
 
   async function postOrder() {
-    store.dispatch(ingredientsSlice.actions._ORDER_NUMBER_REQUEST);
-    const result = await fetch("https://norma.nomoreparties.space/api/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ingredients: data.map((element: any) => element._id),
-      }),
-    });
-
-    if (!result.ok) {
-      store.dispatch(
-        ingredientsSlice.actions._ORDER_NUMBER_ERROR(result.statusText)
-      );
-    }
-
-    const res = await result.json();
-
-    store.dispatch(
-      ingredientsSlice.actions._ORDER_NUMBER_SUCCESS(res.order.number)
-    );
-
+    store.dispatch(postOrderThunk(data) as unknown as AnyAction);
     toggleModal();
   }
 

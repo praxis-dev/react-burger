@@ -9,5 +9,3 @@ export const store = configureStore({
   },
   middleware: (applyMiddleware) => applyMiddleware(thunkMidleware),
 });
-
-export const AppDispatch = typeof store.dispatch;
