@@ -1,18 +1,40 @@
 import css from "./Stack.module.css";
-import fixedImage from "../../images/bun-02.png";
 import StackedIngredient from "../StackedIngredient/StackedIngredient";
 import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
-import { useContext } from "react";
-import { IngredientsContext } from "../../services/context";
+import { useSelector } from "react-redux";
+import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
+import { store } from "../../services/store/Store";
+import { useDrop } from "react-dnd";
+import { useEffect } from "react";
+import { postOrderThunk } from "../../services/middleware/postOrder";
+import { AnyAction } from "redux";
 
 function Stack() {
-  const input = useContext(IngredientsContext);
-  const data = Array.from(Object.values(input));
-  const { modal, setModal, toggleModal, setOrderNumber, render } =
-    OrderDetails();
+  const data = useSelector(
+    (state: any) => state.ingredients.ingredientsInStack
+  );
+
+  const { modal, setModal, toggleModal, render } = OrderDetails();
+
+  const [{ isOver }, dropRef] = useDrop({
+    accept: "ingredient",
+    drop(item: any) {
+      if (!item.isStacked) {
+        addIngredientToStack(item);
+      }
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  });
+
+  const addIngredientToStack = (item: any) => {
+    const deployedItem = { ...item, isStacked: true };
+    store.dispatch(ingredientsSlice.actions.addIngredientToStack(deployedItem));
+  };
 
   function getPrice() {
     const reducer = (accumulator: number, currentValue: number) =>
@@ -21,7 +43,22 @@ function Stack() {
     return prices.reduce(reducer, 0);
   }
 
+  useEffect(() => {
+    const bunCounter = data.filter((item: any) => item.type === "bun").length;
+
+    if (bunCounter > 1) {
+      console.log("bun found");
+      const firstBunItem = data.find((item: any) => item.type === "bun");
+
+      store.dispatch(
+        ingredientsSlice.actions.removeIngredientFromStack(firstBunItem.name)
+      );
+    }
+  }, [data]);
+
   function renderTopBun(data: any) {
+    //find out how many buns are in the stack
+
     const firstBunItem = data.find((item: any) => item.type === "bun");
 
     return firstBunItem ? (
@@ -30,7 +67,7 @@ function Stack() {
         isLocked={true}
         name={firstBunItem.name + " (верх)"}
         price={firstBunItem.price}
-        image={fixedImage}
+        image={firstBunItem.image}
       />
     ) : null;
   }
@@ -44,44 +81,41 @@ function Stack() {
         isLocked={true}
         name={firstBunItem.name + " (низ)"}
         price={firstBunItem.price}
-        image={fixedImage}
+        image={firstBunItem.image}
       />
     ) : null;
   }
 
   async function postOrder() {
-    const result = await fetch("https://norma.nomoreparties.space/api/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ingredients: data.map((element: any) => element._id),
-      }),
-    });
-
-    if (!result.ok) {
-      const message = `Ошибка: ${result.status}`;
-      throw new Error(message);
-    }
-
-    const res = await result.json();
-
-    setOrderNumber(res.order.number);
-
+    store.dispatch(postOrderThunk(data) as unknown as AnyAction);
     toggleModal();
   }
 
+  const renderElement = (data: any) => {
+    return data.map((element: any, index: number) => {
+      if (element.type === "bun") {
+        return null;
+      } else {
+        return (
+          <StackedIngredient
+            position="middle"
+            isLocked={false}
+            name={element.name}
+            price={element.price}
+            image={element.image}
+            key={index}
+          />
+        );
+      }
+    });
+  };
+
   return (
     <>
-      <div className={css.stack}>
+      <div className={css.stack} ref={dropRef}>
         {renderTopBun(data)}
 
-        <div className={css.stackScreen}>
-          {data.map((element: any) => (
-            <StackedIngredient key={element._id} {...element} />
-          ))}
-        </div>
+        <div className={css.stackScreen}>{renderElement(data)}</div>
         {renderBottomBun(data)}
       </div>
       <div className={css.buttonAndTotalContainer}>

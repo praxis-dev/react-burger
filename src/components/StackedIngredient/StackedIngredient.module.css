@@ -7,7 +7,6 @@
   border-radius: 40px;
   max-width: 536px;
   align-items: center;
-  background: #1c1c21;
   border-radius: 88px 88px 40px 40px;
 }
 
@@ -30,7 +29,6 @@
   border-radius: 40px;
   max-width: 536px;
   align-items: center;
-  background: #1c1c21;
   border-radius: 40px 40px 88px 88px;
 }
 .block {
@@ -39,6 +37,11 @@
   max-width: 568px;
   height: 80px;
   margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.dragging {
+  opacity: 0.1;
 }
 
 .dragIcon {
@@ -46,6 +49,10 @@
   align-items: center;
   margin-left: 21.5px;
   margin-right: 13.5px;
+}
+
+.dragIconHidden {
+  visibility: hidden;
 }
 
 .priceAndIcon {
@@ -60,6 +67,7 @@
 
 .deleteIcon {
   margin-left: 24px;
+  cursor: pointer;
 }
 
 .iconBlock {

@@ -1,30 +1,33 @@
 import "./App.css";
 import AppHeader from "../AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
-import { GetIngredients } from "../GetIngredients/GetIngredients";
-import { useEffect, useState } from "react";
+import { GetIngredients } from "../../services/api/getIngredients";
+import { useEffect } from "react";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
-import { IngredientsContext } from "../../services/context";
+import { store } from "../../services/store/Store";
 
-export const IngredientsContextProvider = IngredientsContext.Provider;
+import { Provider } from "react-redux";
+
+import { DndProvider } from "react-dnd";
+
+import { fetchIngredients } from "../../services/middleware/fetchIngredient";
+
+import { AnyAction } from "redux";
 
 export function App() {
-  const [data, setData] = useState({});
-
   useEffect(() => {
-    GetIngredients()
-      .then((data: any) => setData(data.data))
-      .catch((error: any) => {
-        console.log(error.name, error.message);
-      });
+    store.dispatch(fetchIngredients() as unknown as AnyAction);
   }, []);
 
   return (
     <div className="App">
-      <IngredientsContextProvider value={data}>
-        <AppHeader />
-        <BurgerConstructor />
-      </IngredientsContextProvider>
+      <DndProvider backend={HTML5Backend}>
+        <Provider store={store}>
+          <AppHeader />
+          <BurgerConstructor />
+        </Provider>
+      </DndProvider>
     </div>
   );
 }
