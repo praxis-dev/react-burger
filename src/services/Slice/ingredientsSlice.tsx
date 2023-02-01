@@ -9,19 +9,35 @@ export const ingredientsSlice = createSlice({
     ingredientPopupData: {},
     orderNumber: 0,
     ingredientsInStack: [] as ingredientsInStack,
+    error: "",
+    ingredientsBackupState: [],
+    orderNumberBackup: 0,
   },
   reducers: {
-    setIngredients: (state, action) => {
+    _INGREDIENTS_REQUEST: (state) => {
+      state.ingredientsBackupState = state.ingredients;
+    },
+    _INGREDIENTS_SUCCESS: (state, action) => {
       state.ingredients = action.payload;
     },
-    logIngredients: (state) => {
-      console.log(state.ingredients);
+    _INGREDIENTS_ERROR: (state, action) => {
+      state.error = action.payload;
+      console.log("error: " + action.payload);
+      state.ingredients = state.ingredientsBackupState;
+    },
+    _ORDER_NUMBER_REQUEST: (state) => {
+      state.orderNumberBackup = state.orderNumber;
+    },
+    _ORDER_NUMBER_SUCCESS: (state, action) => {
+      state.orderNumber = action.payload;
+    },
+    _ORDER_NUMBER_ERROR: (state, action) => {
+      state.error = action.payload;
+      console.log("error: " + action.payload);
+      state.orderNumber = state.orderNumberBackup;
     },
     ingredientDataForPopup: (state, action) => {
       state.ingredientPopupData = action.payload;
-    },
-    saveOrderNumber: (state, action) => {
-      state.orderNumber = action.payload;
     },
     addIngredientToStack: (state, action) => {
       state.ingredientsInStack.push(action.payload);
@@ -47,5 +63,4 @@ export const ingredientsSlice = createSlice({
   },
 });
 
-export const { setIngredients, logIngredients, ingredientDataForPopup } =
-  ingredientsSlice.actions;
+export const { ingredientDataForPopup } = ingredientsSlice.actions;

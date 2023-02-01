@@ -15,12 +15,17 @@ import { DndProvider } from "react-dnd";
 
 export function App() {
   useEffect(() => {
+    store.dispatch(ingredientsSlice.actions._INGREDIENTS_REQUEST);
     GetIngredients()
       .then((data: any) => {
-        store.dispatch(ingredientsSlice.actions.setIngredients(data.data));
+        store.dispatch(
+          ingredientsSlice.actions._INGREDIENTS_SUCCESS(data.data)
+        );
       })
       .catch((error: any) => {
-        console.log(error.name, error.message);
+        store.dispatch(
+          ingredientsSlice.actions._INGREDIENTS_ERROR(error.message)
+        );
       });
   }, []);
 

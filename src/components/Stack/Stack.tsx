@@ -86,6 +86,7 @@ function Stack() {
   }
 
   async function postOrder() {
+    store.dispatch(ingredientsSlice.actions._ORDER_NUMBER_REQUEST);
     const result = await fetch("https://norma.nomoreparties.space/api/orders", {
       method: "POST",
       headers: {
@@ -97,13 +98,16 @@ function Stack() {
     });
 
     if (!result.ok) {
-      const message = `Ошибка: ${result.status}`;
-      throw new Error(message);
+      store.dispatch(
+        ingredientsSlice.actions._ORDER_NUMBER_ERROR(result.statusText)
+      );
     }
 
     const res = await result.json();
 
-    store.dispatch(ingredientsSlice.actions.saveOrderNumber(res.order.number));
+    store.dispatch(
+      ingredientsSlice.actions._ORDER_NUMBER_SUCCESS(res.order.number)
+    );
 
     toggleModal();
   }
