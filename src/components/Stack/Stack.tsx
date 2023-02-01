@@ -132,6 +132,7 @@ function Stack() {
           htmlType="button"
           type="primary"
           size="medium"
+          disabled={data.length === 0}
         >
           Оформить заказ{" "}
         </Button>
