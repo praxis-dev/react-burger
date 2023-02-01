@@ -7,7 +7,7 @@ import {
 
 import { store } from "../../services/store/Store";
 
-import { ingredientsSlice } from "../../services/Slice/ingredientsSlice";
+import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 
 import css from "./StackedIngredient.module.css";
 

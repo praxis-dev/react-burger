@@ -5,7 +5,7 @@ import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
 import { useSelector } from "react-redux";
-import { ingredientsSlice } from "../../services/Slice/ingredientsSlice";
+import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 import { useDrop } from "react-dnd";
 import { arrayBuffer } from "stream/consumers";

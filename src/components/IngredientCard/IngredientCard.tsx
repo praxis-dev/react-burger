@@ -3,7 +3,7 @@ import Popup from "../Popup/Popup";
 import { useEffect, useState } from "react";
 import css from "./IngredientCard.module.css";
 import IngredientDetails from "../IngredientDetails/IngredientDetails";
-import { ingredientsSlice } from "../../services/Slice/ingredientsSlice";
+import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 import { useDrag } from "react-dnd";
 import { useSelector } from "react-redux";

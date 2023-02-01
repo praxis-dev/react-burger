@@ -2,7 +2,7 @@ import css from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { ingredientsSlice } from "../../services/Slice/ingredientsSlice";
+import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 
 function IngredientDetails() {

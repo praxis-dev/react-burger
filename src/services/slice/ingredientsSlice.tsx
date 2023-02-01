@@ -10,12 +10,12 @@ export const ingredientsSlice = createSlice({
     orderNumber: 0,
     ingredientsInStack: [] as ingredientsInStack,
     error: "",
-    ingredientsBackupState: [],
+    ingredientsBackup: [],
     orderNumberBackup: 0,
   },
   reducers: {
     _INGREDIENTS_REQUEST: (state) => {
-      state.ingredientsBackupState = state.ingredients;
+      state.ingredientsBackup = state.ingredients;
     },
     _INGREDIENTS_SUCCESS: (state, action) => {
       state.ingredients = action.payload;
@@ -23,7 +23,7 @@ export const ingredientsSlice = createSlice({
     _INGREDIENTS_ERROR: (state, action) => {
       state.error = action.payload;
       console.log("error: " + action.payload);
-      state.ingredients = state.ingredientsBackupState;
+      state.ingredients = state.ingredientsBackup;
     },
     _ORDER_NUMBER_REQUEST: (state) => {
       state.orderNumberBackup = state.orderNumber;
