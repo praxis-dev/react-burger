@@ -88,8 +88,11 @@ function Stack() {
 
   async function postOrder() {
     store.dispatch(postOrderThunk(data) as unknown as AnyAction);
+
     toggleModal();
   }
+
+  console.log(useSelector((state: any) => state.ingredients.orderNumberBackup));
 
   const renderElement = (data: any) => {
     return data.map((element: any, index: number) => {

@@ -25,8 +25,9 @@ export const ingredientsSlice = createSlice({
       console.log("error: " + action.payload);
       state.ingredients = state.ingredientsBackup;
     },
-    _ORDER_NUMBER_REQUEST: (state) => {
+    _ORDER_NUMBER_REQUEST: (state, action) => {
       state.orderNumberBackup = state.orderNumber;
+      state.orderNumber = action.payload as any;
     },
     _ORDER_NUMBER_SUCCESS: (state, action) => {
       state.orderNumber = action.payload;
