@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { DndProvider } from "react-dnd";
 import { fetchIngredients } from "../../services/middleware/fetchIngredient";
 import { AnyAction } from "redux";
+import { Login } from "../Login/Login";
 
 export function App() {
   useEffect(() => {
@@ -23,6 +24,7 @@ export function App() {
             <AppHeader />
             <Routes>
               <Route path="react-burger/" element={<BurgerConstructor />} />
+              <Route path="react-burger/login" element={<Login />} />
             </Routes>
           </Provider>
         </DndProvider>
