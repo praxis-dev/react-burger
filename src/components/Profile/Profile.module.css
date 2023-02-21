@@ -1,0 +1,94 @@
+.section {
+  max-width: 1240px;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  margin-top: 180px;
+  justify-content: center;
+  align-items: top;
+  border: 1px solid red;
+}
+.profileMenuContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid green;
+}
+
+.fieldsContainer {
+  border: 1px solid white;
+}
+
+.profileMenuItem {
+  width: 320px;
+  heigh: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border: 2px dashed #4c4cff;
+}
+
+.profileMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid gold;
+}
+
+.profileMenuItemText {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  color: #f2f2f3;
+}
+
+.header {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 24px;
+}
+
+.spacer {
+  margin-bottom: 24px;
+}
+.button {
+  display: flex;
+  margin-bottom: 80px;
+  justify-content: center;
+}
+
+.textBox {
+  display: flex;
+  justify-content: center;
+}
+
+.loginText {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8585ad;
+  margin-right: 8px;
+}
+
+.urlText {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8585ad;
+  color: #4c4cff;
+}
+
+.test {
+  border: 1px solid red;
+}

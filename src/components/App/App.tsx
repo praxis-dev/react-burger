@@ -13,6 +13,7 @@ import { Login } from "../Login/Login";
 import { ForgotPassword } from "../ForgotPassword/ForgotPassword";
 import { NewPassword } from "../NewPassword/NewPassword";
 import { NewUser } from "../NewUser/NewUser";
+import { Profile } from "../Profile/Profile";
 
 export function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ export function App() {
                 element={<NewPassword />}
               />
               <Route path="react-burger/new-user" element={<NewUser />} />
+              <Route path="react-burger/profile" element={<Profile />} />
             </Routes>
           </Provider>
         </DndProvider>
