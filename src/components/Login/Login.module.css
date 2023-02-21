@@ -18,9 +18,8 @@
 }
 
 .spacer {
-  height: 24px;
+  margin-bottom: 24px;
 }
-
 .button {
   display: flex;
   margin-bottom: 80px;
@@ -50,4 +49,8 @@
   line-height: 24px;
   color: #8585ad;
   color: #4c4cff;
+}
+
+.test {
+  border: 1px solid red;
 }

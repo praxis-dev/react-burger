@@ -11,6 +11,7 @@ import { fetchIngredients } from "../../services/middleware/fetchIngredient";
 import { AnyAction } from "redux";
 import { Login } from "../Login/Login";
 import { ForgotPassword } from "../ForgotPassword/ForgotPassword";
+import { NewPassword } from "../NewPassword/NewPassword";
 
 export function App() {
   useEffect(() => {
@@ -29,6 +30,10 @@ export function App() {
               <Route
                 path="react-burger/forgot-password"
                 element={<ForgotPassword />}
+              />
+              <Route
+                path="react-burger/new-password"
+                element={<NewPassword />}
               />
             </Routes>
           </Provider>

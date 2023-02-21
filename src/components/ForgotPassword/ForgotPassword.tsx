@@ -18,8 +18,8 @@ export const ForgotPassword = () => {
           error={false}
           errorText={"Ошибка"}
           size={"default"}
+          extraClass={css.spacer}
         />
-        <div className={css.spacer} />
         <div className={css.button}>
           {" "}
           <Button htmlType="button" type="primary" size="large">

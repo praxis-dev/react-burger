@@ -1,46 +1,43 @@
-import css from "./Login.module.css";
+import css from "./NewPassword.module.css";
 import {
   Input,
   PasswordInput,
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
-export const Login = () => {
+export const NewPassword = () => {
   return (
     <div className={css.section}>
-      <p className={css.header}>Вход</p>
+      <p className={css.header}>Восстановление пароля</p>
       <form className={css.form}>
-        <Input
-          type={"text"}
-          placeholder={"E-mail"}
+        <PasswordInput
+          placeholder={"Введите новый пароль"}
           onChange={(e) => console.log(e.target.value)}
           name={"name"}
           value={""}
-          error={false}
-          errorText={"Ошибка"}
           size={"default"}
+          icon={"ShowIcon"}
           extraClass={css.spacer}
         />
-        <PasswordInput
+        <Input
+          placeholder={"Введите код из письма"}
           onChange={(e) => console.log(e.target.value)}
+          name={"name"}
           value={""}
+          size={"default"}
           extraClass={css.spacer}
         />
         <div className={css.button}>
           {" "}
           <Button htmlType="button" type="primary" size="large">
-            Войти
+            Сохранить
           </Button>
         </div>
       </form>
       <div className={css.link}>
         <p className={css.textBox}>
-          <span className={css.loginText}>Вы — новый пользователь?</span>
-          <span className={css.urlText}>Зарегистрироваться</span>
-        </p>
-        <p className={css.textBox}>
-          <span className={css.loginText}>Забыли пароль?</span>
-          <span className={css.urlText}>Восстановить пароль</span>
+          <span className={css.loginText}>Вспомнили пароль?</span>
+          <span className={css.urlText}>Войти</span>
         </p>
       </div>
     </div>
