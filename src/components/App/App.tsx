@@ -10,6 +10,7 @@ import { DndProvider } from "react-dnd";
 import { fetchIngredients } from "../../services/middleware/fetchIngredient";
 import { AnyAction } from "redux";
 import { Login } from "../Login/Login";
+import { ForgotPassword } from "../ForgotPassword/ForgotPassword";
 
 export function App() {
   useEffect(() => {
@@ -25,6 +26,10 @@ export function App() {
             <Routes>
               <Route path="react-burger/" element={<BurgerConstructor />} />
               <Route path="react-burger/login" element={<Login />} />
+              <Route
+                path="react-burger/forgot-password"
+                element={<ForgotPassword />}
+              />
             </Routes>
           </Provider>
         </DndProvider>
