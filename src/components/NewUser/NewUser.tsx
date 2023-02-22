@@ -6,12 +6,58 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import { useNavigate } from "react-router-dom";
+import { registerNewUser } from "../../services/api/registerNewUser";
+import { emailValidator } from "../../utils/emailValidator";
+import { submitOnEnter } from "../../utils/submitOnEnter";
+import { useState } from "react";
 
 export const NewUser = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onNameChange = (e: any) => {
+    setName(e.target.value);
+  };
+
+  const onEmailChange = (e: any) => {
+    setEmail(e.target.value);
+  };
+
+  const onPasswordChange = (e: any) => {
+    setPassword(e.target.value);
+  };
   const navigate = useNavigate();
 
   const onLoginClick = () => {
     navigate("/react-burger/login");
+  };
+
+  const isNotEmptyString = (str: string) => {
+    return str.length > 0;
+  };
+
+  const allFieldsValid =
+    isNotEmptyString(name) &&
+    emailValidator(email) &&
+    isNotEmptyString(password);
+
+  const onButtonClick = () => {
+    registerNewUser(name, email, password).then((res) => onResponse(res));
+  };
+
+  const onResponse = (res: any) => {
+    console.log(res);
+    if (res.success) {
+      navigate("/react-burger/login");
+    }
+  };
+
+  const pressButtonOnEnter = (e: any) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      onButtonClick();
+    }
   };
 
   return (
@@ -21,34 +67,43 @@ export const NewUser = () => {
         <Input
           type={"text"}
           placeholder={"Имя"}
-          onChange={(e) => console.log(e.target.value)}
+          onChange={(e) => onNameChange(e)}
           name={"name"}
-          value={""}
+          value={name}
           error={false}
           errorText={"Ошибка"}
           size={"default"}
           extraClass={css.spacer}
+          onKeyDown={pressButtonOnEnter}
         />
         <Input
           type={"email"}
           placeholder={"E-mail"}
-          onChange={(e) => console.log(e.target.value)}
-          name={"name"}
-          value={""}
+          onChange={(e) => onEmailChange(e)}
+          name={email}
+          value={email}
           error={false}
           errorText={"Ошибка"}
           size={"default"}
           extraClass={css.spacer}
+          onKeyDown={pressButtonOnEnter}
         />
         <PasswordInput
-          onChange={(e) => console.log(e.target.value)}
-          placeholder={"Пароль"}
-          value={""}
+          onChange={(e) => onPasswordChange(e)}
+          placeholder={password}
+          value={password}
           extraClass={css.spacer}
+          onKeyDown={pressButtonOnEnter}
         />
         <div className={css.button}>
           {" "}
-          <Button htmlType="button" type="primary" size="large">
+          <Button
+            disabled={!allFieldsValid}
+            htmlType="button"
+            type="primary"
+            size="large"
+            onClick={onButtonClick}
+          >
             Зарегистрироваться
           </Button>
         </div>

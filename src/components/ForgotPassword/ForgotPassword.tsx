@@ -30,7 +30,6 @@ export const ForgotPassword = () => {
   };
 
   const onButtonClick = () => {
-    console.log("triggered");
     forgotPassword(email).then((res) => onResponse(res));
   };
 

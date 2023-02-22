@@ -6,6 +6,8 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { emailValidator } from "../../utils/emailValidator";
+import { submitOnEnter } from "../../utils/submitOnEnter";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -23,6 +25,22 @@ export const Login = () => {
     setEmail(e.target.value);
   };
 
+  const handlePasswordChange = (e: any) => {
+    setPassword(e.target.value);
+  };
+
+  const [password, setPassword] = useState("");
+
+  const isNotEmptyString = (str: string) => {
+    return str.length > 0;
+  };
+
+  const allInputsValid = emailValidator(email) && isNotEmptyString(password);
+
+  const handleButtonClick = () => {
+    console.log("button clicked");
+  };
+
   return (
     <div className={css.section}>
       <p className={css.header}>Вход</p>
@@ -37,15 +55,23 @@ export const Login = () => {
           errorText={"Ошибка"}
           size={"default"}
           extraClass={css.spacer}
+          onKeyDown={(e) => submitOnEnter(e, handleButtonClick)}
         />
         <PasswordInput
-          onChange={(e) => console.log(e.target.value)}
-          value={""}
+          onChange={(e) => handlePasswordChange(e)}
+          value={password}
           extraClass={css.spacer}
+          onKeyDown={(e) => submitOnEnter(e, handleButtonClick)}
         />
         <div className={css.button}>
           {" "}
-          <Button htmlType="button" type="primary" size="large">
+          <Button
+            disabled={!allInputsValid}
+            htmlType="button"
+            type="primary"
+            size="large"
+            onClick={handleButtonClick}
+          >
             Войти
           </Button>
         </div>
