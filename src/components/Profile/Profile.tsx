@@ -19,6 +19,11 @@ export const Profile = () => {
             <p className={css.profileMenuItemText}>Выход</p>
           </div>
         </div>
+        <div className={css.description}>
+          <p className={css.descriptionText}>
+            В этом разделе вы можете изменить свои персональные данные
+          </p>
+        </div>
       </div>
       <div className={css.fieldsContainer}>
         <form className={css.form}>
@@ -52,6 +57,7 @@ export const Profile = () => {
           />
         </form>
       </div>
+      <div> </div>
     </div>
   );
 };
