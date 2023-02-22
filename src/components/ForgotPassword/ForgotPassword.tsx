@@ -4,7 +4,15 @@ import {
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
+import { useNavigate } from "react-router-dom";
+
 export const ForgotPassword = () => {
+  const navigate = useNavigate();
+
+  const onLoginClick = () => {
+    navigate("/react-burger/login");
+  };
+
   return (
     <div className={css.section}>
       <p className={css.header}>Восстановление пароля </p>
@@ -30,7 +38,9 @@ export const ForgotPassword = () => {
       <div className={css.link}>
         <p className={css.textBox}>
           <span className={css.loginText}>Вспомнили пароль?</span>
-          <span className={css.urlText}>Войти</span>
+          <span onClick={onLoginClick} className={css.urlText}>
+            Войти
+          </span>
         </p>
       </div>
     </div>

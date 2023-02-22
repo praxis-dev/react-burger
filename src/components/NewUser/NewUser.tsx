@@ -5,7 +5,15 @@ import {
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
+import { useNavigate } from "react-router-dom";
+
 export const NewUser = () => {
+  const navigate = useNavigate();
+
+  const onLoginClick = () => {
+    navigate("/react-burger/login");
+  };
+
   return (
     <div className={css.section}>
       <p className={css.header}>Регистрация</p>
@@ -48,7 +56,9 @@ export const NewUser = () => {
       <div className={css.link}>
         <p className={css.textBox}>
           <span className={css.loginText}>Уже зарегистрированы?</span>
-          <span className={css.urlText}>Войти</span>
+          <span onClick={onLoginClick} className={css.urlText}>
+            Войти
+          </span>
         </p>
       </div>
     </div>
