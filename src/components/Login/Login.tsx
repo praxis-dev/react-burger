@@ -4,6 +4,7 @@ import {
   PasswordInput,
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   return (
@@ -36,7 +37,9 @@ export const Login = () => {
       <div className={css.link}>
         <p className={css.textBox}>
           <span className={css.loginText}>Вы — новый пользователь?</span>
-          <span className={css.urlText}>Зарегистрироваться</span>
+          <Link to="react-burger/new-user">
+            <span className={css.urlText}>Зарегистрироваться</span>
+          </Link>
         </p>
         <p className={css.textBox}>
           <span className={css.loginText}>Забыли пароль?</span>
