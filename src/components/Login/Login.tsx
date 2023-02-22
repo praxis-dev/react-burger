@@ -5,6 +5,7 @@ import {
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -16,6 +17,12 @@ export const Login = () => {
     navigate("/react-burger/forgot-password");
   };
 
+  const [email, setEmail] = useState("");
+
+  const handleEmailChange = (e: any) => {
+    setEmail(e.target.value);
+  };
+
   return (
     <div className={css.section}>
       <p className={css.header}>Вход</p>
@@ -23,9 +30,9 @@ export const Login = () => {
         <Input
           type={"text"}
           placeholder={"E-mail"}
-          onChange={(e) => console.log(e.target.value)}
+          onChange={(e) => handleEmailChange(e)}
           name={"name"}
-          value={""}
+          value={email}
           error={false}
           errorText={"Ошибка"}
           size={"default"}

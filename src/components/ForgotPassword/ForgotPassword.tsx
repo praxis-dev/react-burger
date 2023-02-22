@@ -5,6 +5,9 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import { useNavigate } from "react-router-dom";
+import { forgotPassword } from "../../services/api/forgotPassword";
+import { useState } from "react";
+import { emailValidator } from "../../utils/emailValidator";
 
 export const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -13,24 +16,58 @@ export const ForgotPassword = () => {
     navigate("/react-burger/login");
   };
 
+  const [email, setEmail] = useState("");
+
+  const handleEmailChange = (e: any) => {
+    setEmail(e.target.value);
+  };
+
+  const onResponse = (res: any) => {
+    console.log(res);
+    if (res.success) {
+      navigate("/react-burger/new-password");
+    }
+  };
+
+  const onButtonClick = () => {
+    console.log("triggered");
+    forgotPassword(email).then((res) => onResponse(res));
+  };
+
+  const pressButtonOnEnter = (e: any) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      onButtonClick();
+    }
+  };
+
   return (
     <div className={css.section}>
       <p className={css.header}>Восстановление пароля </p>
       <form className={css.form}>
         <Input
+          onChange={(e) => handleEmailChange(e)}
           type={"text"}
           placeholder={"Укажите e-mail"}
-          onChange={(e) => console.log(e.target.value)}
           name={"name"}
-          value={""}
+          value={email}
           error={false}
           errorText={"Ошибка"}
           size={"default"}
           extraClass={css.spacer}
+          onKeyDown={pressButtonOnEnter}
         />
         <div className={css.button}>
           {" "}
-          <Button htmlType="button" type="primary" size="large">
+          <Button
+            disabled={!emailValidator(email)}
+            onClick={() => {
+              onButtonClick();
+            }}
+            htmlType="button"
+            type="primary"
+            size="large"
+          >
             Восстановить
           </Button>
         </div>
