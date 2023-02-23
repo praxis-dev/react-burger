@@ -1,10 +1,10 @@
-import { GetIngredients } from "../api/getIngredients";
+import { getIngredients } from "../api/getIngredients";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 
-export const fetchIngredients = () => {
+export const fetchIngredientsMiddleware = () => {
   return function (dispatch: any) {
     dispatch(ingredientsSlice.actions._INGREDIENTS_REQUEST());
-    GetIngredients()
+    getIngredients()
       .then((data: any) => {
         dispatch(ingredientsSlice.actions._INGREDIENTS_SUCCESS(data.data));
       })

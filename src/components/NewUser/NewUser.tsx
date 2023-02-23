@@ -6,14 +6,13 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import { useNavigate } from "react-router-dom";
-import { registerNewUser } from "../../services/api/registerNewUser";
 import { emailValidator } from "../../utils/emailValidator";
 import { submitOnEnter } from "../../utils/submitOnEnter";
 import { useState } from "react";
 
-import { useDispatch } from "react-redux";
 import { store } from "../../services/store/Store";
-import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
+import { registerNewUserMiddleware } from "../../services/middleware/registerNewUserMiddleware";
+import { AnyAction } from "redux";
 
 export const NewUser = () => {
   const [name, setName] = useState("");
@@ -47,17 +46,23 @@ export const NewUser = () => {
     isNotEmptyString(password);
 
   const onButtonClick = () => {
-    // registerNewUser(name, email, password).then((res) => onResponse(res));
-    store
-      .dispatch(
-        ingredientsSlice.actions._REGISTER_REQUEST({ name, email, password })
-      )
-      .then((res: any) => {
-        console.log(res);
-        if (res.success) {
-          navigate("/react-burger/login");
-        }
-      });
+    if (allFieldsValid) {
+      store.dispatch(
+        registerNewUserMiddleware({
+          name,
+          email,
+          password,
+          onResponse,
+        }) as unknown as AnyAction
+      );
+    }
+  };
+
+  const onResponse = (res: any) => {
+    console.log(res);
+    if (res.success) {
+      navigate("/react-burger/login");
+    }
   };
 
   const pressButtonOnEnter = (e: any) => {

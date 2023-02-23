@@ -1,4 +1,4 @@
-export async function registerNewUser(name, email, password) {
+export async function registerNewUser({ name, email, password }) {
   const response = await fetch(
     "https://norma.nomoreparties.space/api/auth/register",
     {
@@ -12,5 +12,5 @@ export async function registerNewUser(name, email, password) {
   if (!response.ok) {
     throw new Error("Error: there is an error");
   }
-  return response.json();
+  return response;
 }

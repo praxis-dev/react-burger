@@ -7,7 +7,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { store } from "../../services/store/Store";
 import { Provider } from "react-redux";
 import { DndProvider } from "react-dnd";
-import { fetchIngredients } from "../../services/middleware/fetchIngredient";
+import { fetchIngredientsMiddleware } from "../../services/middleware/fetchIngredientsMiddleware";
 import { AnyAction } from "redux";
 import { Login } from "../Login/Login";
 import { ForgotPassword } from "../ForgotPassword/ForgotPassword";
@@ -17,7 +17,7 @@ import { Profile } from "../Profile/Profile";
 
 export function App() {
   useEffect(() => {
-    store.dispatch(fetchIngredients() as unknown as AnyAction);
+    store.dispatch(fetchIngredientsMiddleware() as unknown as AnyAction);
   }, []);
 
   return (

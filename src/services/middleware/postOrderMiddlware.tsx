@@ -1,11 +1,11 @@
 import { postOrder } from "../api/postOrder";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 
-export const postOrderThunk = (data: any) => {
+export const postOrderMiddleware = (data: any) => {
   return async function (dispatch: any) {
     dispatch(ingredientsSlice.actions._ORDER_NUMBER_REQUEST("Loading"));
 
-    const result = await fetch("https://norma.nomoreparties.space/api/orders", {
+    const result = await fetch("some url", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

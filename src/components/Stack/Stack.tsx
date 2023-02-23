@@ -9,7 +9,7 @@ import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 import { useDrop } from "react-dnd";
 import { useEffect } from "react";
-import { postOrderThunk } from "../../services/middleware/postOrder";
+import { postOrderMiddleware } from "../../services/middleware/postOrderMiddlware";
 import { AnyAction } from "redux";
 
 function Stack() {
@@ -87,7 +87,7 @@ function Stack() {
   }
 
   async function postOrder() {
-    store.dispatch(postOrderThunk(data) as unknown as AnyAction);
+    store.dispatch(postOrderMiddleware(data) as unknown as AnyAction);
 
     toggleModal();
   }
