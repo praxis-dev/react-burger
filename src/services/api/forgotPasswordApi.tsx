@@ -1,4 +1,4 @@
-export async function forgotPassword(email) {
+export async function forgotPasswordApi(email: string) {
   const response = await fetch(
     "https://norma.nomoreparties.space/api/password-reset",
     {

@@ -5,7 +5,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import { useNavigate } from "react-router-dom";
-import { forgotPassword } from "../../services/api/forgotPassword";
+import { forgotPasswordApi } from "../../services/api/forgotPasswordApi";
 import { useState } from "react";
 import { emailValidator } from "../../utils/emailValidator";
 
@@ -30,7 +30,7 @@ export const ForgotPassword = () => {
   };
 
   const onButtonClick = () => {
-    forgotPassword(email).then((res) => onResponse(res));
+    forgotPasswordApi(email).then((res) => onResponse(res));
   };
 
   const pressButtonOnEnter = (e: any) => {

@@ -1,4 +1,4 @@
-import { registerNewUser } from "../api/registerNewUser";
+import { registerNewUserApi } from "../api/registerNewUserApi";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 
 export const registerNewUserMiddleware = (data: any) => {
@@ -6,7 +6,7 @@ export const registerNewUserMiddleware = (data: any) => {
     dispatch(ingredientsSlice.actions._REGISTER_REQUEST("Loading"));
     console.log(data);
 
-    const result = await registerNewUser(data);
+    const result = await registerNewUserApi(data);
 
     if (!result.ok) {
       dispatch(ingredientsSlice.actions._REGISTER_ERROR(result.statusText));

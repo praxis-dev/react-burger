@@ -1,4 +1,14 @@
-export async function registerNewUser({ name, email, password }) {
+interface RegisterNewUserRequest {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export async function registerNewUserApi({
+  name,
+  email,
+  password,
+}: RegisterNewUserRequest) {
   const response = await fetch(
     "https://norma.nomoreparties.space/api/auth/register",
     {

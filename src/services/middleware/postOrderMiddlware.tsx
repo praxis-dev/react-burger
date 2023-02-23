@@ -1,19 +1,11 @@
-import { postOrder } from "../api/postOrder";
+import { postOrderApi } from "../api/postOrderApi";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 
 export const postOrderMiddleware = (data: any) => {
   return async function (dispatch: any) {
     dispatch(ingredientsSlice.actions._ORDER_NUMBER_REQUEST("Loading"));
 
-    const result = await fetch("some url", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ingredients: data.map((element: any) => element._id),
-      }),
-    });
+    const result = await postOrderApi(data);
 
     if (!result.ok) {
       dispatch(ingredientsSlice.actions._ORDER_NUMBER_ERROR(result.statusText));

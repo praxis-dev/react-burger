@@ -13,6 +13,7 @@ export const ingredientsSlice = createSlice({
     ingredientsBackup: [],
     orderNumberBackup: 0,
     userData: {},
+    authUser: false,
   },
   reducers: {
     _REGISTER_REQUEST: (state, action) => {

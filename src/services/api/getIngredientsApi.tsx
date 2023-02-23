@@ -1,4 +1,4 @@
-export async function getIngredients() {
+export async function getIngredientsApi() {
   const response = await fetch(
     "https://norma.nomoreparties.space/api/ingredients"
   );
