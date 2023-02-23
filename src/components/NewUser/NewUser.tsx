@@ -11,6 +11,10 @@ import { emailValidator } from "../../utils/emailValidator";
 import { submitOnEnter } from "../../utils/submitOnEnter";
 import { useState } from "react";
 
+import { useDispatch } from "react-redux";
+import { store } from "../../services/store/Store";
+import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
+
 export const NewUser = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -43,21 +47,21 @@ export const NewUser = () => {
     isNotEmptyString(password);
 
   const onButtonClick = () => {
-    registerNewUser(name, email, password).then((res) => onResponse(res));
-  };
-
-  const onResponse = (res: any) => {
-    console.log(res);
-    if (res.success) {
-      navigate("/react-burger/login");
-    }
+    // registerNewUser(name, email, password).then((res) => onResponse(res));
+    store
+      .dispatch(
+        ingredientsSlice.actions._REGISTER_REQUEST({ name, email, password })
+      )
+      .then((res: any) => {
+        console.log(res);
+        if (res.success) {
+          navigate("/react-burger/login");
+        }
+      });
   };
 
   const pressButtonOnEnter = (e: any) => {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      onButtonClick();
-    }
+    submitOnEnter(e, onButtonClick);
   };
 
   return (

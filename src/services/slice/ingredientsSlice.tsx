@@ -12,8 +12,19 @@ export const ingredientsSlice = createSlice({
     error: "",
     ingredientsBackup: [],
     orderNumberBackup: 0,
+    userData: {},
   },
   reducers: {
+    _REGISTER_REQUEST: (state, action) => {
+      state.userData = action.payload as any;
+    },
+    _REGISTER_SUCCESS: (state, action) => {
+      state.userData = action.payload;
+    },
+    _REGISTER_ERROR: (state, action) => {
+      state.error = action.payload;
+      console.log("error: " + action.payload);
+    },
     _INGREDIENTS_REQUEST: (state) => {
       state.ingredientsBackup = state.ingredients;
     },
