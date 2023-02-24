@@ -13,7 +13,7 @@ function AppHeader() {
         <div className={css.leftBlock}>
           <div className={css.headerItem}>
             <BurgerIcon type="primary" />
-            <a href="#" className={css.headerText}>
+            <a href="/" className={css.headerText}>
               Конструктор
             </a>
           </div>
@@ -31,7 +31,7 @@ function AppHeader() {
       <div className={css.rightColumn}>
         <div className={css.headerItem}>
           <ProfileIcon type="primary" />
-          <a href="#" className={css.headerText}>
+          <a href="react-burger/profile" className={css.headerText}>
             Личный кабинет
           </a>
         </div>

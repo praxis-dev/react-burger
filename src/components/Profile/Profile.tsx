@@ -3,8 +3,16 @@ import {
   Input,
   PasswordInput,
 } from "@ya.praktikum/react-developer-burger-ui-components";
+import { logoutUserMiddleware } from "../../services/middleware/logoutUserMiddleware";
+import { store } from "../../services/store/Store";
+import { AnyAction } from "redux";
 
 export const Profile = () => {
+  const onExitClick = () => {
+    console.log("onExitClick");
+    store.dispatch(logoutUserMiddleware() as unknown as AnyAction);
+  };
+
   return (
     <div className={css.section}>
       <div className={css.profileMenuContainer}>
@@ -16,7 +24,9 @@ export const Profile = () => {
             <p className={css.profileMenuItemText}>История</p>
           </div>
           <div className={css.profileMenuItem}>
-            <p className={css.profileMenuItemText}>Выход</p>
+            <p onClick={onExitClick} className={css.profileMenuItemText}>
+              Выход
+            </p>
           </div>
         </div>
         <div className={css.description}>
