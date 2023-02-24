@@ -8,6 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { emailValidator } from "../../utils/emailValidator";
 import { submitOnEnter } from "../../utils/submitOnEnter";
+import { useDispatch } from "react-redux";
+import { store } from "../../services/store/Store";
+import { authUserMiddleware } from "../../services/middleware/authUserMiddleWare";
+import { AnyAction } from "redux";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -37,8 +41,24 @@ export const Login = () => {
 
   const allInputsValid = emailValidator(email) && isNotEmptyString(password);
 
+  const onResponse = (res: any) => {
+    console.log(res);
+    if (res.success) {
+      navigate("/react-burger");
+    }
+  };
+
   const handleButtonClick = () => {
-    console.log("button clicked");
+    if (allInputsValid) {
+      store.dispatch(
+        authUserMiddleware({
+          email,
+          password,
+          onResponse,
+        }) as unknown as AnyAction
+      );
+      console.log("button clicked");
+    }
   };
 
   return (

@@ -4,7 +4,6 @@ import { ingredientsSlice } from "../slice/ingredientsSlice";
 export const registerNewUserMiddleware = (data: any) => {
   return async function (dispatch: any) {
     dispatch(ingredientsSlice.actions._REGISTER_REQUEST("Loading"));
-    console.log(data);
 
     const result = await registerNewUserApi(data);
 

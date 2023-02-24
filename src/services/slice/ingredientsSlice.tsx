@@ -16,6 +16,16 @@ export const ingredientsSlice = createSlice({
     authUser: false,
   },
   reducers: {
+    _LOGIN_REQUEST: (state, action) => {
+      state.userData = action.payload as any;
+    },
+    _LOGIN_SUCCESS: (state, action) => {
+      state.userData = action.payload;
+    },
+    _LOGIN_ERROR: (state, action) => {
+      state.error = action.payload;
+      console.log("error: " + action.payload);
+    },
     _REGISTER_REQUEST: (state, action) => {
       state.userData = action.payload as any;
     },

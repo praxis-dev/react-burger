@@ -1,8 +1,0 @@
-import { ingredientsSlice } from "../slices/ingredientsSlice";
-import { ingredientsSlice } from "../slice/ingredientsSlice";
-
-export const authUserMiddleware = (data: any) => {
-  return async function (dispatch: any) {
-    dispatch(ingredientsSlice.actions.authUser(data));
-  };
-};
