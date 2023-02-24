@@ -47,7 +47,6 @@ function Stack() {
     const bunCounter = data.filter((item: any) => item.type === "bun").length;
 
     if (bunCounter > 1) {
-      console.log("bun found");
       const firstBunItem = data.find((item: any) => item.type === "bun");
 
       store.dispatch(
@@ -91,8 +90,6 @@ function Stack() {
 
     toggleModal();
   }
-
-  console.log(useSelector((state: any) => state.ingredients.orderNumberBackup));
 
   const renderElement = (data: any) => {
     return data.map((element: any, index: number) => {

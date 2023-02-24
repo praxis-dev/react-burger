@@ -59,7 +59,6 @@ export const NewUser = () => {
   };
 
   const onResponse = (res: any) => {
-    console.log(res);
     if (res.success) {
       navigate("/react-burger/login");
     }

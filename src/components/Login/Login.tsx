@@ -41,7 +41,6 @@ export const Login = () => {
   const allInputsValid = emailValidator(email) && isNotEmptyString(password);
 
   const onResponse = (res: any) => {
-    console.log(res);
     if (res.success) {
       navigate("/react-burger");
     }
@@ -56,7 +55,6 @@ export const Login = () => {
           onResponse,
         }) as unknown as AnyAction
       );
-      console.log("button clicked");
     }
   };
 

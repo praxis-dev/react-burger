@@ -6,12 +6,24 @@ import {
 import { logoutUserMiddleware } from "../../services/middleware/logoutUserMiddleware";
 import { store } from "../../services/store/Store";
 import { AnyAction } from "redux";
+import { getUserDataMiddleware } from "../../services/middleware/getUserDataMiddleware";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export const Profile = () => {
   const onExitClick = () => {
-    console.log("onExitClick");
     store.dispatch(logoutUserMiddleware() as unknown as AnyAction);
   };
+
+  useEffect(() => {
+    store.dispatch(getUserDataMiddleware() as unknown as AnyAction);
+  }, []);
+
+  const userData = useSelector((state: any) => state.ingredients.userData);
+
+  console.log(userData.name, userData.email);
+
+  console.log("userData: " + JSON.stringify(userData));
 
   return (
     <div className={css.section}>

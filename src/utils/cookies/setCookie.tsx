@@ -20,5 +20,4 @@ export const setCookie = (name: string, value: string, options: any = {}) => {
   }
 
   document.cookie = updatedCookie;
-  console.log(document.cookie);
 };

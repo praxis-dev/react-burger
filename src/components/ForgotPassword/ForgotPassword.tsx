@@ -23,7 +23,6 @@ export const ForgotPassword = () => {
   };
 
   const onResponse = (res: any) => {
-    console.log(res);
     if (res.success) {
       navigate("/react-burger/new-password");
     }
