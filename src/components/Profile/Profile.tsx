@@ -9,6 +9,7 @@ import { AnyAction } from "redux";
 import { getUserDataMiddleware } from "../../services/middleware/getUserDataMiddleware";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 export const Profile = () => {
   const onExitClick = () => {
@@ -20,6 +21,24 @@ export const Profile = () => {
   }, []);
 
   const userData = useSelector((state: any) => state.ingredients.userData);
+
+  const [name, setName] = useState(userData.name || "");
+  const [email, setEmail] = useState(userData.email || "");
+
+  useEffect(() => {
+    if (userData) {
+      setName(userData.name || "");
+      setEmail(userData.email || "");
+    }
+  }, [userData]);
+
+  const onNameChange = (e: any) => {
+    setName(e.target.value);
+  };
+
+  const onEmailChange = (e: any) => {
+    setEmail(e.target.value);
+  };
 
   console.log(userData.name, userData.email);
 
@@ -52,9 +71,9 @@ export const Profile = () => {
           <Input
             type={"text"}
             placeholder={"Имя"}
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => onNameChange(e)}
             name={"name"}
-            value={""}
+            value={name}
             error={false}
             errorText={"Ошибка"}
             size={"default"}
@@ -63,9 +82,9 @@ export const Profile = () => {
           <Input
             type={"text"}
             placeholder={"Логин"}
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => onEmailChange(e)}
             name={"Login"}
-            value={""}
+            value={email}
             error={false}
             errorText={"Ошибка"}
             size={"default"}
