@@ -13,5 +13,7 @@ export const logoutUserMiddleware = () => {
       dispatch(ingredientsSlice.actions._LOGOUT_USER_ERROR(result.statusText));
     }
     dispatch(ingredientsSlice.actions._LOGOUT_USER_SUCCESS());
+    deleteCookie("token");
+    console.log("logoutUserMiddleware: " + document.cookie);
   };
 };
