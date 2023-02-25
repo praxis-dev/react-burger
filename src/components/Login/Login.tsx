@@ -12,6 +12,7 @@ import { store } from "../../services/store/Store";
 import { authUserMiddleware } from "../../services/middleware/authUserMiddleware";
 import { AnyAction } from "redux";
 import { AuthCheck } from "../../utils/authentication/AuthCheck";
+import { useSelector } from "react-redux";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -47,6 +48,8 @@ export const Login = () => {
     }
   };
 
+  AuthCheck();
+
   const handleButtonClick = () => {
     if (allInputsValid) {
       store.dispatch(
@@ -56,9 +59,10 @@ export const Login = () => {
           onResponse,
         }) as unknown as AnyAction
       );
-      AuthCheck();
     }
   };
+
+  AuthCheck();
 
   return (
     <div className={css.section}>

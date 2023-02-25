@@ -58,10 +58,6 @@ export const Profile = () => {
     store.dispatch(getUserDataMiddleware() as unknown as AnyAction);
   }, []);
 
-  console.log(userData.name, userData.email);
-
-  console.log("userData: " + JSON.stringify(userData));
-
   const onButtonClick = () => {
     if (allFieldsValid) {
       store.dispatch(

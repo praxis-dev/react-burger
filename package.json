@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.3",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.11",
     "gh-pages": "^5.0.0",
