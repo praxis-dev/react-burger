@@ -11,6 +11,7 @@ import { submitOnEnter } from "../../utils/submitOnEnter";
 import { store } from "../../services/store/Store";
 import { authUserMiddleware } from "../../services/middleware/authUserMiddleware";
 import { AnyAction } from "redux";
+import { AuthCheck } from "../../utils/authentication/AuthCheck";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ export const Login = () => {
           onResponse,
         }) as unknown as AnyAction
       );
+      AuthCheck();
     }
   };
 
