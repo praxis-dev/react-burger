@@ -2,28 +2,21 @@ import css from "./Profile.module.css";
 import {
   Input,
   PasswordInput,
+  Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { logoutUserMiddleware } from "../../services/middleware/logoutUserMiddleware";
+import { getUserDataMiddleware } from "../../services/middleware/getUserDataMiddleware";
+import { updateUserMiddleware } from "../../services/middleware/updateUserMiddleware";
+
 import { store } from "../../services/store/Store";
 import { AnyAction } from "redux";
-import { getUserDataMiddleware } from "../../services/middleware/getUserDataMiddleware";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { emailValidator } from "../../utils/emailValidator";
 
 export const Profile = () => {
-  const onExitClick = () => {
-    store.dispatch(logoutUserMiddleware() as unknown as AnyAction);
-  };
-
-  useEffect(() => {
-    store.dispatch(getUserDataMiddleware() as unknown as AnyAction);
-  }, []);
-
   const userData = useSelector((state: any) => state.ingredients.userData);
-
-  const [name, setName] = useState(userData.name || "");
-  const [email, setEmail] = useState(userData.email || "");
 
   useEffect(() => {
     if (userData) {
@@ -31,6 +24,14 @@ export const Profile = () => {
       setEmail(userData.email || "");
     }
   }, [userData]);
+
+  const [name, setName] = useState(userData.name || "");
+  const [email, setEmail] = useState(userData.email || "");
+  const [password, setPassword] = useState("");
+
+  const onPasswordChange = (e: any) => {
+    setPassword(e.target.value);
+  };
 
   const onNameChange = (e: any) => {
     setName(e.target.value);
@@ -40,9 +41,38 @@ export const Profile = () => {
     setEmail(e.target.value);
   };
 
+  const isNotEmptyString = (str: string) => {
+    return str.length > 0;
+  };
+
+  const allFieldsValid =
+    isNotEmptyString(name) &&
+    emailValidator(email) &&
+    isNotEmptyString(password);
+
+  const onExitClick = () => {
+    store.dispatch(logoutUserMiddleware() as unknown as AnyAction);
+  };
+
+  useEffect(() => {
+    store.dispatch(getUserDataMiddleware() as unknown as AnyAction);
+  }, []);
+
   console.log(userData.name, userData.email);
 
   console.log("userData: " + JSON.stringify(userData));
+
+  const onButtonClick = () => {
+    if (allFieldsValid) {
+      store.dispatch(
+        updateUserMiddleware({
+          name,
+          email,
+          password,
+        }) as unknown as AnyAction
+      );
+    }
+  };
 
   return (
     <div className={css.section}>
@@ -91,11 +121,23 @@ export const Profile = () => {
             extraClass={css.spacer}
           />
           <PasswordInput
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => onPasswordChange(e)}
             placeholder={"Пароль"}
-            value={""}
+            value={password}
             extraClass={css.spacer}
           />
+          <div className={css.button}>
+            {" "}
+            <Button
+              disabled={!allFieldsValid}
+              htmlType="button"
+              type="primary"
+              size="large"
+              onClick={onButtonClick}
+            >
+              Сохранить
+            </Button>
+          </div>
         </form>
       </div>
       <div> </div>
