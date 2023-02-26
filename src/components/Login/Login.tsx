@@ -48,8 +48,6 @@ export const Login = () => {
     }
   };
 
-  AuthCheck();
-
   const handleButtonClick = () => {
     if (allInputsValid) {
       store.dispatch(
@@ -61,8 +59,6 @@ export const Login = () => {
       );
     }
   };
-
-  AuthCheck();
 
   return (
     <div className={css.section}>
