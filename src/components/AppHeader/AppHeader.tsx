@@ -5,8 +5,15 @@ import {
   ProfileIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import css from "./AppHeader.module.css";
+import { useNavigate } from "react-router-dom";
 
 function AppHeader() {
+  const navigate = useNavigate();
+
+  const onProfileClick = () => {
+    navigate("/react-burger/profile");
+  };
+
   return (
     <header className={css.header}>
       <div className={css.leftColumn}>
@@ -31,9 +38,9 @@ function AppHeader() {
       <div className={css.rightColumn}>
         <div className={css.headerItem}>
           <ProfileIcon type="primary" />
-          <a href="react-burger/profile" className={css.headerText}>
+          <div onClick={onProfileClick} className={css.headerText}>
             Личный кабинет
-          </a>
+          </div>
         </div>
       </div>
     </header>

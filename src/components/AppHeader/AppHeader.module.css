@@ -24,6 +24,7 @@
   flex-direction: row;
   align-items: center;
   padding: 20px 17px;
+  cursor: pointer;
 }
 
 .headerText {
