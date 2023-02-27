@@ -14,8 +14,18 @@ export const ingredientsSlice = createSlice({
     orderNumberBackup: 0,
     userData: {},
     authUser: false,
+    userLocation: "",
   },
   reducers: {
+    _UPDATE_INITIAL_LOCATION: (state, action) => {
+      state.userLocation = action.payload;
+      console.log("userLocation added to state: " + action.payload);
+      console.log("userLocation in state: " + state.userLocation);
+    },
+    _CLEAR_INITIAL_LOCATION: (state) => {
+      console.log("clearing triggered");
+      state.userLocation = "";
+    },
     _UPDATE_USER_REQUEST: (state, action) => {
       state.userData = action.payload as any;
     },

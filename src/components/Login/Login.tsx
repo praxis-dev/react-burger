@@ -11,8 +11,9 @@ import { submitOnEnter } from "../../utils/submitOnEnter";
 import { store } from "../../services/store/Store";
 import { authUserMiddleware } from "../../services/middleware/authUserMiddleware";
 import { AnyAction } from "redux";
-import { AuthCheck } from "../../utils/authentication/AuthCheck";
+import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -42,9 +43,25 @@ export const Login = () => {
 
   const allInputsValid = emailValidator(email) && isNotEmptyString(password);
 
+  const initialLocation = useSelector(
+    (state: any) => store.getState().ingredients.userLocation
+  );
+
   const onResponse = (res: any) => {
     if (res.success) {
-      navigate("/react-burger");
+      // if initial location contains "/react-burger/profile" then navigate to it
+      if (
+        initialLocation &&
+        initialLocation.includes("/react-burger/profile")
+      ) {
+        console.log(`navigating to ${initialLocation}`);
+
+        navigate(initialLocation);
+        store.dispatch(ingredientsSlice.actions._CLEAR_INITIAL_LOCATION());
+        console.log(`initial location cleared ${initialLocation}`);
+      } else {
+        navigate("/react-burger/");
+      }
     }
   };
 

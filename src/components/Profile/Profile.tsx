@@ -16,6 +16,8 @@ import { useState } from "react";
 import { emailValidator } from "../../utils/emailValidator";
 import { useNavigate } from "react-router-dom";
 
+import { useLocation } from "react-router-dom";
+
 export const Profile = () => {
   const userData = useSelector((state: any) => state.ingredients.userData);
 
@@ -25,6 +27,8 @@ export const Profile = () => {
       setEmail(userData.email || "");
     }
   }, [userData]);
+
+  console.log(useLocation().pathname);
 
   const [name, setName] = useState(userData.name || "");
   const [email, setEmail] = useState(userData.email || "");

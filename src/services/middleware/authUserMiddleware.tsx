@@ -12,7 +12,6 @@ export const authUserMiddleware = (data: any) => {
     const res = await result.json();
     dispatch(ingredientsSlice.actions._LOGIN_SUCCESS(res));
     data.onResponse(res);
-    // need to save refresh token and access token in cookies
     setCookie("accessToken", res.accessToken, { "max-age": 1200 });
 
     setCookie("token", res.refreshToken, { "max-age": 1200 });
