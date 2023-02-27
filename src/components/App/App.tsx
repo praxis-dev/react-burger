@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, RouteProps } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import AppHeader from "../AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
@@ -28,20 +28,15 @@ export function App() {
           <Provider store={store}>
             <AppHeader />
             <Routes>
-              <Route path="react-burger/" element={<BurgerConstructor />} />
+              <Route path="react-burger" element={<BurgerConstructor />} />
               <Route path="react-burger/login" element={<Login />} />
+              <Route path="forgot-password" element={<ForgotPassword />} />
+              <Route path="new-password" element={<NewPassword />} />
+              <Route path="new-user" element={<NewUser />} />
+              {/* <Route path="profile" element={ <ProtectedRoute path="profile " } /> */}
               <Route
-                path="react-burger/forgot-password"
-                element={<ForgotPassword />}
-              />
-              <Route
-                path="react-burger/new-password"
-                element={<NewPassword />}
-              />
-              <Route path="react-burger/new-user" element={<NewUser />} />
-              <Route
-                path="react-burger/profile"
-                element={<ProtectedRoute component={<Profile />} />}
+                path="react-burger/profile/*"
+                element={<ProtectedRoute element={<Profile />} />}
               />
             </Routes>
           </Provider>

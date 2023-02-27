@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { emailValidator } from "../../utils/emailValidator";
+import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
   const userData = useSelector((state: any) => state.ingredients.userData);
@@ -50,8 +51,10 @@ export const Profile = () => {
     emailValidator(email) &&
     isNotEmptyString(password);
 
+  const navigate = useNavigate();
   const onExitClick = () => {
     store.dispatch(logoutUserMiddleware() as unknown as AnyAction);
+    navigate("/react-burger/login");
   };
 
   useEffect(() => {

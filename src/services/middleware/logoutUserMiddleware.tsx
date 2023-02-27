@@ -12,5 +12,6 @@ export const logoutUserMiddleware = () => {
     }
     dispatch(ingredientsSlice.actions._LOGOUT_USER_SUCCESS());
     deleteCookie("token");
+    deleteCookie("accessToken");
   };
 };
