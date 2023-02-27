@@ -31,26 +31,26 @@ export function App() {
               <Route path="react-burger" element={<BurgerConstructor />} />
               {/* <Route path="react-burger/login" element={<Login />} /> */}
               <Route
-                path="react-burger/login*"
+                path="react-burger/login/*"
                 element={<ProtectedRoute element={<Login />} />}
               />
 
               {/* <Route path="forgot-password" element={<ForgotPassword />} /> */}
               <Route
-                path="react-burger/forgot-password*"
+                path="react-burger/forgot-password/*"
                 element={<ProtectedRoute element={<ForgotPassword />} />}
               />
 
               {/* <Route path="new-password" element={<NewPassword />} /> */}
               <Route
-                path="react-burger/new-password*"
+                path="react-burger/new-password/*"
                 element={<ProtectedRoute element={<NewPassword />} />}
               />
 
               {/* <Route path="new-user" element={<NewUser />} /> */}
 
               <Route
-                path="react-burger/new-user*"
+                path="react-burger/new-user/*"
                 element={<ProtectedRoute element={<NewUser />} />}
               />
 

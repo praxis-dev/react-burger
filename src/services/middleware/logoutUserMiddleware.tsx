@@ -1,7 +1,6 @@
 import { logoutUserApi } from "../api/logoutUserApi";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 import { deleteCookie } from "../../utils/cookies/deleteCookie";
-import { getCookie } from "../../utils/cookies/getCookie";
 
 export const logoutUserMiddleware = () => {
   return async function (dispatch: any) {

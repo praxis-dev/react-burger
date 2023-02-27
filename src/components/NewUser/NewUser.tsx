@@ -98,7 +98,7 @@ export const NewUser = () => {
         />
         <PasswordInput
           onChange={(e) => onPasswordChange(e)}
-          placeholder={password}
+          placeholder={"Пароль"}
           value={password}
           extraClass={css.spacer}
           onKeyDown={pressButtonOnEnter}

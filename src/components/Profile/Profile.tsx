@@ -58,7 +58,9 @@ export const Profile = () => {
   const navigate = useNavigate();
   const onExitClick = () => {
     store.dispatch(logoutUserMiddleware() as unknown as AnyAction);
-    navigate("/react-burger/login");
+    setTimeout(() => {
+      navigate("/react-burger/login");
+    }, 1000);
   };
 
   useEffect(() => {
