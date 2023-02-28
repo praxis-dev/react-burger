@@ -9,7 +9,7 @@ type props = {
   children: React.ReactNode;
 };
 
-function Popup(props: props) {
+export function Popup(props: props) {
   const { modal, setModal, toggleModal } = props;
 
   useEffect(() => {

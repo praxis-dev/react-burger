@@ -15,6 +15,8 @@ import { NewPassword } from "../NewPassword/NewPassword";
 import { NewUser } from "../NewUser/NewUser";
 import { Profile } from "../Profile/Profile";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
+import { Popup } from "../Popup/Popup";
+import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 
 export function App() {
   useEffect(() => {
@@ -28,6 +30,10 @@ export function App() {
           <Provider store={store}>
             <AppHeader />
             <Routes>
+              <Route
+                path="react-burger/ingredients/:id"
+                element={<Popup element={<IngredientDetails />} />}
+              />
               <Route path="react-burger" element={<BurgerConstructor />} />
               {/* <Route path="react-burger/login" element={<Login />} /> */}
               <Route

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 
-function IngredientDetails() {
+export function IngredientDetails() {
   const [modal, setModal] = useState(false);
 
   const input = useSelector(
