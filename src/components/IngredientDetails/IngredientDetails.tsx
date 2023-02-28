@@ -28,7 +28,7 @@ function IngredientDetails() {
     render: (
       <>
         <div className={css.modalContent}>
-          <p className={css.modalName}>Детали игредиента</p>
+          <p className={css.modalName}>Детали ингредиента</p>
           <img
             src={input.image_large}
             alt="иконка компонент"
