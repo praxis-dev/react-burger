@@ -30,10 +30,10 @@ export function App() {
           <Provider store={store}>
             <AppHeader />
             <Routes>
-              <Route
+              {/* <Route
                 path="react-burger/ingredients/:id"
                 element={<Popup element={<IngredientDetails />} />}
-              />
+              /> */}
               <Route path="react-burger" element={<BurgerConstructor />} />
               {/* <Route path="react-burger/login" element={<Login />} /> */}
               <Route
