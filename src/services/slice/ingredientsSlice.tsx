@@ -15,8 +15,13 @@ export const ingredientsSlice = createSlice({
     userData: {},
     authUser: false,
     userLocation: "",
+    modal: false,
   },
   reducers: {
+    _MODAL: (state, action) => {
+      state.modal = action.payload;
+    },
+
     _UPDATE_INITIAL_LOCATION: (state, action) => {
       state.userLocation = action.payload;
       console.log("userLocation added to state: " + action.payload);

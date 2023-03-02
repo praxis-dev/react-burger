@@ -6,7 +6,11 @@ import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 
 export function IngredientDetails() {
-  const [modal, setModal] = useState(false);
+  const modal = useSelector((state: any) => state.ingredients.modal);
+
+  const setModal = (value: boolean) => {
+    store.dispatch(ingredientsSlice.actions._MODAL(value));
+  };
 
   const input = useSelector(
     (state: any) => state.ingredients.ingredientPopupData
