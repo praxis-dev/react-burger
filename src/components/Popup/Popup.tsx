@@ -8,11 +8,7 @@ import { useCallback } from "react";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 import OrderDetails from "../OrderDetails/OrderDetails";
 
-type props = {
-  children: React.ReactNode;
-};
-
-export function Popup(props: props) {
+export function Popup() {
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const modalType = useSelector((state: any) => state.ingredients.modalType);

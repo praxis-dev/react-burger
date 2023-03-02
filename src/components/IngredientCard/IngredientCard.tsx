@@ -48,8 +48,6 @@ function IngredientCard(props: props) {
     __v,
   } = props;
 
-  const { render } = IngredientDetails();
-
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const setModal = (value: boolean) => {
@@ -108,7 +106,7 @@ function IngredientCard(props: props) {
           <p className={css.componentName}>{name}</p>
         </>
       </div>
-      <Popup>{render}</Popup>
+      <Popup></Popup>
     </>
   );
 }

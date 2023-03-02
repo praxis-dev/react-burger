@@ -148,7 +148,7 @@ function Stack() {
           Оформить заказ{" "}
         </Button>
       </div>
-      <Popup>{render}</Popup>
+      <Popup></Popup>
     </>
   );
 }
