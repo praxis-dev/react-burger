@@ -1,11 +1,17 @@
 import css from "./OrderDetails.module.css";
 import done from "../../images/done.svg";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useState } from "react";
 import { useSelector } from "react-redux";
+import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
+import { store } from "../../services/store/Store";
 
 function OrderDetails() {
-  const [modal, setModal] = useState(false);
+  const modal = useSelector((state: any) => state.ingredients.modal);
+
+  const setModal = (value: boolean) => {
+    store.dispatch(ingredientsSlice.actions._MODAL(value));
+  };
+
   const orderNumber = useSelector(
     (state: any) => state.ingredients.orderNumber
   );
@@ -15,9 +21,6 @@ function OrderDetails() {
   };
 
   return {
-    modal,
-    setModal,
-    toggleModal,
     render: (
       <div className={css.modalContent}>
         <h2 className={css.orderIdentifier}>{orderNumber}</h2>

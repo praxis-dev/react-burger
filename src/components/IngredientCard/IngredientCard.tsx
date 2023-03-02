@@ -62,6 +62,7 @@ function IngredientCard(props: props) {
 
   const onClick = () => {
     store.dispatch(ingredientsSlice.actions.ingredientDataForPopup(props));
+    store.dispatch(ingredientsSlice.actions._MODAL_TYPE("ingredient"));
     toggleModal();
   };
 
@@ -107,9 +108,7 @@ function IngredientCard(props: props) {
           <p className={css.componentName}>{name}</p>
         </>
       </div>
-      <Popup modal={modal} setModal={setModal} toggleModal={toggleModal}>
-        {render}
-      </Popup>
+      <Popup>{render}</Popup>
     </>
   );
 }

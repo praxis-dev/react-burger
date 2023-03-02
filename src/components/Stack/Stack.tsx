@@ -17,7 +17,17 @@ function Stack() {
     (state: any) => state.ingredients.ingredientsInStack
   );
 
-  const { modal, setModal, toggleModal, render } = OrderDetails();
+  const { render } = OrderDetails();
+
+  const modal = useSelector((state: any) => state.ingredients.modal);
+
+  const setModal = (value: boolean) => {
+    store.dispatch(ingredientsSlice.actions._MODAL(value));
+  };
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredient",
@@ -87,6 +97,7 @@ function Stack() {
 
   async function postOrder() {
     store.dispatch(postOrderMiddleware(data) as unknown as AnyAction);
+    store.dispatch(ingredientsSlice.actions._MODAL_TYPE("order"));
 
     toggleModal();
   }
@@ -137,9 +148,7 @@ function Stack() {
           Оформить заказ{" "}
         </Button>
       </div>
-      <Popup modal={modal} setModal={setModal} toggleModal={toggleModal}>
-        {render}
-      </Popup>
+      <Popup>{render}</Popup>
     </>
   );
 }

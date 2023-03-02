@@ -16,8 +16,12 @@ export const ingredientsSlice = createSlice({
     authUser: false,
     userLocation: "",
     modal: false,
+    modalType: "",
   },
   reducers: {
+    _MODAL_TYPE: (state, action) => {
+      state.modalType = action.payload;
+    },
     _MODAL: (state, action) => {
       state.modal = action.payload;
     },
