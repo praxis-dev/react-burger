@@ -48,7 +48,17 @@ function IngredientCard(props: props) {
     __v,
   } = props;
 
-  const { modal, setModal, toggleModal, render } = IngredientDetails();
+  const { render } = IngredientDetails();
+
+  const modal = useSelector((state: any) => state.ingredients.modal);
+
+  const setModal = (value: boolean) => {
+    store.dispatch(ingredientsSlice.actions._MODAL(value));
+  };
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   const onClick = () => {
     store.dispatch(ingredientsSlice.actions.ingredientDataForPopup(props));

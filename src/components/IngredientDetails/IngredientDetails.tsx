@@ -26,9 +26,6 @@ export function IngredientDetails() {
   };
 
   return {
-    modal,
-    setModal,
-    toggleModal,
     render: (
       <>
         <div className={css.modalContent}>
