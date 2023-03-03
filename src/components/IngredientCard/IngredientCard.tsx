@@ -58,7 +58,7 @@ function IngredientCard(props: props) {
   };
 
   const navigate = useNavigate();
-  const dynamicURL = `/ingredients/${_id}`;
+  const dynamicURL = `/react-burger/ingredients/${_id}`;
 
   const onClick = () => {
     store.dispatch(ingredientsSlice.actions.ingredientDataForPopup(props));
