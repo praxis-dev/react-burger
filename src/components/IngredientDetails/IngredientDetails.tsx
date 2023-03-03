@@ -24,6 +24,7 @@ export function IngredientDetails() {
   };
 
   const onClick = () => {
+    console.log("click");
     store.dispatch(ingredientsSlice.actions.ingredientDataForPopup({}));
     setModalType("ingredient");
     toggleModal();
