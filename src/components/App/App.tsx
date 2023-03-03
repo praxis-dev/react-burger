@@ -30,37 +30,28 @@ export function App() {
           <Provider store={store}>
             <AppHeader />
             <Routes>
-              {/* <Route
-                path="react-burger/ingredients/:id"
-                element={<Popup element={<IngredientDetails />} />}
-              /> */}
+              <Route path="/react-burger/ingredients/:id" element={<Popup />} />
               <Route path="react-burger" element={<BurgerConstructor />} />
-              {/* <Route path="react-burger/login" element={<Login />} /> */}
               <Route
                 path="react-burger/login/*"
                 element={<ProtectedRoute element={<Login />} />}
               />
 
-              {/* <Route path="forgot-password" element={<ForgotPassword />} /> */}
               <Route
                 path="react-burger/forgot-password/*"
                 element={<ProtectedRoute element={<ForgotPassword />} />}
               />
 
-              {/* <Route path="new-password" element={<NewPassword />} /> */}
               <Route
                 path="react-burger/new-password/*"
                 element={<ProtectedRoute element={<NewPassword />} />}
               />
-
-              {/* <Route path="new-user" element={<NewUser />} /> */}
 
               <Route
                 path="react-burger/new-user/*"
                 element={<ProtectedRoute element={<NewUser />} />}
               />
 
-              {/* <Route path="profile" element={ <ProtectedRoute path="profile " } /> */}
               <Route
                 path="react-burger/profile/*"
                 element={<ProtectedRoute element={<Profile />} />}

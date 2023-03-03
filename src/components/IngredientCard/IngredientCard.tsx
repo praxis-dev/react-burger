@@ -1,12 +1,11 @@
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Popup from "../Popup/Popup";
-import { useEffect, useState } from "react";
 import css from "./IngredientCard.module.css";
-import IngredientDetails from "../IngredientDetails/IngredientDetails";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 import { useDrag } from "react-dnd";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 type props = element;
 
 type element = {
@@ -58,10 +57,15 @@ function IngredientCard(props: props) {
     setModal(!modal);
   };
 
+  const navigate = useNavigate();
+  const dynamicURL = `/ingredients/${_id}`;
+
   const onClick = () => {
     store.dispatch(ingredientsSlice.actions.ingredientDataForPopup(props));
     store.dispatch(ingredientsSlice.actions._MODAL_TYPE("ingredient"));
+
     toggleModal();
+    navigate(dynamicURL);
   };
 
   const ingredientsInStack = useSelector(
