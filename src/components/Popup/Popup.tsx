@@ -8,6 +8,7 @@ import { useCallback } from "react";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import { useNavigate } from "react-router-dom";
+import IngredientDetailsPage from "../IngredientDetailsPage/IngredientDetailsPage";
 
 export function Popup() {
   const modal = useSelector((state: any) => state.ingredients.modal);
@@ -43,13 +44,17 @@ export function Popup() {
     return () => document.removeEventListener("keydown", handleEscapeKey);
   }, [setModal]);
 
-  if (!modal) return null;
-  return ReactDOM.createPortal(
-    <>
-      <div onClick={toggleModal} className={css.overlay}></div>
-      {render}
-    </>,
-    document.getElementById("portal") as Element
+  // if (!modal) return null;
+  return modal ? (
+    ReactDOM.createPortal(
+      <>
+        <div onClick={toggleModal} className={css.overlay}></div>
+        {render}
+      </>,
+      document.getElementById("portal") as Element
+    )
+  ) : (
+    <IngredientDetailsPage />
   );
 }
 

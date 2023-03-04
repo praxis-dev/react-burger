@@ -32,7 +32,7 @@ export function App() {
             <Routes>
               <Route path="react-burger" element={<BurgerConstructor />}>
                 <Route
-                  path="/react-burger/ingredients/:id"
+                  path="/react-burger/ingredients/:id" // this is the dynamic route for the popup
                   element={<Popup />}
                 />
               </Route>
