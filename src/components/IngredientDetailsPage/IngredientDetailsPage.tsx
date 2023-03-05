@@ -12,13 +12,11 @@ function IngredientDetailsPage() {
   );
   console.log(ingredients);
 
-  const ingredient = ingredients.find((item: any) => item._id === id);
+  let input = ingredients.find((item: any) => {
+    return id === item._id;
+  });
 
-  console.log(ingredient);
-
-  const input = ingredient;
-
-  return (
+  return input ? (
     <>
       <div className={css.modalContent}>
         <p className={css.modalName}>Детали ингредиента</p>
@@ -40,6 +38,8 @@ function IngredientDetailsPage() {
         </div>
       </div>
     </>
+  ) : (
+    <></>
   );
 }
 
