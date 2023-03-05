@@ -32,11 +32,6 @@ export function Popup() {
     resetURL();
   };
 
-  const { id } = useParams<{ id: string }>();
-  const ingredients = useSelector(
-    (state: any) => state.ingredients.ingredients
-  );
-
   useEffect(() => {
     function handleEscapeKey(event: KeyboardEvent) {
       if (event.code === "Escape") {
@@ -46,7 +41,6 @@ export function Popup() {
     }
 
     document.addEventListener("keydown", handleEscapeKey);
-    console.log("id", id);
 
     return () => document.removeEventListener("keydown", handleEscapeKey);
   }, [setModal]);
