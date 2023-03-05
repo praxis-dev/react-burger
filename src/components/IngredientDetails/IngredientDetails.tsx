@@ -3,16 +3,13 @@ import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
+import { useNavigate } from "react-router-dom";
 
 export function IngredientDetails() {
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const setModal = (value: boolean) => {
     store.dispatch(ingredientsSlice.actions._MODAL(value));
-  };
-
-  const setModalType = (value: string) => {
-    store.dispatch(ingredientsSlice.actions._MODAL_TYPE(value));
   };
 
   const input = useSelector(
@@ -23,11 +20,12 @@ export function IngredientDetails() {
     setModal(!modal);
   };
 
+  const navigate = useNavigate();
+
   const onClick = () => {
-    console.log("click");
     store.dispatch(ingredientsSlice.actions.ingredientDataForPopup({}));
-    setModalType("ingredient");
-    toggleModal();
+    setModal(false);
+    navigate("/react-burger");
   };
 
   return {

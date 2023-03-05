@@ -23,10 +23,10 @@ export function Popup() {
     store.dispatch(ingredientsSlice.actions._MODAL(value));
   }, []);
   const navigate = useNavigate();
+
   const resetURL = () => {
     navigate("/react-burger");
   };
-
   const toggleModal = () => {
     setModal(!modal);
     resetURL();

@@ -124,6 +124,10 @@ function Stack() {
 
   const { pathname } = useLocation();
 
+  const authUser = useSelector((state: any) => state.ingredients.authUser);
+
+  console.log("authUser", authUser);
+
   return (
     <>
       <div className={css.stack} ref={dropRef}>
