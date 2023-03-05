@@ -24,7 +24,7 @@ export function Popup() {
   }, []);
   const navigate = useNavigate();
   const resetURL = () => {
-    navigate("/react-burger/");
+    navigate("/react-burger");
   };
 
   const toggleModal = () => {
