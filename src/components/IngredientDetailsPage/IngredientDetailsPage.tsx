@@ -5,12 +5,10 @@ import { useParams } from "react-router-dom";
 
 function IngredientDetailsPage() {
   const { id } = useParams<{ id: string }>();
-  console.log(id);
 
   const ingredients = useSelector(
     (state: any) => state.ingredients.ingredients
   );
-  console.log(ingredients);
 
   let input = ingredients.find((item: any) => {
     return id === item._id;

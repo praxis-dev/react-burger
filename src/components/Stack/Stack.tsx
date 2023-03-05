@@ -96,7 +96,10 @@ function Stack() {
     ) : null;
   }
 
+  const authUser = useSelector((state: any) => state.ingredients.authUser);
+
   async function postOrder() {
+    console.log("authUser", authUser);
     store.dispatch(postOrderMiddleware(data) as unknown as AnyAction);
     store.dispatch(ingredientsSlice.actions._MODAL_TYPE("order"));
 
@@ -123,10 +126,6 @@ function Stack() {
   };
 
   const { pathname } = useLocation();
-
-  const authUser = useSelector((state: any) => state.ingredients.authUser);
-
-  console.log("authUser", authUser);
 
   return (
     <>
