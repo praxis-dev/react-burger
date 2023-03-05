@@ -11,6 +11,7 @@ import { useDrop } from "react-dnd";
 import { useEffect } from "react";
 import { postOrderMiddleware } from "../../services/middleware/postOrderMiddlware";
 import { AnyAction } from "redux";
+import { useLocation } from "react-router-dom";
 
 function Stack() {
   const data = useSelector(
@@ -121,6 +122,8 @@ function Stack() {
     });
   };
 
+  const { pathname } = useLocation();
+
   return (
     <>
       <div className={css.stack} ref={dropRef}>
@@ -148,7 +151,7 @@ function Stack() {
           Оформить заказ{" "}
         </Button>
       </div>
-      <Popup></Popup>
+      {pathname !== "/react-burger/" && <Popup></Popup>}
     </>
   );
 }

@@ -110,7 +110,6 @@ function IngredientCard(props: props) {
           <p className={css.componentName}>{name}</p>
         </>
       </div>
-      <Popup></Popup>
     </>
   );
 }

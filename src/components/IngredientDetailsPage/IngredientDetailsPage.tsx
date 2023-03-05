@@ -7,6 +7,16 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function IngredientDetailsPage() {
+  const { id } = useParams<{ id: string }>();
+
+  const ingredients = useSelector(
+    (state: any) => state.ingredients.ingredients
+  );
+
+  const ingredient = ingredients.find((item: any) => item._id === id);
+
+  console.log(ingredient);
+
   const input = useSelector(
     (state: any) => state.ingredients.ingredientPopupData
   );

@@ -91,6 +91,7 @@ export const ingredientsSlice = createSlice({
     },
     _INGREDIENTS_SUCCESS: (state, action) => {
       state.ingredients = action.payload;
+      console.log("ingredients added to state: " + action.payload);
     },
     _INGREDIENTS_ERROR: (state, action) => {
       state.error = action.payload;
