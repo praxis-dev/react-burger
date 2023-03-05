@@ -16,7 +16,6 @@ import { NewUser } from "../NewUser/NewUser";
 import { Profile } from "../Profile/Profile";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { Popup } from "../Popup/Popup";
-import IngredientDetailsPage from "./IngredientDetailsPage/IngredientDetailsPage";
 
 export function App() {
   useEffect(() => {
@@ -36,10 +35,7 @@ export function App() {
                   element={<Popup />}
                 />
               </Route>
-              <Route
-                path="/react-burger/ingredients/ing"
-                element={<IngredientDetailsPage />}
-              />
+
               <Route
                 path="react-burger/login/*"
                 element={<ProtectedRoute element={<Login />} />}
