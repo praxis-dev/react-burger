@@ -51,7 +51,6 @@ export function Popup() {
     return () => document.removeEventListener("keydown", handleEscapeKey);
   }, [setModal]);
 
-  // if (!modal) return null;
   return modal ? (
     ReactDOM.createPortal(
       <>

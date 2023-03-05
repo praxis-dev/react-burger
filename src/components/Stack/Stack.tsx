@@ -151,7 +151,7 @@ function Stack() {
           Оформить заказ{" "}
         </Button>
       </div>
-      {pathname !== "/react-burger" && <Popup></Popup>}
+      {(pathname !== "/react-burger" || modal) && <Popup></Popup>}
     </>
   );
 }

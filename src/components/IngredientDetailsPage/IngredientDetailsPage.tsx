@@ -1,25 +1,22 @@
 import css from "./IngredientDetailsPage.module.css";
-import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
-import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
-import { store } from "../../services/store/Store";
-import { useEffect } from "react";
+
 import { useParams } from "react-router-dom";
 
 function IngredientDetailsPage() {
   const { id } = useParams<{ id: string }>();
+  console.log(id);
 
   const ingredients = useSelector(
     (state: any) => state.ingredients.ingredients
   );
+  console.log(ingredients);
 
   const ingredient = ingredients.find((item: any) => item._id === id);
 
   console.log(ingredient);
 
-  const input = useSelector(
-    (state: any) => state.ingredients.ingredientPopupData
-  );
+  const input = ingredient;
 
   return (
     <>
