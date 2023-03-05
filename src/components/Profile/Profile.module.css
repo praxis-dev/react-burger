@@ -33,7 +33,7 @@
 
 .profileMenuItem {
   width: 320px;
-  heigh: 80px;
+  height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -65,7 +65,7 @@
   cursor: pointer;
 }
 
-.profileMenuItemActive {
+.active {
   color: white;
 }
 

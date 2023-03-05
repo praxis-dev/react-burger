@@ -99,15 +99,18 @@ function Stack() {
   }
 
   const navigate = useNavigate();
+  const ingredientsInStack = useSelector(
+    (state: any) => state.ingredients.ingredientsInStack
+  );
 
   async function postOrder() {
-    console.log(getCookie("accessToken"));
     if (getCookie("accessToken")) {
       store.dispatch(postOrderMiddleware(data) as unknown as AnyAction);
       store.dispatch(ingredientsSlice.actions._MODAL_TYPE("order"));
 
       toggleModal();
     } else {
+      console.log(ingredientsInStack);
       navigate("/react-burger/login");
     }
   }

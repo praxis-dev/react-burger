@@ -6,7 +6,6 @@ import { store } from "../../services/store/Store";
 import { useLocation } from "react-router-dom";
 
 export function ProtectedRoute({ element }: { element: ReactNode }) {
-  console.log("ProtectedRoute: ", getCookie("token"));
   const location = useLocation();
 
   if (getCookie("token") === undefined) {

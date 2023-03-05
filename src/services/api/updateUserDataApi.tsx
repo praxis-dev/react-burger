@@ -14,7 +14,6 @@ export const updateUserDataApi = (data: any) => {
     body: JSON.stringify(data),
   }).then((res) => {
     if (res.ok) {
-      console.log("res: " + JSON.stringify(res));
       return res.json();
     }
     return Promise.reject(`Ошибка: ${res.status}`);

@@ -28,8 +28,6 @@ export const Profile = () => {
     }
   }, [userData]);
 
-  console.log(useLocation().pathname);
-
   const [name, setName] = useState(userData.name || "");
   const [email, setEmail] = useState(userData.email || "");
   const [password, setPassword] = useState("");
@@ -84,7 +82,9 @@ export const Profile = () => {
       <div className={css.profileMenuContainer}>
         <div className={css.profileMenu}>
           <div className={css.profileMenuItem}>
-            <p className={css.profileMenuItemText}>Профиль</p>
+            <p className={[css.profileMenuItemText, css.active].join(" ")}>
+              Профиль
+            </p>
           </div>
           <div className={css.profileMenuItem}>
             <p className={css.profileMenuItemText}>История</p>

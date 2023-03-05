@@ -46,20 +46,20 @@ export const Login = () => {
   const initialLocation = useSelector(
     (state: any) => store.getState().ingredients.userLocation
   );
+  const ingredientsInStack = useSelector(
+    (state: any) => store.getState().ingredients.ingredientsInStack
+  );
 
   const onResponse = (res: any) => {
     if (res.success) {
-      // if initial location contains "/react-burger/profile" then navigate to it
       if (
         initialLocation &&
         initialLocation.includes("/react-burger/profile")
       ) {
-        console.log(`navigating to ${initialLocation}`);
-
         navigate(initialLocation);
         store.dispatch(ingredientsSlice.actions._CLEAR_INITIAL_LOCATION());
-        console.log(`initial location cleared ${initialLocation}`);
       } else {
+        console.log("ingredientsInStack", ingredientsInStack);
         navigate("/react-burger/");
       }
     }
