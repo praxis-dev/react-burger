@@ -1,13 +1,8 @@
 import css from "./IngredientDetailsPage.module.css";
-import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
-import { ingredientsSlice } from "../../../services/slice/ingredientsSlice";
-import { store } from "../../../services/store/Store";
 
-function IngredientDetailsPage() {
-  const input = useSelector(
-    (state: any) => state.ingredients.ingredientPopupData
-  );
+function IngredientDetailsPage(props: any) {
+  const input = props;
 
   return (
     <>
