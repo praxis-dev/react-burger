@@ -11,7 +11,9 @@ import { useDrop } from "react-dnd";
 import { useEffect } from "react";
 import { postOrderMiddleware } from "../../services/middleware/postOrderMiddlware";
 import { AnyAction } from "redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getCookie } from "../../utils/cookies/getCookie";
+import { Navigate } from "react-router-dom";
 
 function Stack() {
   const data = useSelector(
@@ -96,14 +98,18 @@ function Stack() {
     ) : null;
   }
 
-  const authUser = useSelector((state: any) => state.ingredients.authUser);
+  const navigate = useNavigate();
 
   async function postOrder() {
-    console.log("authUser", authUser);
-    store.dispatch(postOrderMiddleware(data) as unknown as AnyAction);
-    store.dispatch(ingredientsSlice.actions._MODAL_TYPE("order"));
+    console.log(getCookie("accessToken"));
+    if (getCookie("accessToken")) {
+      store.dispatch(postOrderMiddleware(data) as unknown as AnyAction);
+      store.dispatch(ingredientsSlice.actions._MODAL_TYPE("order"));
 
-    toggleModal();
+      toggleModal();
+    } else {
+      navigate("/react-burger/login");
+    }
   }
 
   const renderElement = (data: any) => {
