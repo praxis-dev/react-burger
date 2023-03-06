@@ -7,6 +7,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { resetPasswordApi } from "../../services/api/resetPasswordApi";
 
 export const NewPassword = () => {
   const [password, setPassword] = useState("");
@@ -32,14 +33,23 @@ export const NewPassword = () => {
 
   const allFieldsValid = isNotEmptyString(password) && isNotEmptyString(code);
 
-  const onButtonClick = () => {
-    console.log("button clicked");
+  const onResponse = (res: any) => {
+    if (res.success) {
+      navigate("/react-burger/login");
+    }
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    resetPasswordApi({ password, code }).then((res) => {
+      onResponse(res);
+    });
   };
 
   return (
     <div className={css.section}>
       <p className={css.header}>Восстановление пароля</p>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={(e) => handleSubmit(e)}>
         <PasswordInput
           placeholder={"Введите новый пароль"}
           onChange={(e) => onPasswordChange(e)}
@@ -61,7 +71,7 @@ export const NewPassword = () => {
           {" "}
           <Button
             disabled={!allFieldsValid}
-            htmlType="button"
+            htmlType="submit"
             type="primary"
             size="large"
           >

@@ -23,26 +23,21 @@ export const ForgotPassword = () => {
   };
 
   const onResponse = (res: any) => {
+    console.log(res);
     if (res.success) {
       navigate("/react-burger/new-password");
     }
   };
 
-  const onButtonClick = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     forgotPasswordApi(email).then((res) => onResponse(res));
-  };
-
-  const pressButtonOnEnter = (e: any) => {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      onButtonClick();
-    }
   };
 
   return (
     <div className={css.section}>
       <p className={css.header}>Восстановление пароля </p>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={(e) => handleSubmit(e)}>
         <Input
           onChange={(e) => handleEmailChange(e)}
           type={"text"}
@@ -53,16 +48,12 @@ export const ForgotPassword = () => {
           errorText={"Ошибка"}
           size={"default"}
           extraClass={css.spacer}
-          onKeyDown={pressButtonOnEnter}
         />
         <div className={css.button}>
           {" "}
           <Button
             disabled={!emailValidator(email)}
-            onClick={() => {
-              onButtonClick();
-            }}
-            htmlType="button"
+            htmlType="submit"
             type="primary"
             size="large"
           >

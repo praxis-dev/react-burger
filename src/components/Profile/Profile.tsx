@@ -65,7 +65,8 @@ export const Profile = () => {
     store.dispatch(getUserDataMiddleware() as unknown as AnyAction);
   }, []);
 
-  const onButtonClick = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     if (allFieldsValid) {
       store.dispatch(
         updateUserMiddleware({
@@ -102,7 +103,7 @@ export const Profile = () => {
         </div>
       </div>
       <div className={css.fieldsContainer}>
-        <form className={css.form}>
+        <form className={css.form} onSubmit={(e) => handleSubmit(e)}>
           <Input
             type={"text"}
             placeholder={"Имя"}
@@ -135,10 +136,9 @@ export const Profile = () => {
             {" "}
             <Button
               disabled={!allFieldsValid}
-              htmlType="button"
+              htmlType="submit"
               type="primary"
               size="large"
-              onClick={onButtonClick}
             >
               Сохранить
             </Button>
