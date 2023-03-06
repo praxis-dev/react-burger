@@ -7,7 +7,6 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import { emailValidator } from "../../utils/emailValidator";
-import { submitOnEnter } from "../../utils/submitOnEnter";
 import { useState } from "react";
 
 import { store } from "../../services/store/Store";
@@ -45,7 +44,8 @@ export const NewUser = () => {
     emailValidator(email) &&
     isNotEmptyString(password);
 
-  const onButtonClick = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     if (allFieldsValid) {
       store.dispatch(
         registerNewUserMiddleware({
@@ -64,14 +64,10 @@ export const NewUser = () => {
     }
   };
 
-  const pressButtonOnEnter = (e: any) => {
-    submitOnEnter(e, onButtonClick);
-  };
-
   return (
     <div className={css.section}>
       <p className={css.header}>Регистрация</p>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={(e) => handleSubmit(e)}>
         <Input
           type={"text"}
           placeholder={"Имя"}
@@ -82,7 +78,6 @@ export const NewUser = () => {
           errorText={"Ошибка"}
           size={"default"}
           extraClass={css.spacer}
-          onKeyDown={pressButtonOnEnter}
         />
         <Input
           type={"email"}
@@ -94,23 +89,20 @@ export const NewUser = () => {
           errorText={"Ошибка"}
           size={"default"}
           extraClass={css.spacer}
-          onKeyDown={pressButtonOnEnter}
         />
         <PasswordInput
           onChange={(e) => onPasswordChange(e)}
           placeholder={"Пароль"}
           value={password}
           extraClass={css.spacer}
-          onKeyDown={pressButtonOnEnter}
         />
         <div className={css.button}>
           {" "}
           <Button
             disabled={!allFieldsValid}
-            htmlType="button"
+            htmlType="submit"
             type="primary"
             size="large"
-            onClick={onButtonClick}
           >
             Зарегистрироваться
           </Button>
