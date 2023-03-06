@@ -7,7 +7,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { emailValidator } from "../../utils/emailValidator";
-import { submitOnEnter } from "../../utils/submitOnEnter";
 import { store } from "../../services/store/Store";
 import { authUserMiddleware } from "../../services/middleware/authUserMiddleware";
 import { AnyAction } from "redux";
@@ -65,7 +64,8 @@ export const Login = () => {
     }
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (e: any) => {
+    e.preventDefault();
     if (allInputsValid) {
       store.dispatch(
         authUserMiddleware({
@@ -80,7 +80,7 @@ export const Login = () => {
   return (
     <div className={css.section}>
       <p className={css.header}>Вход</p>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={(e) => handleButtonClick(e)}>
         <Input
           type={"text"}
           placeholder={"E-mail"}
@@ -91,22 +91,19 @@ export const Login = () => {
           errorText={"Ошибка"}
           size={"default"}
           extraClass={css.spacer}
-          onKeyDown={(e) => submitOnEnter(e, handleButtonClick)}
         />
         <PasswordInput
           onChange={(e) => handlePasswordChange(e)}
           value={password}
           extraClass={css.spacer}
-          onKeyDown={(e) => submitOnEnter(e, handleButtonClick)}
         />
         <div className={css.button}>
           {" "}
           <Button
             disabled={!allInputsValid}
-            htmlType="button"
+            htmlType="submit"
             type="primary"
             size="large"
-            onClick={handleButtonClick}
           >
             Войти
           </Button>
