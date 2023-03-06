@@ -1,4 +1,4 @@
-import css from "./NewPassword.module.css";
+import css from "./ResetPassword.module.css";
 import {
   Input,
   PasswordInput,
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { resetPasswordApi } from "../../services/api/resetPasswordApi";
 
-export const NewPassword = () => {
+export const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
 

@@ -11,7 +11,7 @@ import { fetchIngredientsMiddleware } from "../../services/middleware/fetchIngre
 import { AnyAction } from "redux";
 import { Login } from "../Login/Login";
 import { ForgotPassword } from "../ForgotPassword/ForgotPassword";
-import { NewPassword } from "../NewPassword/NewPassword";
+import { ResetPassword } from "../ResetPassword/ResetPassword";
 import { NewUser } from "../NewUser/NewUser";
 import { Profile } from "../Profile/Profile";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
@@ -47,8 +47,8 @@ export function App() {
               />
 
               <Route
-                path="react-burger/new-password/*"
-                element={<ProtectedRoute element={<NewPassword />} />}
+                path="react-burger/reset-password/*"
+                element={<ProtectedRoute element={<ResetPassword />} />}
               />
 
               <Route
