@@ -6,7 +6,7 @@
 .header {
   align-items: center;
   margin: 0 auto;
-  padding: 16px 320px;
+  padding: 16px 10%;
   height: 88px;
   box-sizing: border-box;
   display: grid;
