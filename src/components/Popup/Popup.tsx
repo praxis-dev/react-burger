@@ -16,8 +16,8 @@ export function Popup() {
 
   const modalType = useSelector((state: any) => state.ingredients.modalType);
 
-  const { render } =
-    modalType === "ingredient" ? IngredientDetails() : OrderDetails();
+  const render =
+    modalType === "ingredient" ? <IngredientDetails /> : <OrderDetails />;
 
   const setModal = useCallback((value: boolean) => {
     store.dispatch(ingredientsSlice.actions._MODAL(value));

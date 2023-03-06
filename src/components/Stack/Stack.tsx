@@ -20,8 +20,6 @@ function Stack() {
     (state: any) => state.ingredients.ingredientsInStack
   );
 
-  const { render } = OrderDetails();
-
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const setModal = (value: boolean) => {
