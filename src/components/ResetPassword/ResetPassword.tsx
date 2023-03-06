@@ -8,8 +8,14 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { resetPasswordApi } from "../../services/api/resetPasswordApi";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export const ResetPassword = () => {
+  const initialLocation = useSelector(
+    (state: any) => state.ingredients.userLocation
+  );
+
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
 
@@ -45,6 +51,13 @@ export const ResetPassword = () => {
       onResponse(res);
     });
   };
+
+  useEffect(() => {
+    console.log("initialLocation", initialLocation);
+    if (initialLocation !== "/react-burger/forgot-password") {
+      navigate("/react-burger/");
+    }
+  }, [initialLocation, navigate]);
 
   return (
     <div className={css.section}>

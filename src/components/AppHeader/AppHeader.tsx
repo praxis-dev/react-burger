@@ -25,7 +25,6 @@ function AppHeader() {
     setBurgerIconType("secondary");
     setConstructorActive("");
     setProfileActive("css.headerTextActive");
-    console.log("ProfileActive", ProfileActive);
 
     navigate("/react-burger/profile");
   };

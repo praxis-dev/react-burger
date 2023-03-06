@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { forgotPasswordApi } from "../../services/api/forgotPasswordApi";
 import { useState } from "react";
 import { emailValidator } from "../../utils/emailValidator";
+import { useEffect } from "react";
+import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 
 export const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ export const ForgotPassword = () => {
   const onResponse = (res: any) => {
     console.log(res);
     if (res.success) {
-      navigate("/react-burger/new-password");
+      navigate("/react-burger/reset-password");
     }
   };
 
