@@ -7,10 +7,6 @@ export const registerNewUserThunk = (data: any) => {
 
     const result = await registerNewUserApi(data);
 
-    if (!result.ok) {
-      dispatch(ingredientsSlice.actions._REGISTER_ERROR(result.statusText));
-    }
-
     const res = await result.json();
 
     dispatch(ingredientsSlice.actions._REGISTER_SUCCESS(res));
