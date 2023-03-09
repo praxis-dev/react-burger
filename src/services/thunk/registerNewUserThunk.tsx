@@ -7,7 +7,7 @@ export const registerNewUserThunk = (data: any) => {
 
     const result = await registerNewUserApi(data);
 
-    const res = await result.json();
+    const res = await result;
 
     dispatch(ingredientsSlice.actions._REGISTER_SUCCESS(res));
 

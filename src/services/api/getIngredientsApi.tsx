@@ -1,11 +1,8 @@
 import { BASE_URL } from "../../utils/data";
+import { checkResponse } from "../../utils/checkResponse";
 
 export async function getIngredientsApi() {
   const response = await fetch(`${BASE_URL}/ingredients`);
 
-  if (!response.ok) {
-    throw new Error("Something went wrong");
-  }
-
-  return response.json();
+  return checkResponse(response);
 }

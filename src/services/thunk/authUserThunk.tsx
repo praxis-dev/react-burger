@@ -5,9 +5,8 @@ import { setCookie } from "../../utils/cookies/setCookie";
 export const authUserThunk = (data: any) => {
   return async function (dispatch: any) {
     dispatch(ingredientsSlice.actions._LOGIN_REQUEST("Loading"));
-    const result = await authUserApi(data);
+    const res = await authUserApi(data);
 
-    const res = await result.json();
     dispatch(ingredientsSlice.actions._LOGIN_SUCCESS(res));
     data.onResponse(res);
     setCookie("accessToken", res.accessToken, { "max-age": 1200 });

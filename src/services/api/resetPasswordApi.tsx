@@ -1,4 +1,5 @@
 import { BASE_URL } from "../../utils/data";
+import { checkResponse } from "../../utils/checkResponse";
 
 export async function resetPasswordApi({ password, code }: any) {
   const response = await fetch(`${BASE_URL}/password-reset/reset`, {
@@ -9,9 +10,5 @@ export async function resetPasswordApi({ password, code }: any) {
     body: JSON.stringify({ password: password, token: code }),
   });
 
-  if (!response.ok) {
-    throw new Error("Error: there is an error");
-  }
-
-  return response.json();
+  return checkResponse(response);
 }

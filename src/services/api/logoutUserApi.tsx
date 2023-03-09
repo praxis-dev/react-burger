@@ -1,5 +1,6 @@
 import { BASE_URL } from "../../utils/data";
 import { getCookie } from "../../utils/cookies/getCookie";
+import { checkResponse } from "../../utils/checkResponse";
 
 export async function logoutUserApi() {
   const response = await fetch(`${BASE_URL}/auth/logout`, {
@@ -11,5 +12,6 @@ export async function logoutUserApi() {
       token: getCookie("token"),
     }),
   });
-  return response;
+
+  return checkResponse(response);
 }

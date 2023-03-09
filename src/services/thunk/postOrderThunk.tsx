@@ -7,7 +7,7 @@ export const postOrderThunk = (data: any) => {
 
     const result = await postOrderApi(data);
 
-    const res = await result.json();
+    const res = await result;
 
     dispatch(ingredientsSlice.actions._ORDER_NUMBER_SUCCESS(res.order.number));
   };

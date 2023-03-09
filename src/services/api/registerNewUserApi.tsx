@@ -1,4 +1,5 @@
 import { BASE_URL } from "../../utils/data";
+import { checkResponse } from "../../utils/checkResponse";
 
 interface RegisterNewUserRequest {
   name: string;
@@ -18,8 +19,6 @@ export async function registerNewUserApi({
     },
     body: JSON.stringify({ email: email, password: password, name: name }),
   });
-  if (!response.ok) {
-    throw new Error("Error: there is an error");
-  }
-  return response;
+
+  return checkResponse(response);
 }

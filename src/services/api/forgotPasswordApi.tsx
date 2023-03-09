@@ -1,4 +1,5 @@
 import { BASE_URL } from "../../utils/data";
+import { checkResponse } from "../../utils/checkResponse";
 
 export async function forgotPasswordApi(email: string) {
   const response = await fetch(`${BASE_URL}/password-reset`, {
@@ -9,9 +10,5 @@ export async function forgotPasswordApi(email: string) {
     body: JSON.stringify({ email }),
   });
 
-  if (!response.ok) {
-    throw new Error("Error: there is an error");
-  }
-
-  return response.json();
+  return checkResponse(response);
 }

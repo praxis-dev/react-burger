@@ -1,4 +1,5 @@
 import { BASE_URL } from "../../utils/data";
+import { checkResponse } from "../../utils/checkResponse";
 
 export async function authUserApi({ email, password }: any) {
   const response = await fetch(`${BASE_URL}/auth/login`, {
@@ -9,10 +10,5 @@ export async function authUserApi({ email, password }: any) {
     body: JSON.stringify({ email, password }),
   });
 
-  if (!response.ok) {
-    throw new Error("Error: there is an error");
-  }
-  console.log(response);
-
-  return response;
+  return checkResponse(response);
 }

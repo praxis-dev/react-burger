@@ -1,4 +1,5 @@
 import { BASE_URL } from "../../utils/data";
+import { checkResponse } from "../../utils/checkResponse";
 
 export async function postOrderApi(data: any) {
   const response = fetch(`${BASE_URL}/orders`, {
@@ -11,5 +12,5 @@ export async function postOrderApi(data: any) {
     }),
   });
 
-  return response;
+  return checkResponse(response);
 }
