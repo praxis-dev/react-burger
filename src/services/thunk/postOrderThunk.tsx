@@ -1,7 +1,7 @@
 import { postOrderApi } from "../api/postOrderApi";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 
-export const postOrderMiddleware = (data: any) => {
+export const postOrderThunk = (data: any) => {
   return async function (dispatch: any) {
     dispatch(ingredientsSlice.actions._ORDER_NUMBER_REQUEST("Loading"));
 

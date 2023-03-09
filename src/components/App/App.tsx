@@ -7,7 +7,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { store } from "../../services/store/Store";
 import { Provider } from "react-redux";
 import { DndProvider } from "react-dnd";
-import { fetchIngredientsMiddleware } from "../../services/middleware/fetchIngredientsMiddleware";
+import { fetchIngredientsThunk } from "../../services/thunk/fetchIngredientsThunk";
 import { AnyAction } from "redux";
 import { Login } from "../Login/Login";
 import { ForgotPassword } from "../ForgotPassword/ForgotPassword";
@@ -19,7 +19,7 @@ import { Popup } from "../Popup/Popup";
 
 export function App() {
   useEffect(() => {
-    store.dispatch(fetchIngredientsMiddleware() as unknown as AnyAction);
+    store.dispatch(fetchIngredientsThunk() as unknown as AnyAction);
   }, []);
 
   return (

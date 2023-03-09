@@ -10,7 +10,7 @@ import { emailValidator } from "../../utils/emailValidator";
 import { useState } from "react";
 
 import { store } from "../../services/store/Store";
-import { registerNewUserMiddleware } from "../../services/middleware/registerNewUserMiddleware";
+import { registerNewUserThunk } from "../../services/thunk/registerNewUserThunk";
 import { AnyAction } from "redux";
 
 export const NewUser = () => {
@@ -48,7 +48,7 @@ export const NewUser = () => {
     e.preventDefault();
     if (allFieldsValid) {
       store.dispatch(
-        registerNewUserMiddleware({
+        registerNewUserThunk({
           name,
           email,
           password,

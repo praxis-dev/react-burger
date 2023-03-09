@@ -4,9 +4,9 @@ import {
   PasswordInput,
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { logoutUserMiddleware } from "../../services/middleware/logoutUserMiddleware";
-import { getUserDataMiddleware } from "../../services/middleware/getUserDataMiddleware";
-import { updateUserMiddleware } from "../../services/middleware/updateUserMiddleware";
+import { logoutUserThunk } from "../../services/thunk/logoutUserThunk";
+import { getUserDataThunk } from "../../services/thunk/getUserDataThunk";
+import { updateUserThunk } from "../../services/thunk/updateUserThunk";
 
 import { store } from "../../services/store/Store";
 import { AnyAction } from "redux";
@@ -55,21 +55,21 @@ export const Profile = () => {
 
   const navigate = useNavigate();
   const onExitClick = () => {
-    store.dispatch(logoutUserMiddleware() as unknown as AnyAction);
+    store.dispatch(logoutUserThunk() as unknown as AnyAction);
     setTimeout(() => {
       navigate("/react-burger/login");
     }, 1000);
   };
 
   useEffect(() => {
-    store.dispatch(getUserDataMiddleware() as unknown as AnyAction);
+    store.dispatch(getUserDataThunk() as unknown as AnyAction);
   }, []);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (allFieldsValid) {
       store.dispatch(
-        updateUserMiddleware({
+        updateUserThunk({
           name,
           email,
           password,

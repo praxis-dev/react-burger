@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { emailValidator } from "../../utils/emailValidator";
 import { store } from "../../services/store/Store";
-import { authUserMiddleware } from "../../services/middleware/authUserMiddleware";
+import { authUserThunk } from "../../services/thunk/authUserThunk";
 import { AnyAction } from "redux";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -68,7 +68,7 @@ export const Login = () => {
     e.preventDefault();
     if (allInputsValid) {
       store.dispatch(
-        authUserMiddleware({
+        authUserThunk({
           email,
           password,
           onResponse,

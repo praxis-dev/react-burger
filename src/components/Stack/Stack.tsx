@@ -9,7 +9,7 @@ import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 import { useDrop } from "react-dnd";
 import { useEffect } from "react";
-import { postOrderMiddleware } from "../../services/middleware/postOrderMiddlware";
+import { postOrderThunk } from "../../services/thunk/postOrderThunk";
 import { AnyAction } from "redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getCookie } from "../../utils/cookies/getCookie";
@@ -103,7 +103,7 @@ function Stack() {
 
   async function postOrder() {
     if (getCookie("accessToken")) {
-      store.dispatch(postOrderMiddleware(data) as unknown as AnyAction);
+      store.dispatch(postOrderThunk(data) as unknown as AnyAction);
       store.dispatch(ingredientsSlice.actions._MODAL_TYPE("order"));
 
       toggleModal();
