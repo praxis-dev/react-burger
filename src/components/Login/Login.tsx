@@ -10,7 +10,6 @@ import { emailValidator } from "../../utils/emailValidator";
 import { store } from "../../services/store/Store";
 import { authUserThunk } from "../../services/thunk/authUserThunk";
 import { AnyAction } from "redux";
-import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 
@@ -43,10 +42,10 @@ export const Login = () => {
   const allInputsValid = emailValidator(email) && isNotEmptyString(password);
 
   const initialLocation = useSelector(
-    (state: any) => store.getState().ingredients.userLocation
+    (state: any) => state.ingredients.userLocation
   );
   const ingredientsInStack = useSelector(
-    (state: any) => store.getState().ingredients.ingredientsInStack
+    (state: any) => state.ingredients.ingredientsInStack
   );
 
   const onResponse = (res: any) => {
