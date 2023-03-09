@@ -1,8 +1,10 @@
+import { BASE_URL } from "../../utils/data";
+
 import { getCookie } from "../../utils/cookies/getCookie";
 
 export const updateUserDataApi = (data: any) => {
   const accessToken = getCookie("accessToken");
-  return fetch("https://norma.nomoreparties.space/api/auth/user", {
+  return fetch(`${BASE_URL}/auth/user`, {
     method: "PATCH",
     mode: "cors",
     cache: "no-cache",
