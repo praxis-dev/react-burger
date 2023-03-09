@@ -8,8 +8,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { emailValidator } from "../../utils/emailValidator";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-import { store } from "../../services/store/Store";
 import { registerNewUserThunk } from "../../services/thunk/registerNewUserThunk";
 import { AnyAction } from "redux";
 
@@ -44,10 +44,12 @@ export const NewUser = () => {
     emailValidator(email) &&
     isNotEmptyString(password);
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (allFieldsValid) {
-      store.dispatch(
+      dispatch(
         registerNewUserThunk({
           name,
           email,
