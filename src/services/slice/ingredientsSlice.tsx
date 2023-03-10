@@ -17,6 +17,7 @@ export const ingredientsSlice = createSlice({
     userLocation: "",
     modal: false,
     modalType: "",
+    homeRoute: "/react-burger",
   },
   reducers: {
     _MODAL_TYPE: (state, action) => {

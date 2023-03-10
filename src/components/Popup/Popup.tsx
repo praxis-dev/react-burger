@@ -9,12 +9,13 @@ import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import { useNavigate } from "react-router-dom";
 import IngredientDetailsPage from "../IngredientDetailsPage/IngredientDetailsPage";
-import { useParams } from "react-router-dom";
 
 export function Popup() {
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const modalType = useSelector((state: any) => state.ingredients.modalType);
+
+  const homeRoute = useSelector((state: any) => state.ingredients.homeRoute);
 
   const render =
     modalType === "ingredient" ? <IngredientDetails /> : <OrderDetails />;
@@ -25,7 +26,7 @@ export function Popup() {
   const navigate = useNavigate();
 
   const resetURL = () => {
-    navigate("/react-burger");
+    navigate(homeRoute);
   };
   const toggleModal = () => {
     setModal(!modal);
