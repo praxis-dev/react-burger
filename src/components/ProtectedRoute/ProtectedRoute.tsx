@@ -2,11 +2,12 @@ import { Navigate } from "react-router-dom";
 import { ReactNode } from "react";
 import { getCookie } from "../../utils/cookies/getCookie";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
-import { store } from "../../services/store/Store";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export function ProtectedRoute({ element }: { element: ReactNode }) {
+  const dispatch = useDispatch();
   const location = useLocation();
   const userLocation = useSelector(
     (state: any) => state.ingredients.userLocation
@@ -14,12 +15,12 @@ export function ProtectedRoute({ element }: { element: ReactNode }) {
 
   if (getCookie("token") === undefined) {
     if (location.pathname === "/react-burger/profile") {
-      store.dispatch(
+      dispatch(
         ingredientsSlice.actions._UPDATE_INITIAL_LOCATION(location.pathname)
       );
       return <Navigate to="/react-burger/login" />;
     } else if (location.pathname === "/react-burger/forgot-password") {
-      store.dispatch(
+      dispatch(
         ingredientsSlice.actions._UPDATE_INITIAL_LOCATION(location.pathname)
       );
     } else if (location.pathname === "/react-burger/reset-password") {
@@ -30,22 +31,22 @@ export function ProtectedRoute({ element }: { element: ReactNode }) {
     }
   } else if (getCookie("token") !== undefined) {
     if (location.pathname === "/react-burger/login") {
-      store.dispatch(
+      dispatch(
         ingredientsSlice.actions._UPDATE_INITIAL_LOCATION(location.pathname)
       );
       return <Navigate to="/react-burger/" />;
     } else if (location.pathname === "/react-burger/forgot-password") {
-      store.dispatch(
+      dispatch(
         ingredientsSlice.actions._UPDATE_INITIAL_LOCATION(location.pathname)
       );
       return <Navigate to="/react-burger/" />;
     } else if (location.pathname === "/react-burger/new-user") {
-      store.dispatch(
+      dispatch(
         ingredientsSlice.actions._UPDATE_INITIAL_LOCATION(location.pathname)
       );
       return <Navigate to="/react-burger/" />;
     } else if (location.pathname === "/react-burger/reset-password") {
-      store.dispatch(
+      dispatch(
         ingredientsSlice.actions._UPDATE_INITIAL_LOCATION(location.pathname)
       );
       return <Navigate to="/react-burger/" />;

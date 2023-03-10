@@ -3,13 +3,14 @@ import done from "../../images/done.svg";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
-import { store } from "../../services/store/Store";
+import { useDispatch } from "react-redux";
 
 function OrderDetails() {
+  const dispatch = useDispatch();
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const setModal = (value: boolean) => {
-    store.dispatch(ingredientsSlice.actions._MODAL(value));
+    dispatch(ingredientsSlice.actions._MODAL(value));
   };
 
   const orderNumber = useSelector(

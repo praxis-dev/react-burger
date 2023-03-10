@@ -5,17 +5,12 @@ import {
   LockIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
-import { store } from "../../services/store/Store";
-
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
-
 import css from "./StackedIngredient.module.css";
-
 import { useDrag, useDrop } from "react-dnd";
-
 import { useSelector } from "react-redux";
-
-import React, { useRef } from "react";
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
 
 const handlePosition = (type: string) => {
   if (type === "top") {
@@ -36,10 +31,11 @@ type StackedIngredientProps = {
 };
 
 const StackedIngredient = (props: StackedIngredientProps) => {
+  const dispatch = useDispatch();
   const { position, isLocked, name, price, image } = props;
 
   const deleteIngredient = () => {
-    store.dispatch(ingredientsSlice.actions.removeIngredientFromStack(name));
+    dispatch(ingredientsSlice.actions.removeIngredientFromStack(name));
   };
 
   const index = useSelector((state: any) => {
@@ -60,7 +56,7 @@ const StackedIngredient = (props: StackedIngredientProps) => {
     accept: "ingredient",
     drop(item: any) {
       if (item.isStacked) {
-        store.dispatch(
+        dispatch(
           ingredientsSlice.actions.rearrangeIngredientsInStack({
             dragIndex: item.index,
             hoverIndex: index,

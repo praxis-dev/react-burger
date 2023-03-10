@@ -7,7 +7,6 @@ import {
 import { logoutUserThunk } from "../../services/thunk/logoutUserThunk";
 import { getUserDataThunk } from "../../services/thunk/getUserDataThunk";
 import { updateUserThunk } from "../../services/thunk/updateUserThunk";
-
 import { store } from "../../services/store/Store";
 import { AnyAction } from "redux";
 import { useEffect } from "react";
@@ -15,10 +14,10 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { emailValidator } from "../../utils/emailValidator";
 import { useNavigate } from "react-router-dom";
-
-import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 export const Profile = () => {
+  const dispatch = useDispatch();
   const userData = useSelector((state: any) => state.ingredients.userData);
 
   useEffect(() => {
@@ -55,20 +54,20 @@ export const Profile = () => {
 
   const navigate = useNavigate();
   const onExitClick = () => {
-    store.dispatch(logoutUserThunk() as unknown as AnyAction);
+    dispatch(logoutUserThunk() as unknown as AnyAction);
     setTimeout(() => {
       navigate("/react-burger/login");
     }, 1000);
   };
 
   useEffect(() => {
-    store.dispatch(getUserDataThunk() as unknown as AnyAction);
+    dispatch(getUserDataThunk() as unknown as AnyAction);
   }, []);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (allFieldsValid) {
-      store.dispatch(
+      dispatch(
         updateUserThunk({
           name,
           email,

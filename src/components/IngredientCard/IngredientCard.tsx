@@ -2,12 +2,12 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import Modal from "../Modal/Modal";
 import css from "./IngredientCard.module.css";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
-import { store } from "../../services/store/Store";
 import { useDrag } from "react-dnd";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 import IngredientDetailsPage from "../IngredientDetailsPage/IngredientDetailsPage";
+import { useDispatch } from "react-redux";
 
 type props = element;
 
@@ -27,6 +27,8 @@ type element = {
 };
 
 function IngredientCard(props: props) {
+  const dispatch = useDispatch();
+
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredient",
     item: props,
@@ -54,7 +56,7 @@ function IngredientCard(props: props) {
   const modalType = useSelector((state: any) => state.ingredients.modalType);
 
   const setModal = (value: boolean) => {
-    store.dispatch(ingredientsSlice.actions._MODAL(value));
+    dispatch(ingredientsSlice.actions._MODAL(value));
   };
 
   const toggleModal = () => {
@@ -65,8 +67,8 @@ function IngredientCard(props: props) {
   const dynamicURL = `/react-burger/ingredients/${_id}`;
 
   const onClick = () => {
-    store.dispatch(ingredientsSlice.actions.ingredientDataForModal(props));
-    store.dispatch(ingredientsSlice.actions._MODAL_TYPE("ingredient"));
+    dispatch(ingredientsSlice.actions.ingredientDataForModal(props));
+    dispatch(ingredientsSlice.actions._MODAL_TYPE("ingredient"));
 
     toggleModal();
     navigate(dynamicURL);

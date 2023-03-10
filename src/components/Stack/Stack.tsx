@@ -5,7 +5,6 @@ import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../Modal/Modal";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
-import { store } from "../../services/store/Store";
 import { useDrop } from "react-dnd";
 import { useEffect } from "react";
 import { postOrderThunk } from "../../services/thunk/postOrderThunk";
@@ -14,8 +13,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getCookie } from "../../utils/cookies/getCookie";
 import { v4 as uuidv4 } from "uuid";
 import OrderDetails from "../OrderDetails/OrderDetails";
+import { useDispatch } from "react-redux";
 
 function Stack() {
+  const dispatch = useDispatch();
   const modalType = useSelector((state: any) => state.ingredients.modalType);
   const data = useSelector(
     (state: any) => state.ingredients.ingredientsInStack
@@ -24,7 +25,7 @@ function Stack() {
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const setModal = (value: boolean) => {
-    store.dispatch(ingredientsSlice.actions._MODAL(value));
+    dispatch(ingredientsSlice.actions._MODAL(value));
   };
 
   const toggleModal = () => {
@@ -45,7 +46,7 @@ function Stack() {
 
   const addIngredientToStack = (item: any) => {
     const deployedItem = { ...item, isStacked: true };
-    store.dispatch(ingredientsSlice.actions.addIngredientToStack(deployedItem));
+    dispatch(ingredientsSlice.actions.addIngredientToStack(deployedItem));
   };
 
   function getPrice() {
@@ -61,7 +62,7 @@ function Stack() {
     if (bunCounter > 1) {
       const firstBunItem = data.find((item: any) => item.type === "bun");
 
-      store.dispatch(
+      dispatch(
         ingredientsSlice.actions.removeIngredientFromStack(firstBunItem.name)
       );
     }
@@ -102,8 +103,8 @@ function Stack() {
 
   async function postOrder() {
     if (getCookie("accessToken")) {
-      store.dispatch(postOrderThunk(data) as unknown as AnyAction);
-      store.dispatch(ingredientsSlice.actions._MODAL_TYPE("order"));
+      dispatch(postOrderThunk(data) as unknown as AnyAction);
+      dispatch(ingredientsSlice.actions._MODAL_TYPE("order"));
 
       toggleModal();
     } else {

@@ -16,6 +16,7 @@ import { NewUser } from "../NewUser/NewUser";
 import { Profile } from "../Profile/Profile";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { Modal } from "../Modal/Modal";
+import { useDispatch } from "react-redux";
 
 export function App() {
   useEffect(() => {

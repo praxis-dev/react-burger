@@ -7,13 +7,14 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { emailValidator } from "../../utils/emailValidator";
-import { store } from "../../services/store/Store";
 import { authUserThunk } from "../../services/thunk/authUserThunk";
 import { AnyAction } from "redux";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
+import { useDispatch } from "react-redux";
 
 export const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onNewUserClick = () => {
@@ -55,7 +56,7 @@ export const Login = () => {
         initialLocation.includes("/react-burger/profile")
       ) {
         navigate(initialLocation);
-        store.dispatch(ingredientsSlice.actions._CLEAR_INITIAL_LOCATION());
+        dispatch(ingredientsSlice.actions._CLEAR_INITIAL_LOCATION());
       } else {
         console.log("ingredientsInStack", ingredientsInStack);
         navigate("/react-burger/");
@@ -66,7 +67,7 @@ export const Login = () => {
   const handleButtonClick = (e: any) => {
     e.preventDefault();
     if (allInputsValid) {
-      store.dispatch(
+      dispatch(
         authUserThunk({
           email,
           password,

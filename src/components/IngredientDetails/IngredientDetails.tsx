@@ -2,28 +2,25 @@ import css from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
-import { store } from "../../services/store/Store";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 export function IngredientDetails() {
+  const dispatch = useDispatch();
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const setModal = (value: boolean) => {
-    store.dispatch(ingredientsSlice.actions._MODAL(value));
+    dispatch(ingredientsSlice.actions._MODAL(value));
   };
 
   const input = useSelector(
     (state: any) => state.ingredients.ingredientModalData
   );
 
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
   const navigate = useNavigate();
 
   const onClick = () => {
-    store.dispatch(ingredientsSlice.actions.ingredientDataForModal({}));
+    dispatch(ingredientsSlice.actions.ingredientDataForModal({}));
     setModal(false);
     navigate("/react-burger");
   };
