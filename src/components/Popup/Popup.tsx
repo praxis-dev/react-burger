@@ -1,21 +1,15 @@
-import css from "./Popup.module.css";
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
-import { store } from "../../services/store/Store";
-import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
+import { setModal } from "../../utils/modal/setModal";
 
 export const Popup = ({ children }: any) => {
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const homeRoute = useSelector((state: any) => state.ingredients.homeRoute);
 
-  const setModal = useCallback((value: boolean) => {
-    store.dispatch(ingredientsSlice.actions._MODAL(value));
-  }, []);
   const navigate = useNavigate();
 
   const resetURL = () => {
