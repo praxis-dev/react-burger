@@ -6,6 +6,7 @@ import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
 
 export const Popup = ({ children }: any) => {
   const modal = useSelector((state: any) => state.ingredients.modal);
@@ -20,6 +21,7 @@ export const Popup = ({ children }: any) => {
   const resetURL = () => {
     navigate(homeRoute);
   };
+
   const toggleModal = () => {
     setModal(!modal);
     resetURL();
@@ -40,10 +42,7 @@ export const Popup = ({ children }: any) => {
 
   return ReactDOM.createPortal(
     <>
-      <div onClick={toggleModal} className={css.overlay}>
-        {" "}
-        {children}
-      </div>
+      <ModalOverlay onClick={toggleModal}> {children}</ModalOverlay>
     </>,
     document.getElementById("portal") as Element
   );
