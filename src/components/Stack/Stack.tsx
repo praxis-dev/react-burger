@@ -66,8 +66,6 @@ function Stack() {
   }, [data]);
 
   function renderTopBun(data: any) {
-    //find out how many buns are in the stack
-
     const firstBunItem = data.find((item: any) => item.type === "bun");
 
     return firstBunItem ? (
@@ -124,7 +122,7 @@ function Stack() {
             name={element.name}
             price={element.price}
             image={element.image}
-            key={index}
+            key={uuidv4()}
           />
         );
       }
