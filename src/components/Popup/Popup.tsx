@@ -5,20 +5,12 @@ import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
 import { useCallback } from "react";
-import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
-import OrderDetails from "../OrderDetails/OrderDetails";
 import { useNavigate } from "react-router-dom";
-import IngredientDetailsPage from "../IngredientDetailsPage/IngredientDetailsPage";
 
-export function Popup() {
+export const Popup = ({ children }: any) => {
   const modal = useSelector((state: any) => state.ingredients.modal);
 
-  const modalType = useSelector((state: any) => state.ingredients.modalType);
-
   const homeRoute = useSelector((state: any) => state.ingredients.homeRoute);
-
-  const render =
-    modalType === "ingredient" ? <IngredientDetails /> : <OrderDetails />;
 
   const setModal = useCallback((value: boolean) => {
     store.dispatch(ingredientsSlice.actions._MODAL(value));
@@ -46,17 +38,15 @@ export function Popup() {
     return () => document.removeEventListener("keydown", handleEscapeKey);
   }, [setModal]);
 
-  return modal ? (
-    ReactDOM.createPortal(
-      <>
-        <div onClick={toggleModal} className={css.overlay}></div>
-        {render}
-      </>,
-      document.getElementById("portal") as Element
-    )
-  ) : (
-    <IngredientDetailsPage />
+  return ReactDOM.createPortal(
+    <>
+      <div onClick={toggleModal} className={css.overlay}>
+        {" "}
+        {children}
+      </div>
+    </>,
+    document.getElementById("portal") as Element
   );
-}
+};
 
 export default Popup;

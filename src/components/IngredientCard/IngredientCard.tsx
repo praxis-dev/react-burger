@@ -6,6 +6,8 @@ import { store } from "../../services/store/Store";
 import { useDrag } from "react-dnd";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
+
 type props = element;
 
 type element = {
@@ -48,6 +50,7 @@ function IngredientCard(props: props) {
   } = props;
 
   const modal = useSelector((state: any) => state.ingredients.modal);
+  const modalType = useSelector((state: any) => state.ingredients.modalType);
 
   const setModal = (value: boolean) => {
     store.dispatch(ingredientsSlice.actions._MODAL(value));
@@ -110,6 +113,11 @@ function IngredientCard(props: props) {
           <p className={css.componentName}>{name}</p>
         </>
       </div>
+      {modal && modalType === "ingredient" && (
+        <Popup>
+          <IngredientDetails />
+        </Popup>
+      )}
     </>
   );
 }

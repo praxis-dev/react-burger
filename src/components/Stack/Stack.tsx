@@ -13,8 +13,10 @@ import { AnyAction } from "redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getCookie } from "../../utils/cookies/getCookie";
 import { v4 as uuidv4 } from "uuid";
+import OrderDetails from "../OrderDetails/OrderDetails";
 
 function Stack() {
+  const modalType = useSelector((state: any) => state.ingredients.modalType);
   const data = useSelector(
     (state: any) => state.ingredients.ingredientsInStack
   );
@@ -158,7 +160,11 @@ function Stack() {
           Оформить заказ{" "}
         </Button>
       </div>
-      {(pathname !== "/react-burger" || modal) && <Popup></Popup>}
+      {(pathname !== "/react-burger" || modal) && modalType === "order" && (
+        <Popup>
+          <OrderDetails />
+        </Popup>
+      )}
     </>
   );
 }
