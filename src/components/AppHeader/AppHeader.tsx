@@ -39,6 +39,15 @@ function AppHeader() {
     navigate("/react-burger/");
   };
 
+  const onLogoClick = () => {
+    console.log("onLogoClick");
+    setBurgerIconType("secondary");
+    setProfileIconType("secondary");
+    setConstructorActive("");
+    setProfileActive("");
+    navigate("/react-burger/");
+  };
+
   return (
     <header className={css.header}>
       <div className={css.leftColumn}>
@@ -61,7 +70,9 @@ function AppHeader() {
         </div>
       </div>
       <div className={css.centerColumn}>
-        <Logo />
+        <div onClick={onLogoClick} className={css.logo}>
+          <Logo />
+        </div>
       </div>
       <div className={css.rightColumn}>
         <div className={css.headerItem}>
