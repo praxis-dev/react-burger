@@ -7,6 +7,7 @@ import { useDrag } from "react-dnd";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
+import IngredientDetailsPage from "../IngredientDetailsPage/IngredientDetailsPage";
 
 type props = element;
 
@@ -113,10 +114,12 @@ function IngredientCard(props: props) {
           <p className={css.componentName}>{name}</p>
         </>
       </div>
-      {modal && modalType === "ingredient" && (
+      {modal && modalType === "ingredient" ? (
         <Popup>
           <IngredientDetails />
         </Popup>
+      ) : (
+        <IngredientDetailsPage />
       )}
     </>
   );
