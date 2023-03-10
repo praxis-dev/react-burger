@@ -2,7 +2,6 @@ import css from "./Stack.module.css";
 import StackedIngredient from "../StackedIngredient/StackedIngredient";
 import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
-import OrderDetails from "../OrderDetails/OrderDetails";
 import Popup from "../Popup/Popup";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
@@ -13,7 +12,7 @@ import { postOrderThunk } from "../../services/thunk/postOrderThunk";
 import { AnyAction } from "redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getCookie } from "../../utils/cookies/getCookie";
-import { Navigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 function Stack() {
   const data = useSelector(
