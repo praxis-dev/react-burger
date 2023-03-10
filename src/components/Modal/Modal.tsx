@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
 import { setModal } from "../../utils/modal/setModal";
 
-export const Popup = ({ children }: any) => {
+export const Modal = ({ children }: any) => {
   const modal = useSelector((state: any) => state.ingredients.modal);
 
   const homeRoute = useSelector((state: any) => state.ingredients.homeRoute);
@@ -42,4 +42,4 @@ export const Popup = ({ children }: any) => {
   );
 };
 
-export default Popup;
+export default Modal;

@@ -15,7 +15,7 @@ import { ResetPassword } from "../ResetPassword/ResetPassword";
 import { NewUser } from "../NewUser/NewUser";
 import { Profile } from "../Profile/Profile";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
-import { Popup } from "../Popup/Popup";
+import { Modal } from "../Modal/Modal";
 
 export function App() {
   useEffect(() => {
@@ -31,8 +31,8 @@ export function App() {
             <Routes>
               <Route path="react-burger" element={<BurgerConstructor />}>
                 <Route
-                  path="/react-burger/ingredients/:id" // this is the dynamic route for the popup
-                  element={<Popup />}
+                  path="/react-burger/ingredients/:id"
+                  element={<Modal />}
                 />
               </Route>
 

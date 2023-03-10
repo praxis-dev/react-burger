@@ -6,7 +6,7 @@ export const ingredientsSlice = createSlice({
 
   initialState: {
     ingredients: [],
-    ingredientPopupData: {},
+    ingredientModalData: {},
     orderNumber: 0,
     ingredientsInStack: [] as ingredientsInStack,
     error: "",
@@ -107,8 +107,8 @@ export const ingredientsSlice = createSlice({
       console.log("error: " + action.payload);
       state.orderNumber = state.orderNumberBackup;
     },
-    ingredientDataForPopup: (state, action) => {
-      state.ingredientPopupData = action.payload;
+    ingredientDataForModal: (state, action) => {
+      state.ingredientModalData = action.payload;
     },
     addIngredientToStack: (state, action) => {
       state.ingredientsInStack.push(action.payload);
@@ -134,4 +134,4 @@ export const ingredientsSlice = createSlice({
   },
 });
 
-export const { ingredientDataForPopup } = ingredientsSlice.actions;
+export const { ingredientDataForModal } = ingredientsSlice.actions;

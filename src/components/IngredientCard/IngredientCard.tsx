@@ -1,5 +1,5 @@
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import Popup from "../Popup/Popup";
+import Modal from "../Modal/Modal";
 import css from "./IngredientCard.module.css";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
@@ -65,7 +65,7 @@ function IngredientCard(props: props) {
   const dynamicURL = `/react-burger/ingredients/${_id}`;
 
   const onClick = () => {
-    store.dispatch(ingredientsSlice.actions.ingredientDataForPopup(props));
+    store.dispatch(ingredientsSlice.actions.ingredientDataForModal(props));
     store.dispatch(ingredientsSlice.actions._MODAL_TYPE("ingredient"));
 
     toggleModal();
@@ -115,9 +115,9 @@ function IngredientCard(props: props) {
         </>
       </div>
       {modal && modalType === "ingredient" ? (
-        <Popup>
+        <Modal>
           <IngredientDetails />
-        </Popup>
+        </Modal>
       ) : (
         <IngredientDetailsPage />
       )}

@@ -2,7 +2,7 @@ import css from "./Stack.module.css";
 import StackedIngredient from "../StackedIngredient/StackedIngredient";
 import largeCurrencyIcon from "../../images/Subtract.svg";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
-import Popup from "../Popup/Popup";
+import Modal from "../Modal/Modal";
 import { useSelector } from "react-redux";
 import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { store } from "../../services/store/Store";
@@ -161,9 +161,9 @@ function Stack() {
         </Button>
       </div>
       {(pathname !== "/react-burger" || modal) && modalType === "order" && (
-        <Popup>
+        <Modal>
           <OrderDetails />
-        </Popup>
+        </Modal>
       )}
     </>
   );

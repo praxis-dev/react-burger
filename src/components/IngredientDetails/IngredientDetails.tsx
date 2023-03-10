@@ -13,7 +13,7 @@ export function IngredientDetails() {
   };
 
   const input = useSelector(
-    (state: any) => state.ingredients.ingredientPopupData
+    (state: any) => state.ingredients.ingredientModalData
   );
 
   const toggleModal = () => {
@@ -23,7 +23,7 @@ export function IngredientDetails() {
   const navigate = useNavigate();
 
   const onClick = () => {
-    store.dispatch(ingredientsSlice.actions.ingredientDataForPopup({}));
+    store.dispatch(ingredientsSlice.actions.ingredientDataForModal({}));
     setModal(false);
     navigate("/react-burger");
   };
