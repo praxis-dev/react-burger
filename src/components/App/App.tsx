@@ -4,8 +4,6 @@ import AppHeader from "../AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { useEffect } from "react";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { store } from "../../services/store/Store";
-import { Provider } from "react-redux";
 import { DndProvider } from "react-dnd";
 import { fetchIngredientsThunk } from "../../services/thunk/fetchIngredientsThunk";
 import { AnyAction } from "redux";
@@ -19,50 +17,46 @@ import { Modal } from "../Modal/Modal";
 import { useDispatch } from "react-redux";
 
 export function App() {
+  const dispatch = useDispatch();
   useEffect(() => {
-    store.dispatch(fetchIngredientsThunk() as unknown as AnyAction);
-  }, []);
+    dispatch(fetchIngredientsThunk() as unknown as AnyAction);
+  });
 
   return (
     <div className="App">
       <Router>
         <DndProvider backend={HTML5Backend}>
-          <Provider store={store}>
-            <AppHeader />
-            <Routes>
-              <Route path="react-burger" element={<BurgerConstructor />}>
-                <Route
-                  path="/react-burger/ingredients/:id"
-                  element={<Modal />}
-                />
-              </Route>
+          <AppHeader />
+          <Routes>
+            <Route path="react-burger" element={<BurgerConstructor />}>
+              <Route path="/react-burger/ingredients/:id" element={<Modal />} />
+            </Route>
 
-              <Route
-                path="react-burger/login/*"
-                element={<ProtectedRoute element={<Login />} />}
-              />
+            <Route
+              path="react-burger/login/*"
+              element={<ProtectedRoute element={<Login />} />}
+            />
 
-              <Route
-                path="react-burger/forgot-password/*"
-                element={<ProtectedRoute element={<ForgotPassword />} />}
-              />
+            <Route
+              path="react-burger/forgot-password/*"
+              element={<ProtectedRoute element={<ForgotPassword />} />}
+            />
 
-              <Route
-                path="react-burger/reset-password/*"
-                element={<ProtectedRoute element={<ResetPassword />} />}
-              />
+            <Route
+              path="react-burger/reset-password/*"
+              element={<ProtectedRoute element={<ResetPassword />} />}
+            />
 
-              <Route
-                path="react-burger/new-user/*"
-                element={<ProtectedRoute element={<NewUser />} />}
-              />
+            <Route
+              path="react-burger/new-user/*"
+              element={<ProtectedRoute element={<NewUser />} />}
+            />
 
-              <Route
-                path="react-burger/profile/*"
-                element={<ProtectedRoute element={<Profile />} />}
-              />
-            </Routes>
-          </Provider>
+            <Route
+              path="react-burger/profile/*"
+              element={<ProtectedRoute element={<Profile />} />}
+            />
+          </Routes>
         </DndProvider>
       </Router>
     </div>
