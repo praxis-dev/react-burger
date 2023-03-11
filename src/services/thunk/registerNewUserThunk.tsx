@@ -1,8 +1,9 @@
+import { dispatch } from "../../interfaces";
 import { registerNewUserApi } from "../api/registerNewUserApi";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 
 export const registerNewUserThunk = (data: any) => {
-  return async function (dispatch: any) {
+  return async function (dispatch: dispatch) {
     dispatch(ingredientsSlice.actions._REGISTER_REQUEST("Loading"));
 
     const result = await registerNewUserApi(data);
