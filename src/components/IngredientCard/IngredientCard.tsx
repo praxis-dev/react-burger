@@ -5,8 +5,7 @@ import { ingredientsSlice } from "../../services/slice/ingredientsSlice";
 import { useDrag } from "react-dnd";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
-import IngredientDetailsPage from "../IngredientDetailsPage/IngredientDetailsPage";
+
 import { useDispatch } from "react-redux";
 
 type props = element;
@@ -53,14 +52,9 @@ function IngredientCard(props: props) {
   } = props;
 
   const modal = useSelector((state: any) => state.ingredients.modal);
-  const modalType = useSelector((state: any) => state.ingredients.modalType);
 
   const setModal = (value: boolean) => {
     dispatch(ingredientsSlice.actions._MODAL(value));
-  };
-
-  const toggleModal = () => {
-    setModal(!modal);
   };
 
   const navigate = useNavigate();
@@ -70,7 +64,7 @@ function IngredientCard(props: props) {
     dispatch(ingredientsSlice.actions.ingredientDataForModal(props));
     dispatch(ingredientsSlice.actions._MODAL_TYPE("ingredient"));
 
-    toggleModal();
+    setModal(true);
     navigate(dynamicURL);
   };
 
@@ -116,13 +110,6 @@ function IngredientCard(props: props) {
           <p className={css.componentName}>{name}</p>
         </>
       </div>
-      {modal && modalType === "ingredient" ? (
-        <Modal>
-          <IngredientDetails />
-        </Modal>
-      ) : (
-        <IngredientDetailsPage />
-      )}
     </>
   );
 }

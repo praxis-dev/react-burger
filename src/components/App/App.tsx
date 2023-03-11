@@ -15,12 +15,18 @@ import { Profile } from "../Profile/Profile";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { Modal } from "../Modal/Modal";
 import { useDispatch } from "react-redux";
+import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
+import IngredientDetailsPage from "../IngredientDetailsPage/IngredientDetailsPage";
+import { useSelector } from "react-redux";
 
 export function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchIngredientsThunk() as unknown as AnyAction);
   });
+
+  const modal = useSelector((state: any) => state.ingredients.modal);
+  const modalType = useSelector((state: any) => state.ingredients.modalType);
 
   return (
     <div className="App">
@@ -29,7 +35,18 @@ export function App() {
           <AppHeader />
           <Routes>
             <Route path="react-burger" element={<BurgerConstructor />}>
-              <Route path="/react-burger/ingredients/:id" element={<Modal />} />
+              <Route
+                path="/react-burger/ingredients/:id"
+                element={
+                  modal && modalType === "ingredient" ? (
+                    <Modal>
+                      <IngredientDetails />
+                    </Modal>
+                  ) : (
+                    <IngredientDetailsPage />
+                  )
+                }
+              />
             </Route>
 
             <Route
