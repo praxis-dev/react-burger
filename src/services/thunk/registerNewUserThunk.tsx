@@ -1,8 +1,9 @@
 import { dispatch } from "../../interfaces";
 import { registerNewUserApi } from "../api/registerNewUserApi";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
+import { registerNewUserThunkData } from "../../interfaces";
 
-export const registerNewUserThunk = (data: any) => {
+export const registerNewUserThunk = (data: registerNewUserThunkData) => {
   return async function (dispatch: dispatch) {
     dispatch(ingredientsSlice.actions._REGISTER_REQUEST("Loading"));
 

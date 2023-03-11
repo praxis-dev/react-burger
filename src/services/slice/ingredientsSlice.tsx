@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-export type ingredientsInStack = any[];
+
+import { ingredientsInStack } from "../../interfaces";
 
 export const ingredientsSlice = createSlice({
   name: "ingredients",
@@ -35,6 +36,7 @@ export const ingredientsSlice = createSlice({
     },
     _UPDATE_USER_REQUEST: (state, action) => {
       state.userData = action.payload as any;
+      console.log("user data: " + action.payload);
     },
     _UPDATE_USER_SUCCESS: (state, action) => {
       state.userData = action.payload;
