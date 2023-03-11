@@ -1,4 +1,14 @@
-export const setCookie = (name: string, value: string, options: any = {}) => {
+interface CookieOptions {
+  path?: string;
+  expires?: Date | string;
+  [key: string]: any;
+}
+
+export const setCookie = (
+  name: string,
+  value: string,
+  options: CookieOptions = {}
+) => {
   options = {
     path: "/",
     ...options,
