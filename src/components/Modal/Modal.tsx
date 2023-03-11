@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
 import { setModal } from "../../utils/modal/setModal";
+import css from "./Modal.module.css";
+import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 export const Modal = ({ children }: any) => {
   const modal = useSelector((state: any) => state.ingredients.modal);
@@ -34,9 +36,20 @@ export const Modal = ({ children }: any) => {
     return () => document.removeEventListener("keydown", handleEscapeKey);
   }, [setModal]);
 
+  const onClick = () => {
+    setModal(false);
+    navigate("/react-burger");
+  };
+
   return ReactDOM.createPortal(
     <>
-      <ModalOverlay onClick={toggleModal}> {children}</ModalOverlay>
+      <ModalOverlay onClick={toggleModal}>
+        {" "}
+        {children}{" "}
+        <div className={css.closeModal} onClick={onClick}>
+          <CloseIcon type="primary" />
+        </div>
+      </ModalOverlay>
     </>,
     document.getElementById("portal") as Element
   );
