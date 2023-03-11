@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 import IngredientDetailsPage from "../IngredientDetailsPage/IngredientDetailsPage";
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 
 export function App() {
   const dispatch = useDispatch();
@@ -28,26 +29,28 @@ export function App() {
   const modal = useSelector((state: any) => state.ingredients.modal);
   const modalType = useSelector((state: any) => state.ingredients.modalType);
 
+  console.log(modal);
+  console.log(modalType);
+
   return (
     <div className="App">
       <Router>
         <DndProvider backend={HTML5Backend}>
           <AppHeader />
           <Routes>
-            <Route path="react-burger" element={<BurgerConstructor />}>
-              <Route
-                path="/react-burger/ingredients/:id"
-                element={
-                  modal && modalType === "ingredient" ? (
-                    <Modal>
-                      <IngredientDetails />
-                    </Modal>
-                  ) : (
-                    <IngredientDetailsPage />
-                  )
-                }
-              />
-            </Route>
+            <Route path="react-burger" element={<BurgerConstructor />}></Route>
+            <Route
+              path="react-burger/ingredients/:id"
+              element={
+                modal && modalType === "ingredient" ? (
+                  <Modal>
+                    <IngredientDetails />
+                  </Modal>
+                ) : (
+                  <IngredientDetailsPage />
+                )
+              }
+            />
 
             <Route
               path="react-burger/login/*"
