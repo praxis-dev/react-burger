@@ -3,6 +3,7 @@ import Stack from "../Stack/Stack";
 import { useIsVisible } from "../../utils/useIsVisible";
 import { useRef } from "react";
 import { Ingredients } from "../Ingredients/Ingredients";
+import { Outlet } from "react-router-dom";
 
 type data = {};
 
@@ -84,6 +85,7 @@ function BurgerConstructor(data: data) {
             <Stack {...data} />
           </div>
         </div>
+        <Outlet />
       </section>
     </>
   );

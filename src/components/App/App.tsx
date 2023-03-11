@@ -38,19 +38,21 @@ export function App() {
         <DndProvider backend={HTML5Backend}>
           <AppHeader />
           <Routes>
-            <Route path="react-burger" element={<BurgerConstructor />}></Route>
-            <Route
-              path="react-burger/ingredients/:id"
-              element={
-                modal && modalType === "ingredient" ? (
-                  <Modal>
-                    <IngredientDetails />
-                  </Modal>
-                ) : (
-                  <IngredientDetailsPage />
-                )
-              }
-            />
+            <Route path="react-burger" element={<BurgerConstructor />}>
+              {" "}
+              <Route
+                path="ingredients/:id"
+                element={
+                  modal && modalType === "ingredient" ? (
+                    <Modal>
+                      <IngredientDetails />
+                    </Modal>
+                  ) : (
+                    <IngredientDetailsPage />
+                  )
+                }
+              />
+            </Route>
 
             <Route
               path="react-burger/login/*"
