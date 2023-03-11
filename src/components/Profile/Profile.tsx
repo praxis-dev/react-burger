@@ -7,7 +7,6 @@ import {
 import { logoutUserThunk } from "../../services/thunk/logoutUserThunk";
 import { getUserDataThunk } from "../../services/thunk/getUserDataThunk";
 import { updateUserThunk } from "../../services/thunk/updateUserThunk";
-import { store } from "../../services/store/Store";
 import { AnyAction } from "redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
