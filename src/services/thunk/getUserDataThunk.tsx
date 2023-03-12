@@ -3,10 +3,24 @@ import { getUserDataApi } from "../api/getUserDataApi";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 
 export const getUserDataThunk = () => {
-  return async function (dispatch: Dispatch) {
+  return function (dispatch: Dispatch) {
     dispatch(ingredientsSlice.actions._GET_USER_DATA_REQUEST("Loading"));
-    const result = await getUserDataApi();
-
-    dispatch(ingredientsSlice.actions._GET_USER_DATA_SUCCESS(result.user));
+    getUserDataApi()
+      .then((result) => {
+        dispatch(ingredientsSlice.actions._GET_USER_DATA_SUCCESS(result.user));
+      })
+      .catch((error) => {
+        if (error instanceof Error) {
+          dispatch(
+            ingredientsSlice.actions._GET_USER_DATA_ERROR(error.message)
+          );
+        } else {
+          dispatch(
+            ingredientsSlice.actions._GET_USER_DATA_ERROR(
+              "An unknown error occurred."
+            )
+          );
+        }
+      });
   };
 };
