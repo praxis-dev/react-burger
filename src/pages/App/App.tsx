@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, RouteProps } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import AppHeader from "../../components/AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
