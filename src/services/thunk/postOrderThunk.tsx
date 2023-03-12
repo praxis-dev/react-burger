@@ -3,13 +3,25 @@ import { postOrderApi } from "../api/postOrderApi";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 
 export const postOrderThunk = (data: any) => {
-  return async function (dispatch: Dispatch) {
+  return function (dispatch: Dispatch) {
     dispatch(ingredientsSlice.actions._ORDER_NUMBER_REQUEST("Loading"));
 
-    const result = await postOrderApi(data);
-
-    const res = await result;
-
-    dispatch(ingredientsSlice.actions._ORDER_NUMBER_SUCCESS(res.order.number));
+    postOrderApi(data)
+      .then((result) => {
+        dispatch(
+          ingredientsSlice.actions._ORDER_NUMBER_SUCCESS(result.order.number)
+        );
+      })
+      .catch((error) => {
+        if (error instanceof Error) {
+          dispatch(ingredientsSlice.actions._ORDER_NUMBER_ERROR(error.message));
+        } else {
+          dispatch(
+            ingredientsSlice.actions._ORDER_NUMBER_ERROR(
+              "An unknown error occurred."
+            )
+          );
+        }
+      });
   };
 };
