@@ -7,23 +7,9 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
+import { Element } from "../../interfaces";
 
-type props = element;
-
-type element = {
-  _id: string;
-  name: string;
-  type: string;
-  proteins: number;
-  fat: number;
-  carbohydrates: number;
-  calories: number;
-  price: number;
-  image: string;
-  image_mobile: string;
-  image_large: string;
-  __v: number;
-};
+type props = Element;
 
 function IngredientCard(props: props) {
   const dispatch = useDispatch();
@@ -50,8 +36,6 @@ function IngredientCard(props: props) {
     image_large,
     __v,
   } = props;
-
-  const modal = useSelector((state: any) => state.ingredients.modal);
 
   const setModal = (value: boolean) => {
     dispatch(ingredientsSlice.actions._MODAL(value));

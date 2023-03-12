@@ -11,7 +11,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerNewUserThunk } from "../../services/thunk/registerNewUserThunk";
 import { AnyAction } from "redux";
-import { dispatch } from "../../interfaces";
 
 export const NewUser = () => {
   const [name, setName] = useState("");

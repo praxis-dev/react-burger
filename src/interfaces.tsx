@@ -4,13 +4,13 @@ export interface Response {
   json: () => Promise<any>;
 }
 
-export interface updateUserThunkData {
+export interface UpdateUserThunkData {
   name: string;
   email: string;
   password: string;
 }
 
-export interface dispatch {
+export interface Dispatch {
   (arg0: { type: string; payload: any }): void;
 }
 
@@ -26,4 +26,19 @@ export type ingredientsInStack = any[];
 export interface authUserApiData {
   email: string;
   password: string;
+}
+
+export interface Element {
+  _id: string;
+  name: string;
+  type: string;
+  proteins: number;
+  fat: number;
+  carbohydrates: number;
+  calories: number;
+  price: number;
+  image: string;
+  image_mobile: string;
+  image_large: string;
+  __v: number;
 }

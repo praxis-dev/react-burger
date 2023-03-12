@@ -1,5 +1,6 @@
 import { BASE_URL } from "../../utils/data";
 import { checkResponse } from "../../utils/checkResponse";
+import { Element } from "../../interfaces";
 
 export async function postOrderApi(data: any) {
   const response = await fetch(`${BASE_URL}/orders`, {
@@ -8,7 +9,7 @@ export async function postOrderApi(data: any) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      ingredients: data.map((element: any) => element._id),
+      ingredients: data.map((element: Element) => element._id),
     }),
   });
 

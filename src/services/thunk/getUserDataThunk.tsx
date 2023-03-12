@@ -1,9 +1,9 @@
-import { dispatch } from "../../interfaces";
+import { Dispatch } from "../../interfaces";
 import { getUserDataApi } from "../api/getUserDataApi";
 import { ingredientsSlice } from "../slice/ingredientsSlice";
 
 export const getUserDataThunk = () => {
-  return async function (dispatch: dispatch) {
+  return async function (dispatch: Dispatch) {
     dispatch(ingredientsSlice.actions._GET_USER_DATA_REQUEST("Loading"));
     const result = await getUserDataApi();
 
