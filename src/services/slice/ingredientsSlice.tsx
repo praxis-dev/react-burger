@@ -1,19 +1,91 @@
 import { createSlice } from "@reduxjs/toolkit";
-export type ingredientsInStack = any[];
+
+import { ingredientsInStack } from "../../interfaces";
 
 export const ingredientsSlice = createSlice({
   name: "ingredients",
 
   initialState: {
     ingredients: [],
-    ingredientPopupData: {},
+    ingredientModalData: {},
     orderNumber: 0,
     ingredientsInStack: [] as ingredientsInStack,
     error: "",
     ingredientsBackup: [],
     orderNumberBackup: 0,
+    userData: {},
+    authUser: false,
+    userLocation: "",
+    modal: false,
+    modalType: "",
+    homeRoute: "/react-burger",
   },
   reducers: {
+    _MODAL_TYPE: (state, action) => {
+      state.modalType = action.payload;
+    },
+    _MODAL: (state, action) => {
+      state.modal = action.payload;
+    },
+
+    _UPDATE_INITIAL_LOCATION: (state, action) => {
+      state.userLocation = action.payload;
+    },
+    _CLEAR_INITIAL_LOCATION: (state) => {
+      state.userLocation = "";
+    },
+    _UPDATE_USER_REQUEST: (state, action) => {
+      state.userData = action.payload as any;
+      console.log("user data: " + action.payload);
+    },
+    _UPDATE_USER_SUCCESS: (state, action) => {
+      state.userData = action.payload;
+    },
+    _UPDATE_USER_ERROR: (state, action) => {
+      state.error = action.payload;
+      console.log("error: " + action.payload);
+    },
+    _GET_USER_DATA_REQUEST: (state, action) => {
+      state.userData = action.payload as any;
+    },
+    _GET_USER_DATA_SUCCESS: (state, action) => {
+      state.userData = action.payload;
+    },
+    _GET_USER_DATA_ERROR: (state, action) => {
+      state.error = action.payload;
+      console.log("error: " + action.payload);
+    },
+    _LOGOUT_USER_REQUEST: (state, action) => {
+      state.userData = action.payload as any;
+    },
+    _LOGOUT_USER_SUCCESS: (state) => {
+      state.userData = {};
+    },
+    _LOGOUT_USER_ERROR: (state, action) => {
+      state.error = action.payload;
+      console.log("error: " + action.payload);
+    },
+
+    _LOGIN_REQUEST: (state, action) => {
+      state.userData = action.payload as any;
+    },
+    _LOGIN_SUCCESS: (state, action) => {
+      state.userData = action.payload;
+    },
+    _LOGIN_ERROR: (state, action) => {
+      state.error = action.payload;
+      console.log("error: " + action.payload);
+    },
+    _REGISTER_REQUEST: (state, action) => {
+      state.userData = action.payload as any;
+    },
+    _REGISTER_SUCCESS: (state, action) => {
+      state.userData = action.payload;
+    },
+    _REGISTER_ERROR: (state, action) => {
+      state.error = action.payload;
+      console.log("error: " + action.payload);
+    },
     _INGREDIENTS_REQUEST: (state) => {
       state.ingredientsBackup = state.ingredients;
     },
@@ -37,8 +109,8 @@ export const ingredientsSlice = createSlice({
       console.log("error: " + action.payload);
       state.orderNumber = state.orderNumberBackup;
     },
-    ingredientDataForPopup: (state, action) => {
-      state.ingredientPopupData = action.payload;
+    ingredientDataForModal: (state, action) => {
+      state.ingredientModalData = action.payload;
     },
     addIngredientToStack: (state, action) => {
       state.ingredientsInStack.push(action.payload);
@@ -64,4 +136,4 @@ export const ingredientsSlice = createSlice({
   },
 });
 
-export const { ingredientDataForPopup } = ingredientsSlice.actions;
+export const { ingredientDataForModal } = ingredientsSlice.actions;

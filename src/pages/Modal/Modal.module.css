@@ -1,0 +1,6 @@
+.closeModal {
+  position: absolute;
+  top: 63px;
+  right: 43px;
+  cursor: pointer;
+}

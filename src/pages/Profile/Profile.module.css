@@ -1,0 +1,103 @@
+.section {
+  max-width: 1240px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin: 0 auto;
+  margin-top: 180px;
+}
+.profileMenuContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: auto;
+}
+
+.description {
+  margin-top: 80px;
+  max-width: 320px;
+}
+
+.descriptionText {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8585ad;
+  opacity: 0.4;
+}
+
+.fieldsContainer {
+}
+
+.profileMenuItem {
+  width: 320px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.profileMenuItem:last-child {
+  border-bottom: none;
+}
+
+.profileMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileMenuItemText {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  color: #8585ad;
+}
+
+.profileMenuItemText:hover {
+  color: #4c4cff;
+  cursor: pointer;
+}
+
+.active {
+  color: white;
+}
+
+.header {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 24px;
+}
+
+.spacer {
+  margin-bottom: 24px;
+}
+.button {
+  display: flex;
+  margin-bottom: 80px;
+  justify-content: center;
+}
+
+.textBox {
+  display: flex;
+  justify-content: center;
+}
+
+.loginText {
+  font-family: "Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8585ad;
+  margin-right: 8px;
+}

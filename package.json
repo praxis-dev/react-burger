@@ -1,6 +1,7 @@
 {
   "name": "react-burger",
   "version": "0.1.0",
+  "homepage": "https://praxis-dev.github.io/react-burger/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -11,20 +12,27 @@
     "@types/node": "^16.18.9",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
+    "@types/react-router-dom": "^5.3.3",
     "@ya.praktikum/react-developer-burger-ui-components": "^1.14.0",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.2",
     "react-redux": "^8.0.5",
-    "react-scripts": "5.0.1",
+    "react-router-dom": "^6.8.1",
+    "react-scripts": "^5.0.1",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
     "typescript": "^4.9.4",
+    "uninstall": "^0.0.0",
+    "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,8 +51,12 @@
     ]
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.3",
+    "@types/uuid": "^9.0.1",
+    "@types/whatwg-fetch": "^0.0.33",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.11",
+    "gh-pages": "^5.0.0",
     "prettier": "2.8.1"
   }
 }
