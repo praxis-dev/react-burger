@@ -1,8 +1,9 @@
 import { BASE_URL } from "../../utils/data";
 import { checkResponse } from "../../utils/checkResponse";
 import { Element } from "../../interfaces";
+import { postOrderApiData } from "../../interfaces";
 
-export async function postOrderApi(data: any) {
+export async function postOrderApi(data: postOrderApiData["data"]) {
   const response = await fetch(`${BASE_URL}/orders`, {
     method: "POST",
     headers: {

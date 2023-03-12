@@ -42,3 +42,7 @@ export interface Element {
   image_large: string;
   __v: number;
 }
+
+export interface postOrderApiData {
+  data: Element[];
+}
