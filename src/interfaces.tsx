@@ -46,3 +46,8 @@ export interface Element {
 export interface postOrderApiData {
   data: Element[];
 }
+
+export interface resetPasswordData {
+  password: string;
+  code: string;
+}
