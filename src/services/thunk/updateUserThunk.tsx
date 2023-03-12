@@ -4,10 +4,23 @@ import { UpdateUserThunkData } from "../../interfaces";
 import { Dispatch } from "../../interfaces";
 
 export const updateUserThunk = (data: UpdateUserThunkData) => {
-  return async function (dispatch: Dispatch) {
+  return function (dispatch: Dispatch) {
     dispatch(ingredientsSlice.actions._UPDATE_USER_REQUEST("Loading"));
-    const result = await updateUserDataApi(data);
 
-    dispatch(ingredientsSlice.actions._UPDATE_USER_SUCCESS(result.user));
+    updateUserDataApi(data)
+      .then((result) => {
+        dispatch(ingredientsSlice.actions._UPDATE_USER_SUCCESS(result.user));
+      })
+      .catch((error) => {
+        if (error instanceof Error) {
+          dispatch(ingredientsSlice.actions._UPDATE_USER_ERROR(error.message));
+        } else {
+          dispatch(
+            ingredientsSlice.actions._UPDATE_USER_ERROR(
+              "An unknown error occurred."
+            )
+          );
+        }
+      });
   };
 };
