@@ -2,7 +2,6 @@ import IngredientCard from "../IngredientCard/IngredientCard";
 import css from "./Ingredients.module.css";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { Element } from "../../interfaces";
 
 type props = {
   iRefs: {

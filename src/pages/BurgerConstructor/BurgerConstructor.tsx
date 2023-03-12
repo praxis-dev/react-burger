@@ -55,7 +55,7 @@ function BurgerConstructor(data: data) {
               <div
                 onClick={handleRef2Click}
                 className={
-                  ref2IsVisible
+                  ref2IsVisible && !ref1IsVisible
                     ? css.componentsSelector +
                       " " +
                       css.componentsSelectorSelected
@@ -67,7 +67,7 @@ function BurgerConstructor(data: data) {
               <div
                 onClick={handleRef3Click}
                 className={
-                  ref3IsVisible
+                  ref3IsVisible && !ref2IsVisible
                     ? css.componentsSelector +
                       " " +
                       css.componentsSelectorSelected
