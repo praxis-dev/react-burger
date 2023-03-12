@@ -4,15 +4,24 @@ import { ingredientsSlice } from "../slice/ingredientsSlice";
 import { registerNewUserThunkData } from "../../interfaces";
 
 export const registerNewUserThunk = (data: registerNewUserThunkData) => {
-  return async function (dispatch: Dispatch) {
+  return function (dispatch: Dispatch) {
     dispatch(ingredientsSlice.actions._REGISTER_REQUEST("Loading"));
 
-    const result = await registerNewUserApi(data);
-
-    const res = await result;
-
-    dispatch(ingredientsSlice.actions._REGISTER_SUCCESS(res));
-
-    data.onResponse(res);
+    registerNewUserApi(data)
+      .then((result) => {
+        dispatch(ingredientsSlice.actions._REGISTER_SUCCESS(result));
+        data.onResponse(result);
+      })
+      .catch((error) => {
+        if (error instanceof Error) {
+          dispatch(ingredientsSlice.actions._REGISTER_ERROR(error.message));
+        } else {
+          dispatch(
+            ingredientsSlice.actions._REGISTER_ERROR(
+              "An unknown error occurred."
+            )
+          );
+        }
+      });
   };
 };
