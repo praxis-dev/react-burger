@@ -5,8 +5,12 @@ import { ingredientsSlice } from "../slice/ingredientsSlice";
 export const fetchIngredientsThunk = () => {
   return function (dispatch: Dispatch) {
     dispatch(ingredientsSlice.actions._INGREDIENTS_REQUEST());
-    getIngredientsApi().then((data: any) => {
-      dispatch(ingredientsSlice.actions._INGREDIENTS_SUCCESS(data.data));
-    });
+    getIngredientsApi()
+      .then((data: any) => {
+        dispatch(ingredientsSlice.actions._INGREDIENTS_SUCCESS(data.data));
+      })
+      .catch((error: Error) => {
+        dispatch(ingredientsSlice.actions._INGREDIENTS_ERROR(error.message));
+      });
   };
 };
