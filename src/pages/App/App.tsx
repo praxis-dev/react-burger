@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, RouteProps } from "react-router-dom";
 import { Routes } from "react-router-dom";
-import AppHeader from "../AppHeader/AppHeader";
+import AppHeader from "../../components/AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { useEffect } from "react";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -18,7 +18,6 @@ import { useDispatch } from "react-redux";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 import IngredientDetailsPage from "../IngredientDetailsPage/IngredientDetailsPage";
 import { useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
 
 export function App() {
   const dispatch = useDispatch();
